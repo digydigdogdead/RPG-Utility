@@ -17,6 +17,9 @@
             <TabItem Name="statTrackerTab">
                 <TabItem.Header>Stat Tracker</TabItem.Header>
             </TabItem>
+            <TabItem Name="memosTab">
+                <TabItem.Header>Memos</TabItem.Header>
+            </TabItem>
             <TabItem Name="sessionLogsTab">
                 <TabItem.Header>Session Logs</TabItem.Header>
             </TabItem>

@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <TabControl TabStripPlacement="Top">
+            <TabItem Name="diceRollerTab">
+                <TabItem.Header>Dice Roller</TabItem.Header>
+            </TabItem>
+            <TabItem Name="clocksTab">
+                <TabItem.Header>Clocks</TabItem.Header>
+            </TabItem>
+            <TabItem Name="statTrackerTab">
+                <TabItem.Header>Stat Tracker</TabItem.Header>
+            </TabItem>
+            <TabItem Name="sessionLogsTab">
+                <TabItem.Header>Session Logs</TabItem.Header>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

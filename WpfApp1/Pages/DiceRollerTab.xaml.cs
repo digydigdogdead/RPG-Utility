@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace WpfApp1.Pages
 {
@@ -20,9 +21,34 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class DiceRollerTab : Page
     {
+        Random random = new Random();
+        Stack<string> rollHistory = new Stack<string>();
         public DiceRollerTab()
         {
             InitializeComponent();
+        }
+
+        private void rollButton_Click(object sender, RoutedEventArgs e)
+        {
+            int[] diceRolls = new int[(int)diceNumberUpDown.Value!];
+            for (int i = 0; i < diceNumberUpDown.Value; i++)
+            {
+                int result = random.Next(1, (int)diceTypeUpDown.Value! + 1);
+                diceRolls[i] = result;
+            }
+            int total = diceRolls.Sum() + (int)modifierUpDown.Value!;
+            string rollResult = $"{diceNumberUpDown.Value}d{diceTypeUpDown.Value} = {string.Join(", ", diceRolls)} + {modifierUpDown.Value} (Total: {total})";
+            rollHistory.Push(rollResult);
+            updateListView();
+        }
+
+        private void updateListView()
+        {
+            logListView.Items.Clear();
+            foreach (string roll in rollHistory)
+            { 
+                logListView.Items.Add(roll);
+            }
         }
     }
 }

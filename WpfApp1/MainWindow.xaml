@@ -18,15 +18,16 @@
                             <RowDefinition Height="5*" />
                             <RowDefinition Height="95*" />
                         </Grid.RowDefinitions>
-                        <ComboBox>
-                            <ComboBoxItem Name="Default">Default</ComboBoxItem>
+                        <ComboBox SelectedValue="default">
+                            <ComboBoxItem x:Name="default">Default</ComboBoxItem>
+                            <ComboBoxItem x:Name="wilderfeast">Wilderfeast</ComboBoxItem>
                         </ComboBox>
                         <Grid Grid.Row="1" x:Name="pageGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4*" x:Name="rollerGridColumn" />
                                 <ColumnDefinition Width="1*" x:Name="logColumn" />
                             </Grid.ColumnDefinitions>
-                            <Frame Source="Pages/DiceRollerTab.xaml" Grid.Column="0"/>
+                            <Frame x:Name="rollerPresetFrame" Source="Pages/DiceRollerTab.xaml" Grid.Column="0"/>
                             <Grid x:Name="logGrid" Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*" />

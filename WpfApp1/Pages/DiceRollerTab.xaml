@@ -12,112 +12,86 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" x:Name="diceDetailsColumn" />
+            <ColumnDefinition Width="1*" x:Name="rollButtonColumn" />
         </Grid.ColumnDefinitions>
-        <Grid x:Name="rollerGrid" Grid.Column="0">
+        <Grid Name="rollingGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*" x:Name="diceDetailsColumn" />
-                <ColumnDefinition Width="1*" x:Name="rollButtonColumn" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Grid Name="rollingGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBlock x:Name="diceNumberTextBlock" 
-                           Grid.Column="0" 
-                           Grid.Row="0" 
-                           Margin="10,10,10,0" 
-                           FontSize="100" 
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           Text="#"/>
-                <TextBlock x:Name="diceTypeTextBlock"
-                            Grid.Column="1" 
-                            Grid.Row="0" 
-                            Margin="10,10,10,0" 
-                            FontSize="100" 
-                            TextWrapping="Wrap"
-                            VerticalAlignment="Bottom"
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="diceNumberTextBlock" 
+                        Grid.Column="0" 
+                        Grid.Row="0" 
+                        Margin="10,10,10,0" 
+                        FontSize="100" 
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Text="#"/>
+            <TextBlock x:Name="diceTypeTextBlock"
+                        Grid.Column="1" 
+                        Grid.Row="0" 
+                        Margin="10,10,10,0" 
+                        FontSize="100" 
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Text="d?"/>
+            <TextBlock x:Name="diceModifierTextBlock"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        FontSize="100"
+                        Margin="10,10,10,0"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Text="+"/>
+            <xctk:IntegerUpDown x:Name="diceNumberUpDown" 
+                            Grid.Column="0" 
+                            Grid.Row="1" 
+                            Margin="10,0,10,10" 
+                            VerticalAlignment="Top"
                             HorizontalAlignment="Center"
-                            Text="d?"/>
-                <TextBlock x:Name="diceModifierTextBlock"
-                           Grid.Column="2"
-                           Grid.Row="0"
-                           FontSize="100"
-                           Margin="10,10,10,0"
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           Text="+"/>
-                <xctk:IntegerUpDown x:Name="diceNumberUpDown" 
-                               Grid.Column="0" 
-                               Grid.Row="1" 
-                               Margin="10,0,10,10" 
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Center"
-                               Width="100"
-                               Value="1"
-                               Minimum="1"
-                               FontSize="100"
-                               Background="Transparent"/>
-                <xctk:IntegerUpDown x:Name="diceTypeUpDown"
-                                    Grid.Column="1" 
-                                    Grid.Row="1" 
-                                    Margin="10,0,10,10" 
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Center"
-                                    Width="100"
-                                    Value="1"
-                                    Minimum="1"
-                                    FontSize="100"
-                                    Background="Transparent"/>
-                <xctk:IntegerUpDown x:Name="modifierUpDown"
-                                    Grid.Column="3" 
-                                    Grid.Row="1" 
-                                    Margin="10,0,10,10" 
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Center"
-                                    Width="100"
-                                    Value="0"
-                                    Minimum="0"
-                                    FontSize="100"
-                                    Background="Transparent"/>
-
-
-
-
-            </Grid>
-            <Button x:Name="rollButton" 
+                            Width="100"
+                            Value="1"
+                            Minimum="1"
+                            FontSize="100"
+                            Background="Transparent"/>
+            <xctk:IntegerUpDown x:Name="diceTypeUpDown"
+                                Grid.Column="1" 
+                                Grid.Row="1" 
+                                Margin="10,0,10,10" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Width="100"
+                                Value="1"
+                                Minimum="1"
+                                FontSize="100"
+                                Background="Transparent"/>
+            <xctk:IntegerUpDown x:Name="modifierUpDown"
+                                Grid.Column="3" 
+                                Grid.Row="1" 
+                                Margin="10,0,10,10" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Width="100"
+                                Value="0"
+                                Minimum="0"
+                                FontSize="100"
+                                Background="Transparent"/>
+        </Grid>
+        <Button x:Name="rollButton" 
                     Grid.Column="1" 
                     Content="Roll Dice" 
                     Margin="10,0,10,0" 
                     VerticalAlignment="Center"
                     Height="80"
                     Click="rollButton_Click"/>
-        </Grid>
-        <Grid x:Name="logGrid" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="5*" />
-            </Grid.RowDefinitions>
-            <TextBlock x:Name="logHeaderTextBlock"
-                   Grid.Row="0"
-                   Text="Log"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="35"
-                   />
-            <ListView Grid.Row="1" x:Name="logListView">
-                
-            </ListView>
-        </Grid>
     </Grid>
 </Page>

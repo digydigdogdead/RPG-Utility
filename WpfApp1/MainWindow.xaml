@@ -13,7 +13,36 @@
             <TabItem Name="diceRollerTab">
                 <TabItem.Header>Dice Roller</TabItem.Header>
                 <TabItem.Content>
-                    <Frame Source="Pages/DiceRollerTab.xaml" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="95*" />
+                        </Grid.RowDefinitions>
+                        <ComboBox>
+                            <ComboBoxItem Name="Default">Default</ComboBoxItem>
+                        </ComboBox>
+                        <Grid Grid.Row="1" x:Name="pageGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" x:Name="rollerGridColumn" />
+                                <ColumnDefinition Width="1*" x:Name="logColumn" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Source="Pages/DiceRollerTab.xaml" Grid.Column="0"/>
+                            <Grid x:Name="logGrid" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="logHeaderTextBlock"
+                                           Grid.Row="0"
+                                           Text="Log"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontSize="35"
+                                           />
+                                <ListView Grid.Row="1" x:Name="logListView"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="clocksTab">

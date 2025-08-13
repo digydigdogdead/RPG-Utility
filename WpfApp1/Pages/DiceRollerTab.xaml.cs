@@ -22,7 +22,6 @@ namespace WpfApp1.Pages
     public partial class DiceRollerTab : Page
     {
         Random random = new Random();
-        Stack<string> rollHistory = new Stack<string>();
         public DiceRollerTab()
         {
             InitializeComponent();
@@ -38,17 +37,8 @@ namespace WpfApp1.Pages
             }
             int total = diceRolls.Sum() + (int)modifierUpDown.Value!;
             string rollResult = $"{diceNumberUpDown.Value}d{diceTypeUpDown.Value} = {string.Join(", ", diceRolls)} + {modifierUpDown.Value} (Total: {total})";
-            rollHistory.Push(rollResult);
-            updateListView();
-        }
-
-        private void updateListView()
-        {
-            logListView.Items.Clear();
-            foreach (string roll in rollHistory)
-            { 
-                logListView.Items.Add(roll);
-            }
+            (App.Current as App)!.rollHistory.Push(rollResult);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
         }
     }
 }

@@ -20,5 +20,14 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        public void updateListView()
+        {
+            logListView.Items.Clear();
+            foreach (string roll in (App.Current as App)!.rollHistory)
+            {
+                logListView.Items.Add(roll);
+            }
+        }
     }
 }

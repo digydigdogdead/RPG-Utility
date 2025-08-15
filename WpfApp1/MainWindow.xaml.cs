@@ -19,6 +19,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            presetComboBox.SelectedItem = defaultCbi;
         }
 
         public void updateListView()
@@ -27,6 +28,18 @@ namespace WpfApp1
             foreach (string roll in (App.Current as App)!.rollHistory)
             {
                 logListView.Items.Add(roll);
+            }
+        }
+
+        private void presetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (presetComboBox.SelectedItem == defaultCbi)
+            {
+                rollerPresetFrame.Source = new Uri("Pages/DiceRollerTab.xaml", UriKind.Relative);
+            }
+            else if (presetComboBox.SelectedItem == wilderfeastCbi)
+            {
+                rollerPresetFrame.Source = new Uri("Pages/WiderFeastDiceRoller.xaml", UriKind.Relative);
             }
         }
     }

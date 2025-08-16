@@ -48,6 +48,7 @@ namespace WpfApp1.Controls
             get { return (int)GetValue(SquareSizeProperty); }
             set { SetValue(SquareSizeProperty, value); }
         }
+
         public Clock()
         {
             InitializeComponent();
@@ -94,6 +95,22 @@ namespace WpfApp1.Controls
                 Clock clock = (Clock)d;
                 clock.BuildClock();
             };
+        }
+
+        private void clockStack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            for (int i = 0; i < clockStack.Children.Count; i += 2)
+            {
+                if (clockStack.Children[i] is Rectangle rect)
+                {
+                    if (rect.Fill is SolidColorBrush brush && brush.Color == DefaultColor)
+                    {
+                        rect.Fill = new SolidColorBrush(FilledColor);
+                        break;
+                    }
+                }
+            }
+           
         }
     }
 }

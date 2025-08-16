@@ -55,6 +55,11 @@
             </TabItem>
             <TabItem Name="clocksTab">
                 <TabItem.Header>Clocks</TabItem.Header>
+                <TabItem.Content>
+                    <Frame Source="Pages/Clocks.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="clocksFrame"/>
+                </TabItem.Content>
             </TabItem>
             <TabItem Name="statTrackerTab">
                 <TabItem.Header>Stat Tracker</TabItem.Header>

@@ -45,6 +45,7 @@ namespace WpfApp1.Pages
             };
             newClockPanel.Children.Add(newClock);
             clocksStackPanel.Children.Add(newClockPanel);
+            clockNameTextBox.Clear();
 
         }
 

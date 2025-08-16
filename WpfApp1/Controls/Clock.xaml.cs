@@ -112,5 +112,20 @@ namespace WpfApp1.Controls
             }
            
         }
+
+        private void clockStack_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            for (int i = clockStack.Children.Count - 1; i >= 0; i -= 2)
+            {
+                if (clockStack.Children[i] is Rectangle rect)
+                {
+                    if (rect.Fill is SolidColorBrush brush && brush.Color == FilledColor)
+                    {
+                        rect.Fill = new SolidColorBrush(DefaultColor);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

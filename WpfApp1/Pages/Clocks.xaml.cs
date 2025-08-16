@@ -47,5 +47,10 @@ namespace WpfApp1.Pages
             clocksStackPanel.Children.Add(newClockPanel);
 
         }
+
+        private void clearClocksButton_Click(object sender, RoutedEventArgs e)
+        {
+            clocksStackPanel.Children.Clear();
+        }
     }
 }

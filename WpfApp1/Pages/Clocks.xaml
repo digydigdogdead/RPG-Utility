@@ -16,6 +16,10 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <Button x:Name="addClockButton"
                     VerticalAlignment="Top"
@@ -41,10 +45,16 @@
                                 Value="2"/>
 
         </StackPanel>
+        <Button x:Name="clearClocksButton"
+                Grid.Row="1"
+                Margin="5"
+                Click="clearClocksButton_Click"
+                >Clear</Button>
         <StackPanel CanVerticallyScroll="True"
                     x:Name="clocksStackPanel"
                     Orientation="Vertical"
-                    Grid.Column="1">
+                    Grid.Column="1"
+                    Grid.RowSpan="2">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Bomb Exploding" />
                 <usercontrols:Clock Segments="8"/>

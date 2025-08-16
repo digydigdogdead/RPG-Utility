@@ -56,8 +56,6 @@
                     Grid.Column="1"
                     Grid.RowSpan="2">
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Bomb Exploding" />
-                <usercontrols:Clock Segments="8"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -28,11 +28,13 @@ namespace WpfApp1.Pages
         private void rollButton_Click(object sender, RoutedEventArgs e)
         {
             int successes = 0;
+            int[] styleRolls = new int[(int)styleDiceUpDown.Value!];
             int actionRoll = 0;
 
             for (int i = 0; i < styleDiceUpDown.Value; i++)
             {
                 int roll = new Random().Next(1, 7); // Simulate a dice roll (1-6)
+                styleRolls[i] = roll; // Store the roll in the array
                 if (roll >= 5) // 5 or 6 is a success
                 {
                     successes++;
@@ -48,7 +50,7 @@ namespace WpfApp1.Pages
                 actionRoll = new Random().Next(1, 21);
             }
 
-            (App.Current as App)!.rollHistory.Push($"{successes} Successes, [A] = {actionRoll}");
+            (App.Current as App)!.rollHistory.Push($"{successes} Successes ({String.Join(',', styleRolls)}), [A] = {actionRoll}");
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
         }
     }

@@ -35,7 +35,15 @@ namespace WpfApp1.Pages
             {
                 int roll = new Random().Next(1, 7); // Simulate a dice roll (1-6)
                 styleRolls[i] = roll; // Store the roll in the array
-                if (roll >= 5) // 5 or 6 is a success
+                if (advComboBox.SelectedItem == normalCbi && roll >= 5) // 5 or 6 is a success
+                {
+                    successes++;
+                }
+                else if (advComboBox.SelectedItem == advantageCbi && roll >= 4) // 4, 5, or 6 is a success
+                {
+                    successes++;
+                }
+                else if (advComboBox.SelectedItem == disadvantageCbi && roll == 6) // Only 6 is a success
                 {
                     successes++;
                 }

@@ -37,6 +37,7 @@ namespace WpfApp1.Pages
             };
             (App.Current as App)!.Clocks.Add(newClock);
             clockNameTextBox.Clear();
+            segmentsIntegerUpDown.Value = 4; // Reset to default value
             UpdateClockStack();
 
         }

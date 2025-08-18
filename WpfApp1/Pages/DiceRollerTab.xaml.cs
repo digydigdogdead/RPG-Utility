@@ -37,7 +37,7 @@ namespace WpfApp1.Pages
             }
             int total = diceRolls.Sum() + (int)modifierUpDown.Value!;
             string rollResult = $"{diceNumberUpDown.Value}d{diceTypeUpDown.Value} = {string.Join(", ", diceRolls)} + {modifierUpDown.Value} (Total: {total})";
-            (App.Current as App)!.rollHistory.Push(rollResult);
+            (App.Current as App)!.RollHistory.Push(rollResult);
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
         }
     }

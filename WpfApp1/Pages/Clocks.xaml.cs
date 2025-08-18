@@ -27,31 +27,34 @@ namespace WpfApp1.Pages
 
         private void addClockButton_Click(object sender, RoutedEventArgs e)
         {
-            StackPanel newClockPanel = new StackPanel
-            {
-                Orientation = Orientation.Vertical,
-                Margin = new Thickness(5)
-            };
-            newClockPanel.Children.Add(new TextBlock
-            {
-                Text = clockNameTextBox.Text
-            });
             Controls.Clock newClock = new Controls.Clock
             {
                 Segments = (int)segmentsIntegerUpDown.Value!,
                 DefaultColor = Colors.LightGray,
                 FilledColor = Colors.ForestGreen,
-                SquareSize = 70
+                SquareSize = 70,
+                ClockName = clockNameTextBox.Text
             };
-            newClockPanel.Children.Add(newClock);
-            clocksStackPanel.Children.Add(newClockPanel);
+            (App.Current as App)!.Clocks.Add(newClock);
             clockNameTextBox.Clear();
+            segmentsIntegerUpDown.Value = 4; // Reset to default value
+            UpdateClockStack();
 
         }
 
         private void clearClocksButton_Click(object sender, RoutedEventArgs e)
         {
+            (App.Current as App)!.Clocks.Clear();
+            UpdateClockStack();
+        }
+
+        private void UpdateClockStack()
+        {
             clocksStackPanel.Children.Clear();
+            foreach (var clock in (App.Current as App)!.Clocks)
+            {
+                clocksStackPanel.Children.Add(clock);
+            }
         }
     }
 }

@@ -48,6 +48,13 @@ namespace WpfApp1.Controls
             get { return (int)GetValue(SquareSizeProperty); }
             set { SetValue(SquareSizeProperty, value); }
         }
+        public static readonly DependencyProperty ClockNameProperty = DependencyProperty.Register(
+            nameof(ClockName), typeof(string), typeof(Clock), new PropertyMetadata("Clock", OnClockNameChanged()));
+        public string ClockName
+        {
+            get { return (string)GetValue(ClockNameProperty); }
+            set { SetValue(ClockNameProperty, value); }
+        }
 
         public Clock()
         {
@@ -94,6 +101,18 @@ namespace WpfApp1.Controls
             {
                 Clock clock = (Clock)d;
                 clock.BuildClock();
+            };
+        }
+
+        private static PropertyChangedCallback OnClockNameChanged()
+        {
+            return (d, e) =>
+            {
+                Clock clock = (Clock)d;
+                if (clock.clockName != null)
+                {
+                    clock.clockName.Text = clock.ClockName;
+                }
             };
         }
 

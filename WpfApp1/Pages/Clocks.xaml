@@ -55,8 +55,6 @@
                     Orientation="Vertical"
                     Grid.Column="1"
                     Grid.RowSpan="2">
-            <StackPanel Orientation="Vertical">
-            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

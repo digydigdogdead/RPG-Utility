@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using WpfApp1.Controls;
+using WpfApp1.Pages;
 
 namespace WpfApp1
 {
@@ -9,9 +11,12 @@ namespace WpfApp1
     /// </summary>
     public partial class App : Application
     {
-        public Stack<string> rollHistory = new Stack<string>();
-
+        public Stack<string> RollHistory = new Stack<string>();
+        public List<Clock> Clocks = new List<Clock>();
         
+       
+
+
     }
 
 }

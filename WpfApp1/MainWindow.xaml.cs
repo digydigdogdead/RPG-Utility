@@ -25,7 +25,7 @@ namespace WpfApp1
         public void updateListView()
         {
             logListView.Items.Clear();
-            foreach (string roll in (App.Current as App)!.rollHistory)
+            foreach (string roll in (App.Current as App)!.RollHistory)
             {
                 logListView.Items.Add(roll);
             }

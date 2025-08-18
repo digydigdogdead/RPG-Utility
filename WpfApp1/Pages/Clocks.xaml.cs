@@ -35,14 +35,25 @@ namespace WpfApp1.Pages
                 SquareSize = 70,
                 ClockName = clockNameTextBox.Text
             };
-            clocksStackPanel.Children.Add(newClock);
+            (App.Current as App)!.Clocks.Add(newClock);
             clockNameTextBox.Clear();
+            UpdateClockStack();
 
         }
 
         private void clearClocksButton_Click(object sender, RoutedEventArgs e)
         {
+            (App.Current as App)!.Clocks.Clear();
+            UpdateClockStack();
+        }
+
+        private void UpdateClockStack()
+        {
             clocksStackPanel.Children.Clear();
+            foreach (var clock in (App.Current as App)!.Clocks)
+            {
+                clocksStackPanel.Children.Add(clock);
+            }
         }
     }
 }

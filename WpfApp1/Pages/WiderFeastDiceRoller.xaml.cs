@@ -58,7 +58,7 @@ namespace WpfApp1.Pages
                 actionRoll = new Random().Next(1, 21);
             }
 
-            (App.Current as App)!.rollHistory.Push($"{successes} Successes ({String.Join(',', styleRolls)}), [A] = {actionRoll}");
+            (App.Current as App)!.RollHistory.Push($"{successes} Successes ({String.Join(',', styleRolls)}), [A] = {actionRoll}");
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
         }
     }

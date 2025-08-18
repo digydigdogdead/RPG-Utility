@@ -27,24 +27,15 @@ namespace WpfApp1.Pages
 
         private void addClockButton_Click(object sender, RoutedEventArgs e)
         {
-            StackPanel newClockPanel = new StackPanel
-            {
-                Orientation = Orientation.Vertical,
-                Margin = new Thickness(5)
-            };
-            newClockPanel.Children.Add(new TextBlock
-            {
-                Text = clockNameTextBox.Text
-            });
             Controls.Clock newClock = new Controls.Clock
             {
                 Segments = (int)segmentsIntegerUpDown.Value!,
                 DefaultColor = Colors.LightGray,
                 FilledColor = Colors.ForestGreen,
-                SquareSize = 70
+                SquareSize = 70,
+                ClockName = clockNameTextBox.Text
             };
-            newClockPanel.Children.Add(newClock);
-            clocksStackPanel.Children.Add(newClockPanel);
+            clocksStackPanel.Children.Add(newClock);
             clockNameTextBox.Clear();
 
         }

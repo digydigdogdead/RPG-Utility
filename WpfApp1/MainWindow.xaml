@@ -59,8 +59,11 @@
                        x:Name="clocksFrame"/>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Name="statTrackerTab">
+            <TabItem Name="statTrackerTab" Height="20" VerticalAlignment="Top">
                 <TabItem.Header>Stat Tracker</TabItem.Header>
+                <Frame Source="Pages/StatTracker.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="statTrackerFrame"/>
             </TabItem>
             <TabItem Name="memosTab">
                 <TabItem.Header>Memos</TabItem.Header>

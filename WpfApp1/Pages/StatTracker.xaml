@@ -53,8 +53,6 @@
                    Orientation="Horizontal"
                    Grid.Column="1"
                    Grid.RowSpan="2">
-            <usercontrols:StatTrack Stat="HP"
-                                    Value="10" />
         </WrapPanel>
     </Grid>
 </Page>

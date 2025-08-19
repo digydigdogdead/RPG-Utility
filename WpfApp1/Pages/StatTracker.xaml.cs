@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Controls;
 
 namespace WpfApp1.Pages
 {
@@ -27,12 +28,30 @@ namespace WpfApp1.Pages
 
         private void clearStatsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            (App.Current as App)!.Stats.Clear();
+            PopulateWrapPanel();
         }
 
         private void addStatButton_Click(object sender, RoutedEventArgs e)
         {
+            StatTrack newStat = new StatTrack
+            {
+                Stat = statNameTextBox.Text,
+                Value = (int)statValueIntegerUpDown.Value!
+            };
+            (App.Current as App)!.Stats.Add(newStat);
+            PopulateWrapPanel();
+            statNameTextBox.Text = string.Empty;
+            statValueIntegerUpDown.Value = 1;
+        }
 
+        public void PopulateWrapPanel()
+        {
+            statsWrapPanel.Children.Clear();
+            foreach (StatTrack stat in (App.Current as App)!.Stats)
+            {
+                statsWrapPanel.Children.Add(stat);
+            }
         }
     }
 }

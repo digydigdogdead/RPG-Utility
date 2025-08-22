@@ -25,6 +25,7 @@ namespace WpfApp1.Controls
         {
             InitializeComponent();
             BuildMemo();
+            
         }
 
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
@@ -68,6 +69,7 @@ namespace WpfApp1.Controls
                     {
                         memo.contentTextBlock.Text = memo.MemoContent.Substring(0, 90) + "...";
                     }
+                    ToolTipService.SetToolTip(memo.contentTextBlock, memo.MemoContent);
                 }
             };
         }
@@ -76,6 +78,7 @@ namespace WpfApp1.Controls
         {
             titleTextBlock.Text = Title;
             contentTextBlock.Text = MemoContent;
+            
         }
 
         private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)

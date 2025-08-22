@@ -61,7 +61,12 @@ namespace WpfApp1.Controls
                 Memo memo = (Memo)d;
                 if (memo.contentTextBlock != null)
                 {
-                    memo.contentTextBlock.Text = memo.MemoContent;
+                    if (memo.MemoContent.Length < 90)
+                    { memo.contentTextBlock.Text = memo.MemoContent; }
+                    else
+                    {
+                        memo.contentTextBlock.Text = memo.MemoContent.Substring(0, 90) + "...";
+                    }
                 }
             };
         }

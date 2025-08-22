@@ -49,10 +49,10 @@
                 Margin="5"
                 Click="clearStatsButton_Click"
         >Clear</Button>
-        <WrapPanel x:Name="statsWrapPanel"
-                   Orientation="Horizontal"
-                   Grid.Column="1"
-                   Grid.RowSpan="2">
-        </WrapPanel>
+        <ScrollViewer Grid.Column="1" Grid.RowSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <WrapPanel x:Name="statsWrapPanel"
+                       Orientation="Horizontal">
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

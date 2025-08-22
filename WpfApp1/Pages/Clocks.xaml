@@ -50,11 +50,15 @@
                 Margin="5"
                 Click="clearClocksButton_Click"
                 >Clear</Button>
-        <StackPanel CanVerticallyScroll="True"
+        <ScrollViewer Grid.Column="1"
+                      Grid.RowSpan="2"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <StackPanel CanVerticallyScroll="True"
                     x:Name="clocksStackPanel"
                     Orientation="Vertical"
-                    Grid.Column="1"
-                    Grid.RowSpan="2">
-        </StackPanel>
+                    >
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -43,6 +43,8 @@
                                 Width="60"
                                 FontSize="20"
                                 Value="2"/>
+            <TextBlock Text="LMB to progress clock" TextWrapping="Wrap" TextAlignment="Center" Margin="0, 0, 0, 10"/>
+            <TextBlock Text="RMB to move clock back" TextWrapping="Wrap" TextAlignment="Center"/>
 
         </StackPanel>
         <Button x:Name="clearClocksButton"

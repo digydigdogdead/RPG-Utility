@@ -35,7 +35,6 @@
                         />
         <ScrollViewer Grid.Column="1"
                       Grid.RowSpan="2"
-                      Margin="10"
                       VerticalScrollBarVisibility="Auto"
                       >
             <StackPanel x:Name="memosStackPanel"

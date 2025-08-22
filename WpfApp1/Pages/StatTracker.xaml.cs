@@ -24,6 +24,7 @@ namespace WpfApp1.Pages
         public StatTracker()
         {
             InitializeComponent();
+            ((App)Application.Current).StatTrackerPage = this;
         }
 
         private void clearStatsButton_Click(object sender, RoutedEventArgs e)

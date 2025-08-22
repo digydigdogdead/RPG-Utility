@@ -15,6 +15,10 @@
             <ColumnDefinition Width="89*"/>
             <ColumnDefinition Width="711*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Button x:Name="addMemoButton"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
@@ -23,7 +27,14 @@
                 Width="50"
                 Background="LightGreen"
                 Click="addMemoButton_Click"/>
+        <Button x:Name="clearStatsButton"
+                        Grid.Row="1"
+                        Margin="5"
+                        Click="clearStatsButton_Click"
+                        Content="Clear"
+                        />
         <ScrollViewer Grid.Column="1"
+                      Grid.RowSpan="2"
                       Margin="10"
                       VerticalScrollBarVisibility="Auto"
                       >
@@ -31,11 +42,7 @@
                         Orientation="Vertical"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Stretch"
-                        
-                        >
-                <usercontrols:Memo Title="Sample Memo 1" MemoContent="This is the content of sample memo 1."/>
-                <usercontrols:Memo Title="Sample Memo 1" MemoContent="This is the content of sample memo 1."/>
-            </StackPanel>
+                        />
         </ScrollViewer>
     </Grid>
 </Page>

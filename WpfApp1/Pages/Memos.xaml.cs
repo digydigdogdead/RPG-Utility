@@ -40,5 +40,11 @@ namespace WpfApp1.Pages
                 memosStackPanel.Children.Add(memo);
             }
         }
+
+        private void clearStatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App)!.Memos.Clear();
+            RefreshMemos();
+        }
     }
 }

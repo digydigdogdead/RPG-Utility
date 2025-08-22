@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:WpfApp1.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="700"
-             Background="Beige">
+             Background="Beige"
+             MouseDoubleClick="UserControl_MouseDoubleClick">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2">
             <StackPanel>

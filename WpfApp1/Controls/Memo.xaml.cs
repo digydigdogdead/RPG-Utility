@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Pages;
 
 namespace WpfApp1.Controls
 {
@@ -75,6 +76,16 @@ namespace WpfApp1.Controls
         {
             titleTextBlock.Text = Title;
             contentTextBlock.Text = MemoContent;
+        }
+
+        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int index = ((App)Application.Current).Memos.IndexOf(this);
+            MemoOverwriteWindow overwriteMemoWindow = new MemoOverwriteWindow();
+            overwriteMemoWindow.Index = index;
+            overwriteMemoWindow.memoTitleTextBox.Text = this.Title;
+            overwriteMemoWindow.memoContentTextBox.Text = this.MemoContent;
+            overwriteMemoWindow.Show();
         }
     }
 }

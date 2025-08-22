@@ -67,6 +67,9 @@
             </TabItem>
             <TabItem Name="memosTab">
                 <TabItem.Header>Memos</TabItem.Header>
+                <Frame Source="Pages/Memos.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="memosFrame"/>
             </TabItem>
             <TabItem Name="sessionLogsTab">
                 <TabItem.Header>Session Logs</TabItem.Header>

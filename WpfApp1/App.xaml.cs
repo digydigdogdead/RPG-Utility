@@ -14,8 +14,15 @@ namespace WpfApp1
         public Stack<string> RollHistory = new Stack<string>();
         public List<Clock> Clocks = new List<Clock>();
         public List<StatTrack> Stats = new List<StatTrack>();
-        
-       
+        public List<Memo> Memos = new List<Memo>();
+
+        public Memos? MemosPage { get; set; } = null;
+        public StatTracker? StatTrackerPage { get; set; } = null;
+
+
+
+
+
 
 
     }

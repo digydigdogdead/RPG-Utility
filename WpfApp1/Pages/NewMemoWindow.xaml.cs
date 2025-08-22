@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Controls;
 
 namespace WpfApp1.Pages
 {
@@ -24,14 +25,14 @@ namespace WpfApp1.Pages
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void saveMemoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Memo memo = new Memo();
+            memo.Title = memoTitleTextBox.Text;
+            memo.MemoContent = memoContentTextBox.Text;
+            ((App)Application.Current).Memos.Add(memo);
+            ((App)Application.Current).MemosPage?.RefreshMemos();
+            this.Close();
         }
     }
 }

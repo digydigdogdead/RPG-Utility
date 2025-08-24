@@ -20,7 +20,7 @@
             <RowDefinition Height="8*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
             <Button x:Name="addClockButton"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"

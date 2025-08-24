@@ -73,6 +73,9 @@
             </TabItem>
             <TabItem Name="sessionLogsTab">
                 <TabItem.Header>Session Logs</TabItem.Header>
+                <Frame Source="Pages/SessionLogs.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="sessionLogsFrame"/>
             </TabItem>
         </TabControl>
     </Grid>

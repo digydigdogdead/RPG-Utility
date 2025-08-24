@@ -27,12 +27,18 @@ namespace WpfApp1.Windows
 
         private void overwriteLogButton_Click(object sender, RoutedEventArgs e)
         {
-
+            (App.Current as App)!.SessionLogs[LogIndex].SessionDescription = sessionDescriptionTextBox.Text;
+            (App.Current as App)!.SessionLogs[LogIndex].SessionNumber = (int)sessionNumberUpDown.Value!;
+            (App.Current as App)!.SessionLogs[LogIndex].LogTitle = sessionTitleTextBox.Text;
+            (App.Current as App)!.SessionLogsPage!.RefreshLogs();
+            this.Close();
         }
 
         private void deleteLogButton_Click(object sender, RoutedEventArgs e)
         {
-
+            (App.Current as App)!.SessionLogs.RemoveAt(LogIndex);
+            (App.Current as App)!.SessionLogsPage!.RefreshLogs();
+            this.Close();
         }
     }
 }

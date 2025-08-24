@@ -35,11 +35,11 @@ namespace WpfApp1
         {
             if (presetComboBox.SelectedItem == defaultCbi)
             {
-                rollerPresetFrame.Source = new Uri("Pages/DiceRollerTab.xaml", UriKind.Relative);
+                rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/DiceRollerTab.xaml", UriKind.Relative);
             }
             else if (presetComboBox.SelectedItem == wilderfeastCbi)
             {
-                rollerPresetFrame.Source = new Uri("Pages/WiderFeastDiceRoller.xaml", UriKind.Relative);
+                rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/WiderFeastDiceRoller.xaml", UriKind.Relative);
             }
         }
     }

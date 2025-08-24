@@ -33,5 +33,12 @@ namespace WpfApp1.Pages
             (App.Current as App)!.MemosPage?.RefreshMemos();
             this.Close();
         }
+
+        private void deleteMemoButton_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App)!.Memos.RemoveAt(Index);
+            (App.Current as App)!.MemosPage?.RefreshMemos();
+            this.Close();
+        }
     }
 }

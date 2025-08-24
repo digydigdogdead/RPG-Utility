@@ -50,5 +50,12 @@
         Content="Overwrite"
         HorizontalAlignment="Right"
         Margin="5"/>
+        <Button Grid.Row="2"
+                HorizontalAlignment="Left"
+                x:Name="deleteMemoButton"
+                Content="Delete"
+                Margin="5"
+                Background="PaleVioletRed"
+                Click="deleteMemoButton_Click"/>
     </Grid>
 </Window>

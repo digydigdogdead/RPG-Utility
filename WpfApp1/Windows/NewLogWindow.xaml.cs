@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Controls;
 
 namespace WpfApp1.Windows
 {
@@ -26,7 +27,15 @@ namespace WpfApp1.Windows
 
         private void saveLogButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SessionLog newLog = new SessionLog()
+            {
+                LogTitle = sessionTitleTextBox.Text,
+                SessionDescription = sessionDescriptionTextBox.Text,
+                SessionNumber = (int)sessionNumberUpDown.Value!
+            };
+            ((App)Application.Current).SessionLogs.Add(newLog);
+            ((App)Application.Current).SessionLogsPage!.RefreshLogs();
+            this.Close();
         }
     }
 }

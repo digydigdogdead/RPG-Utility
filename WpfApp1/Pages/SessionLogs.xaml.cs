@@ -29,7 +29,8 @@ namespace WpfApp1.Pages
 
         private void addSessionLogButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Windows.NewLogWindow newLogWindow = new Windows.NewLogWindow();
+            newLogWindow.ShowDialog();
         }
 
         public void RefreshLogs()

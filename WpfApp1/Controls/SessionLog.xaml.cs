@@ -47,7 +47,14 @@ namespace WpfApp1.Controls
 
         private void SessionLog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Windows.EditLogWindow editLogWindow = new Windows.EditLogWindow()
+            {
+                LogIndex = ((App)Application.Current).SessionLogs.IndexOf(this)
+            };
+            editLogWindow.sessionNumberUpDown.Value = SessionNumber;
+            editLogWindow.sessionTitleTextBox.Text = LogTitle;
+            editLogWindow.sessionDescriptionTextBox.Text = SessionDescription;
+            editLogWindow.Show();
         }
 
         private static PropertyChangedCallback OnLogNumberChanged()

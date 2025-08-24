@@ -7,7 +7,7 @@
         xmlns:pages="clr-namespace:WpfApp1.Pages"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="RPG Utility" Height="500" Width="800">
     <Grid>
         <TabControl TabStripPlacement="Top">
             <TabItem Name="diceRollerTab">
@@ -30,7 +30,7 @@
                                 <ColumnDefinition Width="1*" x:Name="logColumn" />
                             </Grid.ColumnDefinitions>
                             <Frame x:Name="rollerPresetFrame" 
-                                   Source="Pages/DiceRollerTab.xaml" 
+                                   Source="Pages/DiceRollerPresets/DiceRollerTab.xaml" 
                                    Grid.Column="0" 
                                    NavigationUIVisibility="Hidden"/>
                             <Grid x:Name="logGrid" Grid.Column="1">

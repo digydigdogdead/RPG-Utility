@@ -83,6 +83,22 @@ namespace WpfApp1.Controls
 
         private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            OpenEditWindow();
+        }
+
+        private void editMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenEditWindow();
+        }
+
+        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App)!.Memos.Remove(this);
+            (App.Current as App)!.MemosPage?.RefreshMemos();
+        }
+
+        private void OpenEditWindow()
+        {
             int index = ((App)Application.Current).Memos.IndexOf(this);
             MemoOverwriteWindow overwriteMemoWindow = new MemoOverwriteWindow();
             overwriteMemoWindow.Index = index;

@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="700"
              Background="Beige"
-             MouseDoubleClick="UserControl_MouseDoubleClick">
+             MouseDoubleClick="UserControl_MouseDoubleClick"
+             Margin="0, 5, 0, 5">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2">
             <StackPanel>
@@ -24,5 +25,11 @@
                            Foreground="DimGray"/>
             </StackPanel>
         </Border>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Edit" x:Name="editMenuItem" Click="editMenuItem_Click" />
+                <MenuItem Header="Delete" x:Name="deleteMenuItem" Click="deleteMenuItem_Click" />
+            </ContextMenu>
+        </Grid.ContextMenu>
     </Grid>
 </UserControl>

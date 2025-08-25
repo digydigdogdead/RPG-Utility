@@ -21,6 +21,7 @@ namespace WpfApp1
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
+        public string? LoadedFilePath { get; set; } = null;
 
 
 

@@ -94,6 +94,20 @@ namespace WpfApp1.Controls
                     clockStack.Children.Add(separator);
                 }
             }
+            Button deleteButton = new Button
+            {
+                Width = SquareSize/2,
+                Height = SquareSize/2,
+                Content = "X",
+                Background = new SolidColorBrush(Colors.PaleVioletRed),
+                Margin = new Thickness(5)
+            };
+            deleteButton.Click += (s, e) =>
+            {
+                (App.Current as App)!.Clocks.Remove(this);
+                (App.Current as App)!.ClocksPage!.UpdateClockStack();
+            };
+            clockStack.Children.Add(deleteButton);
         }
         private static PropertyChangedCallback OnSegmentsChanged()
         {

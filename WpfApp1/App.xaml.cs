@@ -20,6 +20,7 @@ namespace WpfApp1
         public Memos? MemosPage { get; set; } = null;
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
+        public Clocks? ClocksPage { get; set; } = null;
 
 
 

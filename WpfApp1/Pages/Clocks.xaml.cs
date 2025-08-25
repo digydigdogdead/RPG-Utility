@@ -23,6 +23,7 @@ namespace WpfApp1.Pages
         public Clocks()
         {
             InitializeComponent();
+            (App.Current as App)!.ClocksPage = this;
         }
 
         private void addClockButton_Click(object sender, RoutedEventArgs e)
@@ -48,7 +49,7 @@ namespace WpfApp1.Pages
             UpdateClockStack();
         }
 
-        private void UpdateClockStack()
+        public void UpdateClockStack()
         {
             clocksStackPanel.Children.Clear();
             foreach (var clock in (App.Current as App)!.Clocks)

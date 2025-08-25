@@ -29,13 +29,6 @@ namespace WpfApp1
         {
             try
             {
-                // Roll History
-                RollHistory.Clear();
-                foreach (var roll in sd.RollHistory)
-                {
-                    RollHistory.Push(roll);
-                }
-                ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
                 // Clocks
                 Clocks.Clear();
                 foreach (var clockDatum in sd.ClocksData)

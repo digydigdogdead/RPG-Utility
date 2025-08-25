@@ -78,12 +78,7 @@ namespace RPGUtility.Pages
         {
             SaveData saveData = new SaveData();
 
-            foreach (var roll in (WpfApp1.App.Current as App)!.RollHistory)
-            {
-                saveData.RollHistory.Push(roll);
-            }
-
-            foreach (var clock in (WpfApp1.App.Current as App)!.Clocks)
+            foreach (var clock in (App.Current as App)!.Clocks)
             {
                 saveData.ClocksData.Add((clock.Segments, clock.ClockName));
             }

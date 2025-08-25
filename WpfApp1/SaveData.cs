@@ -9,7 +9,6 @@ namespace RPGUtility
 {
     public class SaveData
     {
-        public Stack<string> RollHistory { get; set; } = new Stack<string>();
         public List<(int Segments, string Name)> ClocksData { get; set; } = new List<(int Segments, string Name)>();
         public List<(string Name, int Value)> StatsData { get; set; } = new List<(string Name, int Value)>();
         public List<(string Title, string Content)> MemosData { get; set; } = new List<(string Title, string Content)>();

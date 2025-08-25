@@ -77,6 +77,11 @@
                        NavigationUIVisibility="Hidden" 
                        x:Name="sessionLogsFrame"/>
             </TabItem>
+            <TabItem Header="Save/Load" x:Name="saveLoadTab">
+                <Frame Source="Pages/SaveLoad.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="saveLoadFrame"/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

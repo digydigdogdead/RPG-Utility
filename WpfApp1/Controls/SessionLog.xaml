@@ -27,6 +27,11 @@
                            Margin="10"/>
             </StackPanel>
         </Border>
-
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Edit" x:Name="editMenuItem" Click="editMenuItem_Click" />
+                <MenuItem Header="Delete" x:Name="deleteMenuItem" Click="deleteMenuItem_Click" />
+            </ContextMenu>
+        </Grid.ContextMenu>
     </Grid>
 </UserControl>

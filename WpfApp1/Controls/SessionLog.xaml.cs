@@ -47,14 +47,7 @@ namespace WpfApp1.Controls
 
         private void SessionLog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Windows.EditLogWindow editLogWindow = new Windows.EditLogWindow()
-            {
-                LogIndex = ((App)Application.Current).SessionLogs.IndexOf(this)
-            };
-            editLogWindow.sessionNumberUpDown.Value = SessionNumber;
-            editLogWindow.sessionTitleTextBox.Text = LogTitle;
-            editLogWindow.sessionDescriptionTextBox.Text = SessionDescription;
-            editLogWindow.Show();
+            OpenEditWindow();
         }
 
         private static PropertyChangedCallback OnLogNumberChanged()
@@ -96,6 +89,29 @@ namespace WpfApp1.Controls
                     log.ToolTip = newDesc;
                 }
             };
+        }
+
+        private void editMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenEditWindow();
+        }
+
+        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App)!.SessionLogs.Remove(this);
+            (App.Current as App)!.SessionLogsPage!.RefreshLogs();
+        }
+
+        private void OpenEditWindow()
+        {
+            Windows.EditLogWindow editLogWindow = new Windows.EditLogWindow()
+            {
+                LogIndex = ((App)Application.Current).SessionLogs.IndexOf(this)
+            };
+            editLogWindow.sessionNumberUpDown.Value = SessionNumber;
+            editLogWindow.sessionTitleTextBox.Text = LogTitle;
+            editLogWindow.sessionDescriptionTextBox.Text = SessionDescription;
+            editLogWindow.Show();
         }
     }
 }

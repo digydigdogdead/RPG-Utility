@@ -14,9 +14,9 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
     Keep record of your sessions, so you can always figure out which session it was that the players accidentally killed the NPC who had all the information they needed, and who was there to witness it, so you can give them a new arc where you give *them* that information and make it seem like it was what you planned to do all along. The session logs are compact, but you can double click any of them to see the full details, or edit them.
 
 ## To-Do:
-- **Save/Load**: Right now the last two pages are pretty pointless, because the program deletes everything once you close it. The next major feature will be to make it possible to save the state of the application and load it again. Once this is implemented I will add a release.
 - **Initiative Tracker**: A common tool GMs need is a page to keep track of who's turn it is. Most of the games *I* play don't require this, so I didn't think to include one, but it would be useful to almost everyone else.
 - **Modularise Tabs**: If more tabs are added, a tab where you can decide *which* of the available pages you want visible could be useful. Most people might decide they have no need for the clocks page.
+- **Improve Clocks**: In the most recent release, Clocks do not save with their progression, so upon loading they will have the correct name and number of segments, but segments won't be filled in. This needs to be fixed.
 
 ### Acknowledgements:
-This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), in particular the Integer Up Down control.
+This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), in particular the Integer Up Down control, and NewtonSoft.Json for saving and loading data.

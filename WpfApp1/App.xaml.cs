@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using RPGUtility;
+using System.Configuration;
 using System.Data;
 using System.Windows;
 using WpfApp1.Controls;
@@ -24,10 +25,72 @@ namespace WpfApp1
         public string? LoadedFilePath { get; set; } = null;
 
 
-
-
-
-
+        public void LoadData(SaveData sd)
+        {
+            try
+            {
+                // Roll History
+                RollHistory.Clear();
+                foreach (var roll in sd.RollHistory)
+                {
+                    RollHistory.Push(roll);
+                }
+                ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
+                // Clocks
+                Clocks.Clear();
+                foreach (var clockDatum in sd.ClocksData)
+                {
+                    Clock clock = new Clock
+                    {
+                        Segments = clockDatum.Segments,
+                        ClockName = clockDatum.Name
+                    };
+                    Clocks.Add(clock);
+                }
+                ClocksPage?.UpdateClockStack();
+                // Stats
+                Stats.Clear();
+                foreach (var stat in sd.StatsData)
+                {
+                    StatTrack statTrack = new StatTrack
+                    {
+                        Stat = stat.Name,
+                        Value = stat.Value
+                    };
+                    Stats.Add(statTrack);
+                }
+                StatTrackerPage?.PopulateWrapPanel();
+                // Memos
+                Memos.Clear();
+                foreach (var memoDatum in sd.MemosData)
+                {
+                    Memo memo = new Memo
+                    {
+                        Title = memoDatum.Title,
+                        MemoContent = memoDatum.Content
+                    };
+                    Memos.Add(memo);
+                }
+                MemosPage?.RefreshMemos();
+                // Session Logs
+                SessionLogs.Clear();
+                foreach (var logDatum in sd.SessionLogsData)
+                {
+                    SessionLog sessionLog = new SessionLog
+                    {
+                        SessionNumber = logDatum.SessionNumber,
+                        LogTitle = logDatum.LogTitle,
+                        SessionDescription = logDatum.SessionDescription
+                    };
+                    SessionLogs.Add(sessionLog);
+                }
+                SessionLogsPage?.RefreshLogs();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
     }
 

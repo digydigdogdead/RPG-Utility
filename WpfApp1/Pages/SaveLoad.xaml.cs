@@ -42,17 +42,46 @@ namespace RPGUtility.Pages
             WriteJson(saveData);
         }
 
-        private void loadButton_Click(object sender, RoutedEventArgs e)
+        private async void loadButton_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog fileDialog = new OpenFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                DefaultExt = ".json",
+                Multiselect = false
+            };
 
+            Nullable<bool> result = fileDialog.ShowDialog();
+
+            if (result != null && result.Value)
+            {
+                try
+                {
+                    SaveData loadedData = new SaveData();
+                    await Task.Run(() =>
+                        { 
+                            string json = System.IO.File.ReadAllText(fileDialog.FileName);
+                            loadedData = Newtonsoft.Json.JsonConvert.DeserializeObject<SaveData>(json)!; 
+                        });
+                    (WpfApp1.App.Current as App)!.LoadedFilePath = fileDialog.FileName;
+                    (App.Current as App)!.LoadData(loadedData);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            
         }
 
         private SaveData BuildSaveData()
         {
-            SaveData saveData = new SaveData
+            SaveData saveData = new SaveData();
+
+            foreach (var roll in (WpfApp1.App.Current as App)!.RollHistory)
             {
-                RollHistory = (WpfApp1.App.Current as App)!.RollHistory
-            };
+                saveData.RollHistory.Push(roll);
+            }
 
             foreach (var clock in (WpfApp1.App.Current as App)!.Clocks)
             {

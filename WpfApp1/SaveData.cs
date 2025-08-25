@@ -7,7 +7,7 @@ using WpfApp1.Controls;
 
 namespace RPGUtility
 {
-    class SaveData
+    public class SaveData
     {
         public Stack<string> RollHistory { get; set; } = new Stack<string>();
         public List<(int Segments, string Name)> ClocksData { get; set; } = new List<(int Segments, string Name)>();

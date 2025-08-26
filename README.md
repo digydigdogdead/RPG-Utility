@@ -20,4 +20,4 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 - **Name Generator**: Many GMs have a list of random NPC names ready to go. This program could benefit from a tab that generates people names, monster names, place names, etc.
 
 ### Acknowledgements:
-This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), in particular the Integer Up Down control, and NewtonSoft.Json for saving and loading data.
+This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.

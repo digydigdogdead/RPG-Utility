@@ -80,7 +80,7 @@ namespace RPGUtility.Pages
 
             foreach (var clock in (App.Current as App)!.Clocks)
             {
-                saveData.ClocksData.Add((clock.Segments, clock.ClockName));
+                saveData.ClocksData.Add((clock.Segments, clock.ClockName, clock.FilledSegments));
             }
 
             foreach (var stat in (WpfApp1.App.Current as App)!.Stats)

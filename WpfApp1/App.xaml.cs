@@ -36,7 +36,8 @@ namespace WpfApp1
                     Clock clock = new Clock
                     {
                         Segments = clockDatum.Segments,
-                        ClockName = clockDatum.Name
+                        ClockName = clockDatum.Name,
+                        FilledSegments = clockDatum.Filled
                     };
                     Clocks.Add(clock);
                 }

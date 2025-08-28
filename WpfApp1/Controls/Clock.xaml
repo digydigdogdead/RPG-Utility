@@ -14,7 +14,7 @@
                         x:Name="clockStack" 
                         CanHorizontallyScroll="True" 
                         MouseLeftButtonDown="clockStack_MouseLeftButtonDown" 
-                        MouseRightButtonDown="clockStack_MouseRightButtonDown">
+                        PreviewMouseRightButtonDown="clockStack_PreviewMouseRightButtonDown">
             </StackPanel>
         </StackPanel>
     </Grid>

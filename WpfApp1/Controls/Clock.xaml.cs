@@ -102,6 +102,12 @@ namespace WpfApp1.Controls
                 Background = new SolidColorBrush(Colors.PaleVioletRed),
                 Margin = new Thickness(5)
             };
+
+            deleteButton.PreviewMouseRightButtonDown += (s, e) =>
+            {
+                e.Handled = false; // Allow the event to bubble up
+            };
+
             deleteButton.Click += (s, e) =>
             {
                 (App.Current as App)!.Clocks.Remove(this);
@@ -132,6 +138,7 @@ namespace WpfApp1.Controls
 
         private void clockStack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
             for (int i = 0; i < clockStack.Children.Count; i += 2)
             {
                 if (clockStack.Children[i] is Rectangle rect)
@@ -146,16 +153,20 @@ namespace WpfApp1.Controls
            
         }
 
-        private void clockStack_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void clockStack_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            for (int i = clockStack.Children.Count - 1; i >= 0; i -= 2)
+            if (e.OriginalSource is Rectangle || e.OriginalSource is Line)
             {
-                if (clockStack.Children[i] is Rectangle rect)
+                for (int i = clockStack.Children.Count - 2; i >= 0; i -= 2)
                 {
-                    if (rect.Fill is SolidColorBrush brush && brush.Color == FilledColor)
+                    if (clockStack.Children[i] is Rectangle rect)
                     {
-                        rect.Fill = new SolidColorBrush(DefaultColor);
-                        break;
+                        if (rect.Fill is SolidColorBrush brush && brush.Color == FilledColor)
+                        {
+                            rect.Fill = new SolidColorBrush(DefaultColor);
+                            e.Handled = true; // Prevents the left-click event from firing
+                            break;
+                        }
                     }
                 }
             }

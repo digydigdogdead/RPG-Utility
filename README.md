@@ -21,3 +21,6 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.
+
+### Known Issues:
+- In the current release, the Clock control does not correctly decrement filled segments when double clicked. This issue has been fixed and will be eliminated in the next release.

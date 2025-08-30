@@ -158,6 +158,39 @@ namespace RPGUtility.Pages
             "Proximia VI", "Kepleria Citadel", "Trappistia Nova", "Wolfera Station", "Epsilonia Outpost", "Tautia Base",
             "Gliesia Prime", "HD 40307ia V", "55 Cancria VI", "GJ 1214ia Citadel", "LHS 1140ia Nova", "K2-18ia Station", "Rossia Outpost", "Kapteynia Base"
         };
+        List<string> modernPlaceNames = new List<string>()
+        {
+            "Springfield", "Riverside", "Greenville", "Fairview", "Madison", "Georgetown", "Arlington", "Ashland", "Clinton", "Franklin",
+            "Salem", "Bristol", "Milton", "Oakland", "Winchester", "Lexington", "Manchester", "Cleveland", "Dayton", "Hudson",
+            "Kingston", "Lancaster", "Marion", "Newport", "Oxford", "Portland", "Richmond", "Shelby", "Trenton", "Windsor",
+            "Albany", "Burlington", "Cambridge", "Dover", "Edison", "Fayetteville", "Hamilton", "Jefferson", "Lincoln",
+            "Montgomery",  "Newton","Plymouth","Quincy","Raleigh","Somerset","Troy","Union","Vernon","Watertown",
+            "York","Zanesville","Anderson","Bloomington","Columbus","Danville","Eugene","Florence","Glendale","Harrison",
+            "Irvine","Jacksonville","Kalamazoo","Lafayette","Madisonville","Naperville","Orlando","Pensacola","Quakertown",
+            "Rochester","Sarasota","Tallahassee","Urbana","Valdosta","Waco","Xenia","Ypsilanti", "Zephyrhills",
+            "Cedarville", "Mapleton", "Oakridge", "Pinehurst", "Riverdale", "Silverlake", "Springdale", "Woodland", "Brookfield", "Clearwater",
+            "Fairfield", "Hillside", "Lakeside", "Meadowbrook", "Pleasantville", "Riverview", "Sunnyvale", "Westfield", "Brighton", "Crestwood",
+            "Edgewood", "Greenfield", "Highland", "Kingston", "Lakewood", "Millbrook", "Northfield", "Parkview", "Quarryville", "Rosewood",
+            "Stonebridge", "Tranquil", "Valleyview", "Westwood", "Ashford", "Bayside", "Claremont", "Dunwood", "Elmwood", "Foxborough",
+            "Glenwood", "Hawthorne", "Ivywood", "Juniper", "Kensington", "Lindenwood", "Maplewood", "Norwood", "Orchard", "Pinewood",
+            "Quinlan", "Redwood", "Silverton", "Tanglewood", "Upton", "Violet", "Willowbrook", "Yorktown", "Zion",
+            "Carthage", "Dublin", "Eden", "Fulton", "Granite", "Hampton", "Independence", "Junction", "Kingman", "Liberty"
+        };
+        List<string> monsterNames = new List<string>()
+        {
+            "Elzar", "Gorath", "Thalor", "Zyrix", "Vornak", "Kragoth", "Mordak", "Xalor", "Draxxis", "Zarnok", "Grimlok",
+            "Fangor", "Ravok", "Tyrak", "Vexor", "Zoltar", "Karnath", "Dreadmaw", "Skulldrak", "Bloodfang",
+            "Ironclaw", "Shadowfang", "Stormbringer", "Nightstalker", "Bonecrusher", "Firefang", "Venomtail", "Darkscale", "Frostbite", "Thunderclaw",
+            "Gloomfang", "Razorwing", "Doomclaw", "Blightfang", "Graveclaw", "Hellfire", "Icefang", "Stormfang", "Venomclaw",
+            "Zerath", "Kragor", "Mordek", "Xalax", "Draxor", "Zarnak", "Grimtor", "Fangor", "Ravok", "Tyrak", "Vexor", "Zoltar", "Karnath",
+            "Dreadmaw", "Skulldrak", "Bloodfang", "Jinglebax", "Duocerinx", "Fluffernox", "Glimmerpaw", "Hootenclaw", "Nuzzlefang", "Puffertail", "Snickerbax",
+            "Wobbleclaw", "Zazzlepaw", "Bumblefang", "Cuddleclaw", "Dazzlepaw", "Fuzzlefang", "Giggleclaw", "Hugglepaw", "Jollybax", "Kuddleclaw",
+            "Duaserrahsix", "Flufferwump", "Glimmerpuff", "Hootenwhisk", "Nuzzletuft", "Puffernose", "Snickerwhisk", "Wobblepuff", "Zazzlewhisk",
+            "Bumblepuff", "Cuddlewhisk", "Dazzlewhisk", "Fuzzlepuff", "Gigglewhisk", "Hugglepuff", "Jollywhisk", "Kuddlewhisk", "Snugglepuff",
+            "Deathbringer", "Soulreaper", "Doomsayer", "Gravewalker", "Nightbane", "Bloodreaver", "Shadowmourn", "Frostmourne", "Hellraiser", "Darkbane",
+            "Bonegnasher", "Firestorm", "Venomspike", "Stormrage", "Thunderfury", "Icehowl", "Doomhammer", "Skullcrusher", "Ironbane", "Blightbringer",
+            "Gloomreaper", "Razorclaw", "Dreadfang", "Gravefang", "Hellfang", "Icefang", "Stormfang", "Venomfang", "Zerath"
+        };
         public NameGenerator()
         {
             InitializeComponent();
@@ -227,7 +260,17 @@ namespace RPGUtility.Pages
                 Random rand = new Random();
                 nameTextBox.Text = scifiPlaceNames[rand.Next(scifiPlaceNames.Count)];
             }
-               
+            else if (typeComboBox.SelectedItem == modernPlaceCbi)
+            {
+                Random rand = new Random();
+                nameTextBox.Text = modernPlaceNames[rand.Next(modernPlaceNames.Count)];
+            }
+            else if (typeComboBox.SelectedItem == monsterCbi)
+            {
+                Random rand = new Random();
+                nameTextBox.Text = monsterNames[rand.Next(monsterNames.Count)];
+            }
+
         }
 
 

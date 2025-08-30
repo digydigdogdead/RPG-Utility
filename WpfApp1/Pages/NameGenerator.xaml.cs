@@ -143,6 +143,21 @@ namespace RPGUtility.Pages
             "The Limestone Lagoon", "The Sandstone Savannah", "The Chalkstone Canyon", "The Basalt Bay", "The Granite Grove", "The Marble Mountain",
             "Atlantis", "El Dorado", "Shangri-La", "Avalon", "Camelot", "Zion", "Utopia", "Elysium", "Nirvana", "Valhalla"
         };
+        List<string> scifiPlaceNames = new List<string>()
+        {
+            "Nova Prime", "Zeta-5", "Orion's Belt", "Alpha Centauri", "Vega Station", "Nebula-9", "Galactic Hub", "Stellar Outpost", "Cosmos Colony", "Lunar Base",
+            "Mars Colony", "Titan Station", "Europa Outpost", "Andromeda Station", "Pegasus Base", "Sirius-3", "Proxima Centauri", "Kepler-22b", "Trappist-1e", "Wolf 1061c",
+            "Epsilon Eridani", "Tau Ceti", "Gliese 581g", "HD 40307g", "55 Cancri e", "GJ 1214b", "LHS 1140b", "K2-18b", "Ross 128b", "Kapteyn b",
+            "PSR B1257+12 A", "PSR B1257+12 B", "PSR B1257+12 C", "OGLE-2005-BLG-390Lb", "MOA-2007-BLG-192Lb",
+            "Xenon Prime", "Zypherion", "Quantarus", "Nebulon V", "Starlight Haven", "Celestia", "Astralis", "Luminara", "Galaxia", "Cosmica",
+            "Nebuloria", "Stellaris", "Orbitus", "Lunaris", "Martianis", "Titanis", "Europis", "Andromedis", "Pegasusia", "Siriusia",
+            "Proximia", "Kepleria", "Trappistia", "Wolfera", "Epsilonia", "Tautia", "Gliesia", "HD 40307ia", "55 Cancria", "GJ 1214ia", "LHS 1140ia",
+            "K2-18ia", "Rossia", "Kapteynia", "PSR B1257+12 Aia", "PSR B1257+12 Bia", "PSR B1257+12 Cia", "OGLE-2005-BLG-390Lia", "MOA-2007-BLG-192Lia",
+            "Nebulon Prime", "Zypheria", "Quantarus V", "Nebulon VI", "Starlight Citadel", "Celestia Nova", "Astralis Prime", "Luminara Station", "Galaxia Outpost", "Cosmica Base",
+            "Nebuloria Prime", "Stellaris V", "Orbitus VI", "Lunaris Citadel", "Martianis Nova", "Titanis Station", "Europis Outpost", "Andromedis Base", "Pegasusia Prime", "Siriusia V",
+            "Proximia VI", "Kepleria Citadel", "Trappistia Nova", "Wolfera Station", "Epsilonia Outpost", "Tautia Base",
+            "Gliesia Prime", "HD 40307ia V", "55 Cancria VI", "GJ 1214ia Citadel", "LHS 1140ia Nova", "K2-18ia Station", "Rossia Outpost", "Kapteynia Base"
+        };
         public NameGenerator()
         {
             InitializeComponent();
@@ -207,6 +222,12 @@ namespace RPGUtility.Pages
                 Random rand = new Random();
                 nameTextBox.Text = fantasyPlaceNames[rand.Next(fantasyPlaceNames.Count)];
             }
+            else if (typeComboBox.SelectedItem == scifiPlaceCbi)
+            {
+                Random rand = new Random();
+                nameTextBox.Text = scifiPlaceNames[rand.Next(scifiPlaceNames.Count)];
+            }
+               
         }
 
 

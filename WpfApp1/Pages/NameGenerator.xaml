@@ -58,9 +58,10 @@
                     Click="generateNameButton_Click"/>
             <TextBox x:Name="nameTextBox"
                      HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
                      Width="400"
                      Margin="0,30,0,10"
-                     FontSize="16"
+                     FontSize="20"
                      TextAlignment="Center"
                      Height="50"
                      />

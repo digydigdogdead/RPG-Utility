@@ -41,7 +41,7 @@
                       FontSize="20"
                       Margin="0,0,0,10"
                       HorizontalContentAlignment="Center">
-                <ComboBoxItem Content="Neutral" x:Name="neturalCbi" IsSelected="True" />
+                <ComboBoxItem Content="Neutral" x:Name="neutralCbi" IsSelected="True" />
                 <ComboBoxItem Content="Male" x:Name="maleCbi"/>
                 <ComboBoxItem Content="Female" x:Name="femaleCbi" />
                 <ComboBoxItem Content="Any" x:Name="anyCbi" />

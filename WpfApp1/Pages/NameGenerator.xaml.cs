@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Pages;
 
 namespace RPGUtility.Pages
 {
@@ -276,7 +277,24 @@ namespace RPGUtility.Pages
 
         private void addMemoButton_Click(object sender, RoutedEventArgs e)
         {
+            NewMemoWindow newMemoWindow = new NewMemoWindow();
+            if (typeComboBox.SelectedItem == fantasyPersonCbi
+                || typeComboBox.SelectedItem == modernPersonCbi)
+            {
+                newMemoWindow.memoTitleTextBox.Text = $"Character: {nameTextBox.Text}";
+            }
+            else if (typeComboBox.SelectedItem == fantasyPlaceCbi
+                || typeComboBox.SelectedItem == modernPlaceCbi
+                || typeComboBox.SelectedItem == scifiPlaceCbi)
+            {
+                newMemoWindow.memoTitleTextBox.Text = $"Place: {nameTextBox.Text}";
+            }
+            else if (typeComboBox.SelectedItem == monsterCbi)
+            {
+                newMemoWindow.memoTitleTextBox.Text = $"Monster: {nameTextBox.Text}";
+            }
 
+            newMemoWindow.Show();
         }
 
         private void typeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

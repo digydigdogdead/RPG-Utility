@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 using WpfApp1.Controls;
 using WpfApp1.Pages;
 
@@ -23,7 +24,6 @@ namespace WpfApp1
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
         public string? LoadedFilePath { get; set; } = null;
-
 
         public void LoadData(SaveData sd)
         {

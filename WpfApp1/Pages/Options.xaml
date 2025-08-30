@@ -1,0 +1,93 @@
+﻿<Page x:Class="RPGUtility.Pages.SaveLoad"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RPGUtility.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="800"
+      Title="SaveLoad"
+      Background="GhostWhite">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Orientation="Vertical">
+            <Button x:Name="saveAsButton"
+                    Click="saveAsButton_Click"
+                    Content="Save As"
+                    FontSize="38"
+                    Margin="0, 0, 0, 10"
+                    Width="160"/>
+            <Button x:Name="saveButton"
+                    Click="saveButton_Click"
+                    Content="Save"
+                    IsEnabled="False"
+                    FontSize="38"
+                    Width="160"
+                    Margin="0, 0, 0, 10"/>
+            <Button x:Name="loadButton"
+                    Click="loadButton_Click"
+                    Content="Load"
+                    FontSize="38"
+                    Width="160"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="Tabs:" FontSize="38" Margin="0, 0, 0, 10"/>
+            <WrapPanel>
+                <CheckBox Content="Dice Roller" 
+                          x:Name="diceRollerOption" 
+                          FontSize="20" 
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          Margin="5"
+                          VerticalContentAlignment="Center"
+                          IsChecked="True"/>
+                <CheckBox Content="Clocks" 
+                          x:Name="clocksOption" 
+                          FontSize="20" 
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          Margin="5"
+                          VerticalContentAlignment="Center"
+                          IsChecked="True"/>
+                <CheckBox Content="Stat Tracker"
+                          x:Name="statTrackerOption"
+                          FontSize="20"
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          Margin="5"
+                          VerticalContentAlignment="Center"
+                          IsChecked="True"/>
+                <CheckBox Content="Memos"
+                          x:Name="memosOption"
+                          FontSize="20"
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          Margin="5"
+                          VerticalContentAlignment="Center"
+                          IsChecked="True"/>
+                <CheckBox Content="Session Logs"
+                          FontSize="20"
+                          x:Name="sessionLogsOption"
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          VerticalContentAlignment="Center"
+                          Margin="5"
+                          IsChecked="True"/>
+                <CheckBox Content="Name Generator"
+                          FontSize="20"
+                          x:Name="nameGeneratorOption"
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          VerticalContentAlignment="Center"
+                          Margin="5"
+                          IsChecked="True"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Page>

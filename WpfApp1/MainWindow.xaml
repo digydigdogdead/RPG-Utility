@@ -9,8 +9,8 @@
         mc:Ignorable="d"
         Title="RPG Utility" Height="500" Width="800">
     <Grid>
-        <TabControl TabStripPlacement="Top">
-            <TabItem Name="diceRollerTab">
+        <TabControl TabStripPlacement="Top" x:Name="userTabs">
+            <TabItem x:Name="diceRollerTab">
                 <TabItem.Header>Dice Roller</TabItem.Header>
                 <TabItem.Content>
                     <Grid>
@@ -51,7 +51,7 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Name="clocksTab">
+            <TabItem x:Name="clocksTab">
                 <TabItem.Header>Clocks</TabItem.Header>
                 <TabItem.Content>
                     <Frame Source="Pages/Clocks.xaml" 
@@ -83,8 +83,8 @@
                        NavigationUIVisibility="Hidden" 
                        x:Name="nameGeneratorFrame"/>
             </TabItem>
-            <TabItem Header="Save/Load" x:Name="saveLoadTab">
-                <Frame Source="Pages/SaveLoad.xaml" 
+            <TabItem Header="Options" x:Name="saveLoadTab">
+                <Frame Source="Pages/Options.xaml" 
                        NavigationUIVisibility="Hidden" 
                        x:Name="saveLoadFrame"/>
             </TabItem>

@@ -83,7 +83,7 @@ namespace RPGUtility.Pages
             "Christian", "Terry", "Sean", "Arthur", "Austin", "Noah", "Jesse", "Joe", "Bryan", "Billy",
             "Jordan", "Albert", "Dylan", "Bruce", "Willie", "Gabriel", "Alan", "Juan", "Logan", "Wayne",
             "Ralph", "Roy", "Eugene", "Randy", "Vincent", "Russell", "Louis", "Philip", "Bobby", "Johnny", "Bradley",
-            "Tim"
+            "Tim", "Chandler", "Daveed"
         };
         List<string> femaleFirstModernNames = new List<string>()
         {
@@ -123,6 +123,25 @@ namespace RPGUtility.Pages
             "Powell","Jenkins","Perry","Russell","Sullivan","Bell","Coleman","Butler","Henderson","Barnes","Gonzales", "Laurent",
             "Herforth", "Kreiger", "Lemieux", "Marchand", "Moreau", "Ouellet", "Pelletier", "Renaud", "Tremblay",
             "Aldridge"
+        };
+        List<string> fantasyPlaceNames = new List<string>()
+        {
+            "Eldoria", "Mysthaven", "Dragonspire", "Shadowfen", "Silverwood", "Stormhold", "Frostvale", "Ironpeak", "Moonshade", "Sunfire",
+            "Duskmoor", "Brightwater", "Thornfield", "Ravencrest", "Windrider", "Emberfall", "Crystalbrook", "Starfall", "Oakenshield", "Wolfpine",
+            "Ashenvale", "Blackrock", "Goldshire", "Highgarden", "Kingslanding", "Winterfell", "Riverrun", "Storm's End", "Dragonstone",
+            "Valyria", "Braavos", "Pentos", "Qarth", "Meereen", "Yunkai", "Astapor", "Lorath", "Volantis", "Tarth", "Dorne",
+            "Skyrim", "Whiterun", "Riften", "Solitude", "Windhelm", "Markarth", "Falkreath", "Dawnstar", "Morthal", "Winterhold",
+            "Helgen", "Riverwood", "Ivarstead", "Kynesgrove", "Shor's Stone", "Falkreath Hold", "The Pale", "The Reach", "The Rift",
+            "The Stormlands", "The Westerlands", "The Vale", "The Crownlands", "The North", "The Riverlands", "The Iron Islands",
+            "The Dreadlands", "The Shadowlands", "The Sunken Lands", "The Crystal Isles", "The Emerald Forest", "The Sapphire Lake",
+            "The Ruby Mountains", "The Obsidian Desert", "The Amethyst Caves", "The Topaz Plains", "The Diamond Cliffs", "The Onyx Hills",
+            "The Pearl Coast", "The Jade Jungle", "The Turquoise Tundra", "The Garnet Glade", "The Citrine Canyon", "The Aquamarine Archipelago",
+            "The Opal Oasis", "The Lapis Lagoon", "The Moonstone Marsh", "The Sunstone Savannah", "The Starstone Steppe", "The Bloodstone Bay",
+            "The Thunderstone Thicket", "The Firestone Fjord", "The Earthstone Expanse", "The Windstone Wasteland", "The Icestone Isle",
+            "The Lightstone Lair", "The Darkstone Domain", "The Spiritstone Sanctuary", "The Dreamstone Dominion", "The Shadowstone Stronghold",
+            "The Froststone Fortress", "The Stormstone Spire", "The Flamestone Field", "The Rockstone Ridge", "The Sandstone Shore", "The Claystone Cliff", "The Mudstone Marsh",
+            "The Limestone Lagoon", "The Sandstone Savannah", "The Chalkstone Canyon", "The Basalt Bay", "The Granite Grove", "The Marble Mountain",
+            "Atlantis", "El Dorado", "Shangri-La", "Avalon", "Camelot", "Zion", "Utopia", "Elysium", "Nirvana", "Valhalla"
         };
         public NameGenerator()
         {
@@ -183,7 +202,13 @@ namespace RPGUtility.Pages
                 }
                 nameTextBox.Text = $"{firstName} {lastName}";
             }
+            else if (typeComboBox.SelectedItem == fantasyPlaceCbi)
+            {
+                Random rand = new Random();
+                nameTextBox.Text = fantasyPlaceNames[rand.Next(fantasyPlaceNames.Count)];
+            }
         }
+
 
         private void addMemoButton_Click(object sender, RoutedEventArgs e)
         {
@@ -198,6 +223,7 @@ namespace RPGUtility.Pages
                 || typeComboBox.SelectedItem == scifiPlaceCbi
                 || typeComboBox.SelectedItem == monsterCbi)
             {
+                genderComboBox.SelectedItem = neutralCbi;
                 genderComboBox.IsEnabled = false;
             }
             else genderComboBox.IsEnabled = true;

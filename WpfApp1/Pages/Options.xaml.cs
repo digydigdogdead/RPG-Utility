@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using RPGUtility;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
-using Newtonsoft.Json;
-using RPGUtility;
 using WpfApp1;
+using WpfApp1.Pages;
 
 namespace RPGUtility.Pages
 {
@@ -144,6 +145,62 @@ namespace RPGUtility.Pages
             else
             {
                 MessageBox.Show("Save operation was cancelled or no file path specified.", "Cancelled", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void OptionChecked(object sender, RoutedEventArgs e)
+        {
+            if (sender == diceRollerOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility = Visibility.Visible;
+            }
+            else if (sender == clocksOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility = Visibility.Visible;
+            }
+            else if (sender == statTrackerOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility = Visibility.Visible;
+            }
+            else if (sender == memosOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility = Visibility.Visible;
+            }
+            else if (sender == sessionLogsOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility = Visibility.Visible;
+            }
+            else if (sender == nameGeneratorOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OptionUnchecked(object sender, RoutedEventArgs e)
+        {
+            if (sender == diceRollerOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == clocksOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == statTrackerOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == memosOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == sessionLogsOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == nameGeneratorOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Collapsed;
             }
         }
     }

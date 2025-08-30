@@ -37,7 +37,8 @@
                        Margin="10" Width="110">Session Description:</TextBlock>
             <TextBox x:Name="sessionDescriptionTextBox" 
                      VerticalAlignment="Stretch" Width="560" Margin="0, 10, 0, 0"
-                     FontSize="12" TextWrapping="Wrap"/>
+                     FontSize="12" TextWrapping="Wrap"
+                     KeyDown="sessionDescriptionTextBox_KeyDown"/>
         </StackPanel>
         <Button x:Name="saveLogButton" Content="Save"
                 Grid.Row="2" Grid.Column="1"

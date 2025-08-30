@@ -40,9 +40,10 @@
            Margin="5"
            FontSize="20"/>
         <TextBox Grid.Row="1" x:Name="memoContentTextBox"
-         Grid.Column="1"
-         Margin="5"
-         TextWrapping="Wrap"/>
+                 Grid.Column="1"
+                 Margin="5"
+                 TextWrapping="Wrap"
+                 KeyDown="memoContentTextBox_KeyDown"/>
         <Button Grid.Row="2"
         Grid.Column="1"
         x:Name="overwriteMemoButton"

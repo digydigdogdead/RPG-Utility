@@ -34,5 +34,13 @@ namespace WpfApp1.Pages
             ((App)Application.Current).MemosPage?.RefreshMemos();
             this.Close();
         }
+
+        private void memoContentTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                saveMemoButton_Click(sender, e);
+            }
+        }
     }
 }

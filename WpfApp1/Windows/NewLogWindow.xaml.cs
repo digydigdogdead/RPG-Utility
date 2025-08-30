@@ -34,8 +34,16 @@ namespace WpfApp1.Windows
                 SessionNumber = (int)sessionNumberUpDown.Value!
             };
             ((App)Application.Current).SessionLogs.Add(newLog);
-            ((App)Application.Current).SessionLogsPage!.RefreshLogs();
+            ((App)Application.Current).SessionLogsPage?.RefreshLogs();
             this.Close();
+        }
+
+        private void sessionDescriptionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                saveLogButton_Click(sender, e);
+            }
         }
     }
 }

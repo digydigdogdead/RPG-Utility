@@ -40,5 +40,13 @@ namespace WpfApp1.Windows
             (App.Current as App)!.SessionLogsPage!.RefreshLogs();
             this.Close();
         }
+
+        private void sessionDescriptionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                overwriteLogButton_Click(sender, e);
+            }
+        }
     }
 }

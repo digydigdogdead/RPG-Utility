@@ -77,6 +77,12 @@
                        NavigationUIVisibility="Hidden" 
                        x:Name="sessionLogsFrame"/>
             </TabItem>
+            <TabItem Name="nameGeneratorTab">
+                <TabItem.Header>Name Generator</TabItem.Header>
+                <Frame Source="Pages/NameGenerator.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="nameGeneratorFrame"/>
+            </TabItem>
             <TabItem Header="Save/Load" x:Name="saveLoadTab">
                 <Frame Source="Pages/SaveLoad.xaml" 
                        NavigationUIVisibility="Hidden" 

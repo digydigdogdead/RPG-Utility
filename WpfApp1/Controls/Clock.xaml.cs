@@ -4,7 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace WpfApp1.Controls
+namespace RPGUtility.Controls
 {
     /// <summary>
     /// Interaction logic for Clock.xaml

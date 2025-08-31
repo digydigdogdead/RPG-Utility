@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
 
-namespace WpfApp1.Pages
+namespace RPGUtility.Pages
 {
     /// <summary>
     /// Interaction logic for DiceRollerTab.xaml

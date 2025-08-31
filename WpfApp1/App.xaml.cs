@@ -3,11 +3,10 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Controls;
-using WpfApp1.Pages;
+using RPGUtility.Controls;
 using RPGUtility.Pages;
 
-namespace WpfApp1
+namespace RPGUtility
 {
     /// <summary>
     /// Interaction logic for App.xaml

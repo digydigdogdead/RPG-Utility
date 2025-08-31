@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1.Controls;
+using RPGUtility.Controls;
 
-namespace WpfApp1.Windows
+namespace RPGUtility.Windows
 {
     /// <summary>
     /// Interaction logic for NewLogWindow.xaml

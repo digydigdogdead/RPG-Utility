@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApp1.Windows
+namespace RPGUtility.Windows
 {
     /// <summary>
     /// Interaction logic for EditLogWindow.xaml

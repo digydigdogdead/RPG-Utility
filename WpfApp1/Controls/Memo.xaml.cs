@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfApp1.Pages;
+using RPGUtility.Pages;
 
-namespace WpfApp1.Controls
+namespace RPGUtility.Controls
 {
     /// <summary>
     /// Interaction logic for Memo.xaml
@@ -24,8 +12,8 @@ namespace WpfApp1.Controls
         public Memo()
         {
             InitializeComponent();
-            BuildMemo();
-            
+            titleTextBlock.Text = Title;
+            contentTextBlock.Text = MemoContent;
         }
 
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
@@ -74,26 +62,14 @@ namespace WpfApp1.Controls
             };
         }
 
-        private void BuildMemo()
-        {
-            titleTextBlock.Text = Title;
-            contentTextBlock.Text = MemoContent;
-            
-        }
-
-        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            OpenEditWindow();
-        }
-
-        private void editMenuItem_Click(object sender, RoutedEventArgs e)
+        private void OpenEditWindow(object sender, EventArgs e)
         {
             OpenEditWindow();
         }
 
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.Memos.Remove(this);
+            (App.Current as App)!.Memos?.Remove(this);
             (App.Current as App)!.MemosPage?.RefreshMemos();
         }
 

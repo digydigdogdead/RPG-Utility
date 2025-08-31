@@ -16,8 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1;
-using WpfApp1.Pages;
+using RPGUtility;
+using RPGUtility.Pages;
 
 namespace RPGUtility.Pages
 {
@@ -65,7 +65,7 @@ namespace RPGUtility.Pages
                             string json = System.IO.File.ReadAllText(fileDialog.FileName);
                             loadedData = Newtonsoft.Json.JsonConvert.DeserializeObject<SaveData>(json)!; 
                         });
-                    (WpfApp1.App.Current as App)!.LoadedFilePath = fileDialog.FileName;
+                    (RPGUtility.App.Current as App)!.LoadedFilePath = fileDialog.FileName;
                     (App.Current as App)!.LoadData(loadedData);
                 }
                 catch (Exception ex)
@@ -85,17 +85,17 @@ namespace RPGUtility.Pages
                 saveData.ClocksData.Add((clock.Segments, clock.ClockName, clock.FilledSegments));
             }
 
-            foreach (var stat in (WpfApp1.App.Current as App)!.Stats)
+            foreach (var stat in (RPGUtility.App.Current as App)!.Stats)
             {
                 saveData.StatsData.Add((stat.Stat, stat.Value));
             }
 
-            foreach (var memo in (WpfApp1.App.Current as App)!.Memos)
+            foreach (var memo in (RPGUtility.App.Current as App)!.Memos)
             {
                 saveData.MemosData.Add((memo.Title, memo.MemoContent));
             }
 
-            foreach (var log in (WpfApp1.App.Current as App)!.SessionLogs)
+            foreach (var log in (RPGUtility.App.Current as App)!.SessionLogs)
             {
                 saveData.SessionLogsData.Add((log.SessionNumber, log.LogTitle, log.SessionDescription));
             }
@@ -166,7 +166,7 @@ namespace RPGUtility.Pages
 
             if (result != null && result.Value)
             {
-                (WpfApp1.App.Current as App)!.LoadedFilePath = saveFileDialog.FileName;
+                (RPGUtility.App.Current as App)!.LoadedFilePath = saveFileDialog.FileName;
             }
 
             WriteJson(sd);
@@ -174,7 +174,7 @@ namespace RPGUtility.Pages
 
         private void WriteJson(SaveData sd)
         {
-            if (!string.IsNullOrEmpty((WpfApp1.App.Current as App)!.LoadedFilePath))
+            if (!string.IsNullOrEmpty((RPGUtility.App.Current as App)!.LoadedFilePath))
             {
                 try
                 {
@@ -183,7 +183,7 @@ namespace RPGUtility.Pages
                         {
 
                         });
-                    System.IO.File.WriteAllText((WpfApp1.App.Current as App)!.LoadedFilePath!, json);
+                    System.IO.File.WriteAllText((RPGUtility.App.Current as App)!.LoadedFilePath!, json);
                     MessageBox.Show("Data saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     saveButton.IsEnabled = true;
                 }

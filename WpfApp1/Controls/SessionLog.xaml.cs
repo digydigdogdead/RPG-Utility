@@ -20,7 +20,7 @@ namespace RPGUtility.Controls
     /// </summary>
     public partial class SessionLog : UserControl
     {
-        public static DependencyProperty SessionNumberPropery = DependencyProperty.Register("SessionNumber", typeof(int), typeof(SessionLog), new PropertyMetadata(0, OnLogNumberChanged()));
+        public static DependencyProperty SessionNumberPropery = DependencyProperty.Register("SessionNumber", typeof(int), typeof(SessionLog), new PropertyMetadata(1, OnLogNumberChanged()));
         public int SessionNumber
         {
             get { return (int)GetValue(SessionNumberPropery); }
@@ -43,11 +43,6 @@ namespace RPGUtility.Controls
             InitializeComponent();
             numTextBlock.Text = SessionNumber.ToString();
             titleTextBlock.Text = LogTitle;
-        }
-
-        private void SessionLog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            OpenEditWindow();
         }
 
         private static PropertyChangedCallback OnLogNumberChanged()
@@ -91,18 +86,13 @@ namespace RPGUtility.Controls
             };
         }
 
-        private void editMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            OpenEditWindow();
-        }
-
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.SessionLogs.Remove(this);
-            (App.Current as App)!.SessionLogsPage!.RefreshLogs();
+            (App.Current as App)!.SessionLogs?.Remove(this);
+            (App.Current as App)!.SessionLogsPage?.RefreshLogs();
         }
 
-        private void OpenEditWindow()
+        private void OpenEditWindow(object sender, EventArgs e)
         {
             Windows.EditLogWindow editLogWindow = new Windows.EditLogWindow()
             {

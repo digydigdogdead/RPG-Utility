@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:RPGUtility.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="120" d:DesignWidth="120"
-             MouseDoubleClick="SessionLog_MouseDoubleClick"
+             MouseDoubleClick="OpenEditWindow"
              Margin="5">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Background="White" Height="120" Width="120">
@@ -29,7 +29,7 @@
         </Border>
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Edit" x:Name="editMenuItem" Click="editMenuItem_Click" />
+                <MenuItem Header="Edit" x:Name="editMenuItem" Click="OpenEditWindow" />
                 <MenuItem Header="Delete" x:Name="deleteMenuItem" Click="deleteMenuItem_Click" />
             </ContextMenu>
         </Grid.ContextMenu>

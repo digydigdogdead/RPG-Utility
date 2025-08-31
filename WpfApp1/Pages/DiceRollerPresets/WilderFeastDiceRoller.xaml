@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RPGUtility.Pages"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="410" d:DesignWidth="641"
+      d:DesignHeight="410" d:DesignWidth="600"
       Title="WiderFeastDiceRoller"
       Background="FloralWhite">
 

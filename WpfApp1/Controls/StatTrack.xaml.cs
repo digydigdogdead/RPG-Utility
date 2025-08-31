@@ -23,7 +23,14 @@ namespace RPGUtility.Controls
         public StatTrack()
         {
             InitializeComponent();
-            BuildStatTrack();
+            if (statNameTextBlock != null)
+            {
+                statNameTextBlock.Text = Stat;
+            }
+            if (statValueIntegerUpDown != null)
+            {
+                statValueIntegerUpDown.Value = Value;
+            }
         }
         public static readonly DependencyProperty StatProperty = DependencyProperty.Register(
             nameof(Stat), typeof(string), typeof(StatTrack), new PropertyMetadata("Stat", OnStatChanged()));
@@ -61,18 +68,6 @@ namespace RPGUtility.Controls
                     statTrack.statValueIntegerUpDown.Value = statTrack.Value;
                 }
             };
-        }
-        public void BuildStatTrack()
-        {
-            // Set the initial values for the text block and integer up-down control
-            if (statNameTextBlock != null)
-            {
-                statNameTextBlock.Text = Stat;
-            }
-            if (statValueIntegerUpDown != null)
-            {
-                statValueIntegerUpDown.Value = Value;
-            }
         }
     }
 }

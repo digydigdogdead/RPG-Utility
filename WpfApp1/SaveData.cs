@@ -13,5 +13,6 @@ namespace RPGUtility
         public List<(string Name, int Value)> StatsData { get; set; } = new List<(string Name, int Value)>();
         public List<(string Title, string Content)> MemosData { get; set; } = new List<(string Title, string Content)>();
         public List<(int SessionNumber, string LogTitle, string SessionDescription)> SessionLogsData { get; set; } = new List<(int SessionNumber, string LogTitle, string SessionDescription)>();
+        public Dictionary<string, bool> TabsData { get; set; } = new Dictionary<string, bool>();
     }
 }

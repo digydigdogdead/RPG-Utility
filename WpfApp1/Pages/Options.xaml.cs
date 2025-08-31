@@ -99,6 +99,55 @@ namespace RPGUtility.Pages
                 saveData.SessionLogsData.Add((log.SessionNumber, log.LogTitle, log.SessionDescription));
             }
 
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["DiceRoller"] = true;
+            }
+            else
+            {
+                saveData.TabsData["DiceRoller"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["Clocks"] = true;
+            }
+            else
+            {
+                saveData.TabsData["Clocks"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["StatTracker"] = true;
+            }
+            else
+            {
+                saveData.TabsData["StatTracker"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["Memos"] = true;
+            }
+            else
+            {
+                saveData.TabsData["Memos"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["SessionLogs"] = true;
+            }
+            else
+            {
+                saveData.TabsData["SessionLogs"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["NameGenerator"] = true;
+            }
+            else
+            {
+                saveData.TabsData["NameGenerator"] = false;
+            }
+
             return saveData;
         }
 

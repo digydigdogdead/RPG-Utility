@@ -79,6 +79,56 @@ namespace WpfApp1
                     SessionLogs.Add(sessionLog);
                 }
                 SessionLogsPage?.RefreshLogs();
+
+                // Tabs
+                if (sd.TabsData["DiceRoller"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility = Visibility.Collapsed;
+                }
+                if (sd.TabsData["Clocks"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility = Visibility.Collapsed;
+                }
+                if (sd.TabsData["StatTracker"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility = Visibility.Collapsed;
+                }
+                if (sd.TabsData["Memos"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility = Visibility.Collapsed;
+                }
+                if (sd.TabsData["SessionLogs"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility = Visibility.Collapsed;
+                }
+                if (sd.TabsData["NameGenerator"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Collapsed;
+                }
             }
             catch (Exception ex)
             {

@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1.Controls
@@ -34,27 +25,9 @@ namespace WpfApp1.Controls
             get { return (int)GetValue(FilledSegmentsProperty); }
             set { SetValue(FilledSegmentsProperty, value); }
         }
-        public static readonly DependencyProperty DefaultColorProperty = DependencyProperty.Register(
-            nameof(DefaultColor), typeof(Color), typeof(Clock), new PropertyMetadata(Colors.LightGray));
-        public Color DefaultColor
-        {
-            get { return (Color)GetValue(DefaultColorProperty); }
-            set { SetValue(DefaultColorProperty, value); }
-        }
-        public static readonly DependencyProperty FilledColorProperty = DependencyProperty.Register(
-            nameof(FilledColor), typeof(Color), typeof(Clock), new PropertyMetadata(Colors.ForestGreen));
-        public Color FilledColor
-        {
-            get { return (Color)GetValue(FilledColorProperty); }
-            set { SetValue(FilledColorProperty, value); }
-        }
-        public static readonly DependencyProperty SquareSizeProperty = DependencyProperty.Register(
-            nameof(SquareSize), typeof(int), typeof(Clock), new PropertyMetadata(45));
-        public int SquareSize
-        {
-            get { return (int)GetValue(SquareSizeProperty); }
-            set { SetValue(SquareSizeProperty, value); }
-        }
+        public Color DefaultColor { get; set; } = Colors.LightGray;
+        public Color FilledColor { get; set; } = Colors.ForestGreen;
+        public int SquareSize { get; set; } = 45;
         public static readonly DependencyProperty ClockNameProperty = DependencyProperty.Register(
             nameof(ClockName), typeof(string), typeof(Clock), new PropertyMetadata("Clock", OnClockNameChanged()));
         public string ClockName

@@ -39,7 +39,7 @@ namespace RPGUtility
             }
             else if (presetComboBox.SelectedItem == wilderfeastCbi)
             {
-                rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/WiderFeastDiceRoller.xaml", UriKind.Relative);
+                rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/WilderFeastDiceRoller.xaml", UriKind.Relative);
             }
         }
     }

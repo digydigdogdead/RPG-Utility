@@ -12,15 +12,11 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
     A place to keep track of the things that you, as an adaptable and clever GM, had to come up with on the spot, so you can work them into your proper notes later. Just give a memo a name and write down as much detail as you like and this page will keep a record. You can edit memos after you've made them.
 - ### Session Logs
     Keep record of your sessions, so you can always figure out which session it was that the players accidentally killed the NPC who had all the information they needed, and who was there to witness it, so you can give them a new arc where you give *them* that information and make it seem like it was what you planned to do all along. The session logs are compact, but you can double click any of them to see the full details, or edit them.
+- ### Name Generator
+    Randomly generate names for people, places, and monsters. You can add memos to the memo page straight from the name you generated.
 
 ## To-Do:
 - **Initiative Tracker**: A common tool GMs need is a page to keep track of who's turn it is. Most of the games *I* play don't require this, so I didn't think to include one, but it would be useful to almost everyone else.
-- **Modularise Tabs**: If more tabs are added, a tab where you can decide *which* of the available pages you want visible could be useful. Most people might decide they have no need for the clocks page.
-- **Improve Clocks**: In the most recent release, Clocks do not save with their progression, so upon loading they will have the correct name and number of segments, but segments won't be filled in. This needs to be fixed.
-- **Name Generator**: Many GMs have a list of random NPC names ready to go. This program could benefit from a tab that generates people names, monster names, place names, etc.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.
-
-### Known Issues:
-- In the current release, the Clock control does not correctly decrement filled segments when double clicked. This issue has been fixed and will be eliminated in the next release.

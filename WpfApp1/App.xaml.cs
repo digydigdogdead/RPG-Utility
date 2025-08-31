@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Controls;
 using WpfApp1.Pages;
+using RPGUtility.Pages;
 
 namespace WpfApp1
 {
@@ -23,6 +24,7 @@ namespace WpfApp1
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
+        public RPGUtility.Pages.Options? OptionsPage {get; set; } = null;
         public string? LoadedFilePath { get; set; } = null;
 
         public void LoadData(SaveData sd)
@@ -84,50 +86,62 @@ namespace WpfApp1
                 if (sd.TabsData["DiceRoller"])
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility = Visibility.Visible;
+                    OptionsPage!.diceRollerOption.IsChecked = true;
                 }
                 else
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.diceRollerOption.IsChecked = false;
                 }
                 if (sd.TabsData["Clocks"])
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility = Visibility.Visible;
+                    OptionsPage!.clocksOption.IsChecked = true;
                 }
                 else
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).clocksTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.clocksOption.IsChecked = false;
                 }
                 if (sd.TabsData["StatTracker"])
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility = Visibility.Visible;
+                    OptionsPage!.statTrackerOption.IsChecked = true;
                 }
                 else
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).statTrackerTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.statTrackerOption.IsChecked = false;
                 }
                 if (sd.TabsData["Memos"])
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility = Visibility.Visible;
+                    OptionsPage!.memosOption.IsChecked = true;
                 }
                 else
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).memosTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.memosOption.IsChecked = false;
                 }
                 if (sd.TabsData["SessionLogs"])
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility = Visibility.Visible;
+                    OptionsPage!.sessionLogsOption.IsChecked = true;
                 }
                 else
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).sessionLogsTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.sessionLogsOption.IsChecked = false;
                 }
                 if (sd.TabsData["NameGenerator"])
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Visible;
+                    OptionsPage!.nameGeneratorOption.IsChecked = true;
                 }
                 else
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.nameGeneratorOption.IsChecked = false;
                 }
             }
             catch (Exception ex)

@@ -24,11 +24,12 @@ namespace RPGUtility.Pages
     /// <summary>
     /// Interaction logic for SaveLoad.xaml
     /// </summary>
-    public partial class SaveLoad : Page
+    public partial class Options : Page
     {
-        public SaveLoad()
+        public Options()
         {
             InitializeComponent();
+            (App.Current as App)!.OptionsPage = this;
         }
 
         private void saveAsButton_Click(object sender, RoutedEventArgs e)

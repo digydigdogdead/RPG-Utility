@@ -1,0 +1,66 @@
+﻿<Page x:Class="RPGUtility.Pages.Clocks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RPGUtility.Pages"
+      xmlns:usercontrols="clr-namespace:RPGUtility.Controls"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Clocks"
+      Background="GhostWhite">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <Button x:Name="addClockButton"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Content="+"
+                    FontSize="50"
+                    Margin="0,10, 0, 0"
+                    Width="50"
+                    Background="LightGreen"
+                    Click="addClockButton_Click"/>
+            <TextBlock Text="Name:" FontSize="20" HorizontalAlignment="Center"/>
+            <TextBox x:Name="clockNameTextBox"
+                     HorizontalAlignment="Center"
+                     Width="90"
+                     Margin="0,10,0,10"
+                     />
+            <TextBlock Text="Segments:" FontSize="20" HorizontalAlignment="Center"/>
+            <xctk:IntegerUpDown Minimum="2" x:Name="segmentsIntegerUpDown"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,10"
+                                Width="60"
+                                FontSize="20"
+                                Value="4"/>
+            <TextBlock Text="LMB to progress clock" TextWrapping="Wrap" TextAlignment="Center" Margin="0, 0, 0, 10"/>
+            <TextBlock Text="RMB to move clock back" TextWrapping="Wrap" TextAlignment="Center"/>
+
+        </StackPanel>
+        <Button x:Name="clearClocksButton"
+                Grid.Row="1"
+                Margin="5"
+                Click="clearClocksButton_Click"
+                >Clear</Button>
+        <ScrollViewer Grid.Column="1"
+                      Grid.RowSpan="2"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <StackPanel CanVerticallyScroll="True"
+                    x:Name="clocksStackPanel"
+                    Orientation="Vertical"
+                    >
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

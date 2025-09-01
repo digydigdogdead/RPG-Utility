@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
-using RPGUtility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using RPGUtility;
-using RPGUtility.Pages;
 
 namespace RPGUtility.Pages
 {
@@ -34,14 +31,12 @@ namespace RPGUtility.Pages
 
         private void saveAsButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveData saveData = BuildSaveData();
-            SaveAs(saveData);
+            SaveAs(BuildSaveData());
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveData saveData = BuildSaveData();
-            WriteJson(saveData);
+            WriteJson(BuildSaveData());
         }
 
         private async void loadButton_Click(object sender, RoutedEventArgs e)
@@ -65,8 +60,9 @@ namespace RPGUtility.Pages
                             string json = System.IO.File.ReadAllText(fileDialog.FileName);
                             loadedData = Newtonsoft.Json.JsonConvert.DeserializeObject<SaveData>(json)!; 
                         });
-                    (RPGUtility.App.Current as App)!.LoadedFilePath = fileDialog.FileName;
+                    (App.Current as App)!.LoadedFilePath = fileDialog.FileName;
                     (App.Current as App)!.LoadData(loadedData);
+                    saveButton.IsEnabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -85,21 +81,22 @@ namespace RPGUtility.Pages
                 saveData.ClocksData.Add((clock.Segments, clock.ClockName, clock.FilledSegments));
             }
 
-            foreach (var stat in (RPGUtility.App.Current as App)!.Stats)
+            foreach (var stat in (App.Current as App)!.Stats)
             {
                 saveData.StatsData.Add((stat.Stat, stat.Value));
             }
 
-            foreach (var memo in (RPGUtility.App.Current as App)!.Memos)
+            foreach (var memo in (App.Current as App)!.Memos)
             {
                 saveData.MemosData.Add((memo.Title, memo.MemoContent));
             }
 
-            foreach (var log in (RPGUtility.App.Current as App)!.SessionLogs)
+            foreach (var log in (App.Current as App)!.SessionLogs)
             {
                 saveData.SessionLogsData.Add((log.SessionNumber, log.LogTitle, log.SessionDescription));
             }
 
+            // Tabs
             if (((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility == Visibility.Visible)
             {
                 saveData.TabsData["DiceRoller"] = true;
@@ -166,7 +163,7 @@ namespace RPGUtility.Pages
 
             if (result != null && result.Value)
             {
-                (RPGUtility.App.Current as App)!.LoadedFilePath = saveFileDialog.FileName;
+                (App.Current as App)!.LoadedFilePath = saveFileDialog.FileName;
             }
 
             WriteJson(sd);
@@ -174,16 +171,12 @@ namespace RPGUtility.Pages
 
         private void WriteJson(SaveData sd)
         {
-            if (!string.IsNullOrEmpty((RPGUtility.App.Current as App)!.LoadedFilePath))
+            if (!string.IsNullOrEmpty((App.Current as App)!.LoadedFilePath))
             {
                 try
                 {
-                    string json = JsonConvert.SerializeObject(sd, Formatting.Indented,
-                        new JsonSerializerSettings
-                        {
-
-                        });
-                    System.IO.File.WriteAllText((RPGUtility.App.Current as App)!.LoadedFilePath!, json);
+                    string json = JsonConvert.SerializeObject(sd, Formatting.Indented);
+                    System.IO.File.WriteAllText((App.Current as App)!.LoadedFilePath!, json);
                     MessageBox.Show("Data saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     saveButton.IsEnabled = true;
                 }

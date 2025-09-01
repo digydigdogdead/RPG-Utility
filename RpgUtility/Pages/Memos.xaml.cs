@@ -28,8 +28,7 @@ namespace RPGUtility.Pages
 
         private void addMemoButton_Click(object sender, RoutedEventArgs e)
         {
-            Window newMemoWindow = new NewMemoWindow();
-            newMemoWindow.Show();
+            new NewMemoWindow().Show();
         }
 
         public void RefreshMemos()
@@ -41,7 +40,7 @@ namespace RPGUtility.Pages
             }
         }
 
-        private void clearStatsButton_Click(object sender, RoutedEventArgs e)
+        private void clearMemosButton_Click(object sender, RoutedEventArgs e)
         {
             (App.Current as App)!.Memos.Clear();
             RefreshMemos();

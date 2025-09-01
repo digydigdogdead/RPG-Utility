@@ -27,10 +27,10 @@
                 Width="50"
                 Background="LightGreen"
                 Click="addMemoButton_Click"/>
-        <Button x:Name="clearStatsButton"
+        <Button x:Name="clearMemosButton"
                         Grid.Row="1"
                         Margin="5"
-                        Click="clearStatsButton_Click"
+                        Click="clearMemosButton_Click"
                         Content="Clear"
                         />
         <ScrollViewer Grid.Column="1"

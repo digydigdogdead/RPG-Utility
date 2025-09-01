@@ -23,7 +23,7 @@ namespace RPGUtility
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
-        public RPGUtility.Pages.Options? OptionsPage {get; set; } = null;
+        public Pages.Options? OptionsPage {get; set; } = null;
         public string? LoadedFilePath { get; set; } = null;
 
         public void LoadData(SaveData sd)

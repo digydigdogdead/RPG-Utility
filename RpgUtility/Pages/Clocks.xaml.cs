@@ -31,9 +31,6 @@ namespace RPGUtility.Pages
             Controls.Clock newClock = new Controls.Clock
             {
                 Segments = (int)segmentsIntegerUpDown.Value!,
-                DefaultColor = Colors.LightGray,
-                FilledColor = Colors.ForestGreen,
-                SquareSize = 70,
                 ClockName = clockNameTextBox.Text
             };
             (App.Current as App)!.Clocks.Add(newClock);

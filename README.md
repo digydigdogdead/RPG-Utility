@@ -3,7 +3,9 @@
 This WPF application is a one-stop-shop for all the little things GMs might be using multiple applications to do. The functions this has include:
 
 - ### Dice Roller
-    The dice roller has a default preset which would work for any game, but also a preset specifically made for use with the game Wilderfeast.
+    The dice roller has a default preset which would work for any game, but also presets for the games Wilderfeast and Household.
+- ### Initiative Tracker
+    A page where you can add all the fighters in a given scene and their initiative, and the application will track the turn order for you.
 - ### Clocks
     A page where you can create clocks, a recommended mechanic for tracking future events in many RPGs. Simply enter the number of scenes/segments, give it a title, and the program will construct a clock for you. Left click to fill in a segment, and right click to take it back.
 - ### Stat Tracker
@@ -14,9 +16,6 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
     Keep record of your sessions, so you can always figure out which session it was that the players accidentally killed the NPC who had all the information they needed, and who was there to witness it, so you can give them a new arc where you give *them* that information and make it seem like it was what you planned to do all along. The session logs are compact, but you can double click any of them to see the full details, or edit them.
 - ### Name Generator
     Randomly generate names for people, places, and monsters. You can add memos to the memo page straight from the name you generated.
-
-## To-Do:
-- **Initiative Tracker**: A common tool GMs need is a page to keep track of who's turn it is. Most of the games *I* play don't require this, so I didn't think to include one, but it would be useful to almost everyone else.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.

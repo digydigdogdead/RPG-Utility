@@ -96,6 +96,12 @@ namespace RPGUtility.Pages
                 saveData.SessionLogsData.Add((log.SessionNumber, log.LogTitle, log.SessionDescription));
             }
 
+            foreach (var combatant in (App.Current as App)!.Combatants)
+            {
+                saveData.CombatantsData.Add(combatant);
+            }
+            saveData.CurrentTurnIndex = (int)(App.Current as App)!.InitiativeTrackerPage?.CurrentTurnIndex!;
+
             // Tabs
             if (((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility == Visibility.Visible)
             {

@@ -18,12 +18,14 @@ namespace RPGUtility
         public List<StatTrack> Stats = new List<StatTrack>();
         public List<Memo> Memos = new List<Memo>();
         public List<SessionLog> SessionLogs = new List<SessionLog>();
+        public List<Combatant> Combatants = new List<Combatant>();
 
         public Memos? MemosPage { get; set; } = null;
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
         public Pages.Options? OptionsPage {get; set; } = null;
+        public InitiativeTracker? InitiativeTrackerPage { get; set; } = null;
         public string? LoadedFilePath { get; set; } = null;
 
         public void LoadData(SaveData sd)
@@ -80,6 +82,15 @@ namespace RPGUtility
                     SessionLogs.Add(sessionLog);
                 }
                 SessionLogsPage?.RefreshLogs();
+
+                // Initiative Tracker
+                Combatants.Clear();
+                foreach (var combatant in sd.CombatantsData)
+                {
+                    Combatants.Add(combatant);
+                }
+                InitiativeTrackerPage!.CurrentTurnIndex = sd.CurrentTurnIndex;
+                InitiativeTrackerPage!.UpdateTracker();
 
                 // Tabs
                 if (sd.TabsData["DiceRoller"])

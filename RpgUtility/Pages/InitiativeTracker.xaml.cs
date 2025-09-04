@@ -100,5 +100,24 @@ namespace RPGUtility.Pages
                 combatantsListView.Items.Add(item);
             }
         }
+
+        private void combatantsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (ListViewItem item in combatantsListView.Items)
+            {
+                if (item == combatantsListView.SelectedItem)
+                {
+                    item.Background = new SolidColorBrush(Colors.LightGray);
+                }
+                else if (item == combatantsListView.Items[CurrentTurnIndex])
+                {
+                    item.Background = new SolidColorBrush(Colors.LightGreen);
+                }
+                else 
+                {
+                    item.Background = new SolidColorBrush(Colors.White);
+                }
+            }
+        }
     }
 }

@@ -22,7 +22,8 @@
                   Grid.Column="1" Grid.Row="0" 
                   Margin="5" Background="Transparent" 
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  SelectionChanged="combatantsListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Turn Order" Width="155" DisplayMemberBinding="{Binding TurnOrder}" />

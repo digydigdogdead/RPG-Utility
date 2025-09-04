@@ -1,0 +1,39 @@
+﻿<Page x:Class="RPGUtility.Pages.DiceRollerPresets.HouseholdDiceRoller"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RPGUtility.Pages.DiceRollerPresets"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="HouseholdDiceRoller"
+      Background="PaleVioletRed">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Action Dice:"
+                       HorizontalAlignment="Center"
+                       FontSize="40"/>
+            <xctk:IntegerUpDown Value="2"
+                                Minimum="2" 
+                                Margin="20"
+                                FontSize="40"
+                                Width="100"
+                                x:Name="diceIntegerUpDown"/>
+        </StackPanel>
+        <Button Grid.Column="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Content="Roll"
+                FontSize="50"
+                x:Name="rollButton"
+                Click="rollButton_Click"
+                Width="150"
+                Height="90"/>
+    </Grid>
+</Page>

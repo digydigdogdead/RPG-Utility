@@ -41,6 +41,10 @@ namespace RPGUtility
             {
                 rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/WilderFeastDiceRoller.xaml", UriKind.Relative);
             }
+            else if (presetComboBox.SelectedItem == householdCbi)
+            {
+                rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/HouseholdDiceRoller.xaml", UriKind.Relative);
+            }
         }
     }
 }

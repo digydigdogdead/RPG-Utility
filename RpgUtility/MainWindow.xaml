@@ -51,6 +51,12 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
+            <TabItem x:Name="initiativeTrackerTab">
+                <TabItem.Header>Initiative Tracker</TabItem.Header>
+                <Frame Source="Pages/InitiativeTracker.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="initiativeTrackerFrame"/>
+            </TabItem>
             <TabItem x:Name="clocksTab">
                 <TabItem.Header>Clocks</TabItem.Header>
                 <TabItem.Content>

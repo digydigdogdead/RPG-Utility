@@ -96,6 +96,12 @@ namespace RPGUtility.Pages
                 saveData.SessionLogsData.Add((log.SessionNumber, log.LogTitle, log.SessionDescription));
             }
 
+            foreach (var combatant in (App.Current as App)!.Combatants)
+            {
+                saveData.CombatantsData.Add(combatant);
+            }
+            saveData.CurrentTurnIndex = (int)(App.Current as App)!.InitiativeTrackerPage?.CurrentTurnIndex!;
+
             // Tabs
             if (((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility == Visibility.Visible)
             {
@@ -144,6 +150,14 @@ namespace RPGUtility.Pages
             else
             {
                 saveData.TabsData["NameGenerator"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["InitiativeTracker"] = true;
+            }
+            else
+            {
+                saveData.TabsData["InitiativeTracker"] = false;
             }
 
             return saveData;
@@ -217,6 +231,10 @@ namespace RPGUtility.Pages
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Visible;
             }
+            else if (sender == initiativeTrackerOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Visible;
+            }
         }
 
         private void OptionUnchecked(object sender, RoutedEventArgs e)
@@ -244,6 +262,10 @@ namespace RPGUtility.Pages
             else if (sender == nameGeneratorOption)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == initiativeTrackerOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
             }
         }
     }

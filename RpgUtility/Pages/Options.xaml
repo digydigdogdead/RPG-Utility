@@ -47,6 +47,14 @@
                           Margin="5"
                           VerticalContentAlignment="Center"
                           IsChecked="True"/>
+                <CheckBox Content="Initiative Tracker" 
+                          x:Name="initiativeTrackerOption" 
+                          FontSize="20" 
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          Margin="5"
+                          VerticalContentAlignment="Center"
+                          IsChecked="True"/>
                 <CheckBox Content="Clocks" 
                           x:Name="clocksOption" 
                           FontSize="20" 

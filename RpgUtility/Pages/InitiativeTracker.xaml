@@ -18,12 +18,16 @@
             <RowDefinition Height="9*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <ListView x:Name="combatantsListView" Grid.Column="1" Grid.Row="0" Margin="5" Background="Transparent">
+        <ListView x:Name="combatantsListView" 
+                  Grid.Column="1" Grid.Row="0" 
+                  Margin="5" Background="Transparent" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Turn Order" Width="157"/>
-                    <GridViewColumn Header="Name" Width="316" />
-                    <GridViewColumn Header="Initiative" Width="157"/>
+                    <GridViewColumn Header="Turn Order" Width="155" DisplayMemberBinding="{Binding TurnOrder}" />
+                    <GridViewColumn Header="Name" Width="316" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Initiative" Width="155" DisplayMemberBinding="{Binding Initiative}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -50,7 +54,8 @@
                        />
             <xctk:IntegerUpDown x:Name="initiativeIntegerUpDown"
                                 FontSize="20"
-                                Margin="5"/>
+                                Margin="5"
+                                Value="1"/>
 
             <Button x:Name="removeCombatantButton" 
                     Content="-" 
@@ -64,12 +69,12 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <Button x:Name="previousTurnButton"
-                    Content="⬅️"
+                    Content="👈"
                     Click="previousTurnButton_Click"
                     Margin="5"
                     Width="75"/>
             <Button x:Name="nextTurnButton"
-                    Content="➡️"
+                    Content="👉"
                     Click="nextTurnButton_Click"
                     Margin="5"
                     Width="75"/>

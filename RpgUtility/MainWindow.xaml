@@ -23,6 +23,7 @@
                                   SelectionChanged="presetComboBox_SelectionChanged">
                             <ComboBoxItem x:Name="defaultCbi">Default</ComboBoxItem>
                             <ComboBoxItem x:Name="wilderfeastCbi">Wilderfeast</ComboBoxItem>
+                            <ComboBoxItem x:Name="householdCbi">Household</ComboBoxItem>
                         </ComboBox>
                         <Grid Grid.Row="1" x:Name="pageGrid">
                             <Grid.ColumnDefinitions>

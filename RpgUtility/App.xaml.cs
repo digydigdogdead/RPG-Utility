@@ -142,6 +142,16 @@ namespace RPGUtility
                     ((MainWindow)System.Windows.Application.Current.MainWindow).nameGeneratorTab.Visibility = Visibility.Collapsed;
                     OptionsPage!.nameGeneratorOption.IsChecked = false;
                 }
+                if (sd.TabsData["InitiativeTracker"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Visible;
+                    OptionsPage!.initiativeTrackerOption.IsChecked = true;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.initiativeTrackerOption.IsChecked = false;
+                }
             }
             catch (Exception ex)
             {

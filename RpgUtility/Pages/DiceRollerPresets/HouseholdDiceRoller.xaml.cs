@@ -76,7 +76,7 @@ namespace RPGUtility.Pages.DiceRollerPresets
 
             if (successes.All(kvp => kvp.Value == 0))
             {
-                successMessage = "No successes.";
+                successMessage = "No successes. ";
             }
             else
             {
@@ -96,11 +96,12 @@ namespace RPGUtility.Pages.DiceRollerPresets
             {
                 for (var i = 0; i < count.Value; i++)
                 {
-                    rollMessage += $"{count.Key}";
-                    if (count.Key == 6) rollMessage += ")";
-                    else rollMessage += ", ";
+                    rollMessage += $"{count.Key}, ";
                 }
             }
+
+            rollMessage = rollMessage.TrimEnd([',',' ']);
+            rollMessage += ')';
 
             (App.Current as App)!.RollHistory.Push(successMessage + rollMessage);
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();

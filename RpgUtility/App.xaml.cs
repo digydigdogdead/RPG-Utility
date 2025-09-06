@@ -52,7 +52,8 @@ namespace RPGUtility
                     StatTrack statTrack = new StatTrack
                     {
                         Stat = stat.Name,
-                        Value = stat.Value
+                        Value = stat.Value,
+                        BackgroundColour = stat.BackgroundColour
                     };
                     Stats.Add(statTrack);
                 }

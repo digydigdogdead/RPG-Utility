@@ -90,5 +90,16 @@ namespace RPGUtility.Controls
                 }
             };
         }
+
+        private void ChangeColour_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App)!.Stats.Remove(this);
+            (App.Current as App)!.StatTrackerPage?.PopulateWrapPanel();
+        }
     }
 }

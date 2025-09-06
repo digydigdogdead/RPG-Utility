@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:RPGUtility.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="70" d:DesignWidth="70">
+             d:DesignHeight="70" d:DesignWidth="70"
+             Margin="5">
     <Grid>
         <StackPanel>
             <TextBlock Text="Stat"
@@ -20,5 +21,18 @@
                                 FontSize="20"
                                 HorizontalAlignment="Center" />
         </StackPanel>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Change Colour" x:Name="changeColourMenuItem">
+                    <MenuItem Header="Red" Click="ChangeColour_Click" Background="PaleVioletRed" x:Name="redOption"/>
+                    <MenuItem Header="Green" Click="ChangeColour_Click" Background="ForestGreen" x:Name="greenOption"/>
+                    <MenuItem Header="Blue" Click="ChangeColour_Click" Background="LightBlue" x:Name="blueOption"/>
+                    <MenuItem Header="Yellow" Click="ChangeColour_Click" Background="LightYellow" x:Name="yellowOption"/>
+                    <MenuItem Header="Orange" Click="ChangeColour_Click" Background="Orange" x:Name="orangeOption"/>
+                    <MenuItem Header="Pink" Click="ChangeColour_Click" Background="LightPink" x:Name="pinkOption"/>
+                </MenuItem>
+                <MenuItem Header="Delete" x:Name="deleteMenuItem" Click="deleteMenuItem_Click" />
+            </ContextMenu>
+        </Grid.ContextMenu>
     </Grid>
 </UserControl>

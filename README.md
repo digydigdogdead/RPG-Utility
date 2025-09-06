@@ -18,6 +18,7 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
     Randomly generate names for people, places, and monsters. You can add memos to the memo page straight from the name you generated.
 ## To-Do:
 - I intend to add custom colours to the Stat Tracker control and allow players to change for their tracked stats using the context menu. This would make it easier to scan and quickly find something specific.
+- The Diceroller page needs to be tweaked to be easier to look at when working with numbers larger than 9.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.

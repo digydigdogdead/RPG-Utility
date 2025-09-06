@@ -16,6 +16,8 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
     Keep record of your sessions, so you can always figure out which session it was that the players accidentally killed the NPC who had all the information they needed, and who was there to witness it, so you can give them a new arc where you give *them* that information and make it seem like it was what you planned to do all along. The session logs are compact, but you can double click any of them to see the full details, or edit them.
 - ### Name Generator
     Randomly generate names for people, places, and monsters. You can add memos to the memo page straight from the name you generated.
+## To-Do:
+- I intend to add custom colours to the Stat Tracker control and allow players to change for their tracked stats using the context menu. This would make it easier to scan and quickly find something specific.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.

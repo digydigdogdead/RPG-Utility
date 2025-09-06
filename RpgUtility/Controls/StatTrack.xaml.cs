@@ -31,6 +31,7 @@ namespace RPGUtility.Controls
             {
                 statValueIntegerUpDown.Value = Value;
             }
+            Background = new SolidColorBrush(BackgroundColour);
         }
         public static readonly DependencyProperty StatProperty = DependencyProperty.Register(
             nameof(Stat), typeof(string), typeof(StatTrack), new PropertyMetadata("Stat", OnStatChanged()));
@@ -45,6 +46,26 @@ namespace RPGUtility.Controls
         {
             get { return (int)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
+        }
+        public static readonly DependencyProperty BackgroundColourProperty = DependencyProperty.Register(
+            nameof(BackgroundColour), typeof(Color), typeof(StatTrack), new PropertyMetadata(Colors.Transparent, OnBackgroundColourChanged()));
+
+        public Color BackgroundColour
+        {
+            get { return (Color)GetValue(BackgroundColourProperty); }
+            set { SetValue(BackgroundColourProperty, value); }
+        }
+
+        private static PropertyChangedCallback OnBackgroundColourChanged()
+        {
+            return (d, e) =>
+            {
+                StatTrack statTrack = (StatTrack)d;
+                if (statTrack != null)
+                {
+                    statTrack.Background = new SolidColorBrush(statTrack.BackgroundColour);
+                }
+            };
         }
 
         private static PropertyChangedCallback OnStatChanged()
@@ -68,6 +89,43 @@ namespace RPGUtility.Controls
                     statTrack.statValueIntegerUpDown.Value = statTrack.Value;
                 }
             };
+        }
+
+        private void ChangeColour_Click(object sender, RoutedEventArgs e)
+        {
+            int index = ((App)Application.Current).Stats.IndexOf(this);
+
+            if (sender == redOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.PaleVioletRed;
+            }
+            else if (sender == blueOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.LightBlue;
+            }
+            else if (sender == greenOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.ForestGreen;
+            }
+            else if (sender == yellowOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.LightYellow;
+            }
+            else if (sender == orangeOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.Orange;
+            }
+            else if (sender == pinkOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.LightPink;
+            }
+
+            ((App)Application.Current).StatTrackerPage?.PopulateWrapPanel();
+        }
+        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App)!.Stats.Remove(this);
+            (App.Current as App)!.StatTrackerPage?.PopulateWrapPanel();
         }
     }
 }

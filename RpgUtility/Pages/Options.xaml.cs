@@ -83,7 +83,7 @@ namespace RPGUtility.Pages
 
             foreach (var stat in (App.Current as App)!.Stats)
             {
-                saveData.StatsData.Add((stat.Stat, stat.Value));
+                saveData.StatsData.Add((stat.Stat, stat.Value, stat.BackgroundColour));
             }
 
             foreach (var memo in (App.Current as App)!.Memos)

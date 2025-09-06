@@ -93,9 +93,35 @@ namespace RPGUtility.Controls
 
         private void ChangeColour_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
+            int index = ((App)Application.Current).Stats.IndexOf(this);
 
+            if (sender == redOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.PaleVioletRed;
+            }
+            else if (sender == blueOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.LightBlue;
+            }
+            else if (sender == greenOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.ForestGreen;
+            }
+            else if (sender == yellowOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.LightYellow;
+            }
+            else if (sender == orangeOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.Orange;
+            }
+            else if (sender == pinkOption)
+            {
+                ((App)Application.Current).Stats[index].BackgroundColour = Colors.LightPink;
+            }
+
+            ((App)Application.Current).StatTrackerPage?.PopulateWrapPanel();
+        }
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             (App.Current as App)!.Stats.Remove(this);

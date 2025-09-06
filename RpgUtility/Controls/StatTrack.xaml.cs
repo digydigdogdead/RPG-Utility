@@ -31,6 +31,7 @@ namespace RPGUtility.Controls
             {
                 statValueIntegerUpDown.Value = Value;
             }
+            Background = new SolidColorBrush(BackgroundColour);
         }
         public static readonly DependencyProperty StatProperty = DependencyProperty.Register(
             nameof(Stat), typeof(string), typeof(StatTrack), new PropertyMetadata("Stat", OnStatChanged()));
@@ -45,6 +46,26 @@ namespace RPGUtility.Controls
         {
             get { return (int)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
+        }
+        public static readonly DependencyProperty BackgroundColourProperty = DependencyProperty.Register(
+            nameof(BackgroundColour), typeof(Color), typeof(StatTrack), new PropertyMetadata(Colors.Transparent, OnBackgroundColourChanged()));
+
+        public Color BackgroundColour
+        {
+            get { return (Color)GetValue(BackgroundColourProperty); }
+            set { SetValue(BackgroundColourProperty, value); }
+        }
+
+        private static PropertyChangedCallback OnBackgroundColourChanged()
+        {
+            return (d, e) =>
+            {
+                StatTrack statTrack = (StatTrack)d;
+                if (statTrack != null)
+                {
+                    statTrack.Background = new SolidColorBrush(statTrack.BackgroundColour);
+                }
+            };
         }
 
         private static PropertyChangedCallback OnStatChanged()

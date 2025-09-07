@@ -28,7 +28,12 @@ namespace RPGUtility.Pages
         {
             if (e.Key == Key.Enter)
             {
-                saveMemoButton_Click(sender, e);
+                if (Keyboard.IsKeyDown(Key.LeftShift))
+                {
+                    memoContentTextBox.Text += Environment.NewLine;
+                    memoContentTextBox.CaretIndex = memoContentTextBox.Text.Length;
+                }
+                else saveMemoButton_Click(sender, e);
             }
         }
     }

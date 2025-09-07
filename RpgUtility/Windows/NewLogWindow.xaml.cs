@@ -31,7 +31,12 @@ namespace RPGUtility.Windows
         {
             if (e.Key == Key.Enter)
             {
-                saveLogButton_Click(sender, e);
+                if (Keyboard.IsKeyDown(Key.LeftShift))
+                {
+                    sessionDescriptionTextBox.Text += Environment.NewLine;
+                    sessionDescriptionTextBox.CaretIndex = sessionDescriptionTextBox.Text.Length;
+                }
+                else saveLogButton_Click(sender, e);
             }
         }
     }

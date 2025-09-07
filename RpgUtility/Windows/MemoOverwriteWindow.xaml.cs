@@ -33,7 +33,12 @@ namespace RPGUtility.Pages
         {
             if (e.Key == Key.Enter)
             {
-                overwriteMemoButton_Click(sender, e);
+                if (Keyboard.IsKeyDown(Key.LeftShift))
+                {
+                    memoContentTextBox.Text += Environment.NewLine;
+                    memoContentTextBox.CaretIndex = memoContentTextBox.Text.Length;
+                }
+                else overwriteMemoButton_Click(sender, e);
             }
         }
     }

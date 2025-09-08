@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RPGUtility.Pages.DiceRollerPresets"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="530"
       Title="HouseholdDiceRoller"
       Background="PaleVioletRed">
 

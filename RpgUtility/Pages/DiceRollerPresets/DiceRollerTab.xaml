@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RPGUtility.Pages"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="530"
       Background="FloralWhite"
       Title="DiceRollerTab">
 
@@ -59,9 +59,10 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
                             Width="100"
+                            Height="137"
                             Value="1"
                             Minimum="1"
-                            FontSize="100"
+                            FontSize="45"
                             Background="Transparent"/>
             <xctk:IntegerUpDown x:Name="diceTypeUpDown"
                                 Grid.Column="1" 
@@ -70,9 +71,10 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Width="100"
+                                Height="137"
                                 Value="1"
                                 Minimum="1"
-                                FontSize="100"
+                                FontSize="45"
                                 Background="Transparent"/>
             <xctk:IntegerUpDown x:Name="modifierUpDown"
                                 Grid.Column="3" 
@@ -81,9 +83,10 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Width="100"
+                                Height="137"
                                 Value="0"
                                 Minimum="0"
-                                FontSize="100"
+                                FontSize="45"
                                 Background="Transparent"/>
         </Grid>
         <Button x:Name="rollButton" 

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RPGUtility.Pages"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="410" d:DesignWidth="600"
+      d:DesignHeight="410" d:DesignWidth="530"
       Title="WiderFeastDiceRoller"
       Background="FloralWhite">
 
@@ -38,17 +38,17 @@
                            Text="Style Dice"/>
                 <xctk:IntegerUpDown x:Name="styleDiceUpDown"
                                     Grid.Row="1"
-                                    Width="110"
-                                    Height="100"
                                     Minimum="1"
                                     Value="1"
-                                    FontSize="80"/>
+                                    FontSize="45"
+                                    Margin="10,70,10,70"/>
                 <ComboBox x:Name="advComboBox"
                           Grid.Column="1"
                           Grid.Row="1"
-                          Margin="20,80,20,80"
+                          Margin="10,70,10,70"
                           SelectedIndex="0"
                           FontSize="20"
+                          VerticalContentAlignment="Center"
                           >
                     <ComboBoxItem Content="Normal" x:Name="normalCbi"/>
                     <ComboBoxItem Content="Adv" x:Name="advantageCbi"/>
@@ -65,9 +65,10 @@
                 <ComboBox x:Name="actionDieComboBox"
                           Grid.Column="2"
                           Grid.Row="1"
-                          FontSize="30"
+                          FontSize="20"
                           SelectedIndex="0"
                           Margin="10,70,10,70"
+                          VerticalContentAlignment="Center"
                           >
                     <ComboBoxItem Content="Focus Up" x:Name="focusUpCbi"/>
                     <ComboBoxItem Content="Go Wild" x:Name="goWildCbi"/>

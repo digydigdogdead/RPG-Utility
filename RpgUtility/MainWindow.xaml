@@ -27,7 +27,7 @@
                         </ComboBox>
                         <Grid Grid.Row="1" x:Name="pageGrid">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*" x:Name="rollerGridColumn" />
+                                <ColumnDefinition Width="2*" x:Name="rollerGridColumn" />
                                 <ColumnDefinition Width="1*" x:Name="logColumn" />
                             </Grid.ColumnDefinitions>
                             <Frame x:Name="rollerPresetFrame" 

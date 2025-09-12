@@ -26,5 +26,9 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
   
   ![image](https://i.imgur.com/G8Ge9rp.png)
 
+## To Do:
+- **Rehaul Save/Load**: At the moment saving is quite intrusive and requires the user to click out of an alert window. I'd like to make it smoother, and make it more obvious to users if they have unsaved changes.
+- **Incoporate conditions to Initiative Tracker**: A request has been made to include player conditions in the Initiative tracker page 
+
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.

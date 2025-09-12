@@ -32,15 +32,14 @@ namespace RPGUtility.Windows
 
         private void sessionDescriptionTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Keyboard.IsKeyDown(Key.LeftShift))
-            {
-                sessionDescriptionTextBox.AcceptsReturn = true;
-            } 
-            else 
-            {
-                sessionDescriptionTextBox.AcceptsReturn = false;
-                if (e.Key == Key.Enter) overwriteLogButton_Click(sender, e);
-            }
+            if (Keyboard.IsKeyDown(Key.LeftShift)) sessionDescriptionTextBox.AcceptsReturn = true;
+
+            if (e.Key == Key.Enter) overwriteLogButton_Click(sender, e);
+        }
+
+        private void sessionDescriptionTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftShift) sessionDescriptionTextBox.AcceptsReturn = false;
         }
     }
 }

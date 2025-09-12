@@ -38,7 +38,9 @@
             <TextBox x:Name="sessionDescriptionTextBox" 
                      VerticalAlignment="Stretch" Width="560" Margin="0, 10, 0, 0"
                      FontSize="12" TextWrapping="Wrap"
-                     KeyDown="sessionDescriptionTextBox_KeyDown"/>
+                     KeyDown="sessionDescriptionTextBox_KeyDown"
+                     AcceptsReturn="False"
+                     KeyUp="sessionDescriptionTextBox_KeyUp"/>
         </StackPanel>
         <Button x:Name="saveLogButton" Content="Save"
                 Grid.Row="2" Grid.Column="1"

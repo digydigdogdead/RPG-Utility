@@ -40,7 +40,9 @@
                  Grid.Column="1"
                  Margin="5"
                  TextWrapping="Wrap"
-                 KeyDown="memoContentTextBox_KeyDown"/>
+                 KeyDown="memoContentTextBox_KeyDown"
+                 KeyUp="memoContentTextBox_KeyUp"
+                 AcceptsReturn="False"/>
         <Button Grid.Row="2"
                 Grid.Column="1"
                 x:Name="saveMemoButton"

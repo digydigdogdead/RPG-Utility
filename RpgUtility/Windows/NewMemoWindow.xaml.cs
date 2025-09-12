@@ -26,15 +26,14 @@ namespace RPGUtility.Pages
 
         private void memoContentTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                if (Keyboard.IsKeyDown(Key.LeftShift))
-                {
-                    memoContentTextBox.Text += Environment.NewLine;
-                    memoContentTextBox.CaretIndex = memoContentTextBox.Text.Length;
-                }
-                else saveMemoButton_Click(sender, e);
-            }
+            if (Keyboard.IsKeyDown(Key.LeftShift)) memoContentTextBox.AcceptsReturn = true;
+
+            if (e.Key == Key.Enter) saveMemoButton_Click(sender, e);
+        }
+
+        private void memoContentTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftShift) memoContentTextBox.AcceptsReturn = false;
         }
     }
 }

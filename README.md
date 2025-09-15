@@ -31,4 +31,4 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 - **Incoporate conditions to Initiative Tracker**: A request has been made to include player conditions in the Initiative tracker page 
 
 ### Acknowledgements:
-This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data.
+This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data. The icon is a segment from official art for the podcast Dice So Nice I Said Dice Twice, illustrated by Kevin Ryan, used with permission.

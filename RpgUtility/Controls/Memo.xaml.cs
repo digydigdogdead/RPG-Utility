@@ -52,10 +52,10 @@ namespace RPGUtility.Controls
                 if (memo.contentTextBlock != null)
                 {
                     if (memo.MemoContent.Length < 90)
-                    { memo.contentTextBlock.Text = memo.MemoContent; }
+                    { memo.contentTextBlock.Text = memo.MemoContent.Replace(Environment.NewLine, " "); }
                     else
                     {
-                        memo.contentTextBlock.Text = memo.MemoContent.Substring(0, 90) + "...";
+                        memo.contentTextBlock.Text = memo.MemoContent.Replace(Environment.NewLine, " ").Substring(0, 90) + "...";
                     }
                     ToolTipService.SetToolTip(memo.contentTextBlock, memo.MemoContent);
                 }

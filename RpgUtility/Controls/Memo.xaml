@@ -8,7 +8,8 @@
              d:DesignHeight="80" d:DesignWidth="700"
              Background="Beige"
              MouseDoubleClick="OpenEditWindow"
-             Margin="0, 5, 0, 5">
+             Margin="0, 5, 0, 5"
+             Width="650">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2">
             <StackPanel>

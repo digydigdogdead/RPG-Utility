@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPGUtility.Controls;
 
 namespace RPGUtility.Pages
 {
@@ -40,6 +41,7 @@ namespace RPGUtility.Pages
 
         private void removeCombatantButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var combatantToRemoveItem = (ListViewItem)combatantsListView.SelectedItem;
             var combatantToRemove = combatantToRemoveItem?.Content as Combatant;
             if (combatantToRemove != null)
@@ -51,7 +53,9 @@ namespace RPGUtility.Pages
                 }
                 UpdateTracker();
             }
+            */
         }
+        
 
         private void previousTurnButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,6 +83,7 @@ namespace RPGUtility.Pages
 
         public void UpdateTracker()
         {
+            /*
             combatantsListView.Items.Clear();
             (App.Current as App)!.Combatants = (App.Current as App)!.Combatants.OrderByDescending(c => c.Initiative).ToList();
 
@@ -98,9 +103,10 @@ namespace RPGUtility.Pages
                     item.Background = new SolidColorBrush(Colors.White);
                 }
                 combatantsListView.Items.Add(item);
-            }
+            } */
         }
 
+        /*
         private void combatantsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (ListViewItem item in combatantsListView.Items)
@@ -119,5 +125,6 @@ namespace RPGUtility.Pages
                 }
             }
         }
+        */
     }
 }

@@ -29,7 +29,8 @@
                        FontSize="20"/>
             <TextBox x:Name="conditionTextBox"
                      FontSize="18"
-                     Margin="4"/>
+                     Margin="4"
+                     KeyDown="conditionTextBox_KeyDown"/>
             <Button x:Name="addConditionButton" 
                     Content="+" 
                     Click="addConditionButton_Click"

@@ -41,12 +41,15 @@ namespace RPGUtility.Windows
 
         private void addConditionButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ListViewItem item = new();
+            item.Content = conditionTextBox.Text;
+            conditionsListView.Items.Add(item);
+            conditionTextBox.Text = string.Empty;
         }
 
         private void removeConditionButton_Click(object sender, RoutedEventArgs e)
         {
-
+            conditionsListView.Items.Remove(conditionsListView.SelectedItem);
         }
 
         public void UpdateList()
@@ -61,7 +64,22 @@ namespace RPGUtility.Windows
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
+            Combatant!.Conditions.Clear();
+            foreach (ListViewItem item in conditionsListView.Items)
+            {
+                Combatant!.Conditions.Add(item.Content.ToString()!);
+            }
+            Combatant.UpdateConditionsText();
+            (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+            this.Close();
+        }
 
+        private void conditionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                addConditionButton_Click(this, new RoutedEventArgs());
+            }
         }
     }
 }

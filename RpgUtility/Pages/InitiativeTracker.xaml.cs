@@ -32,28 +32,12 @@ namespace RPGUtility.Pages
         {
             Combatant combatant = new Combatant()
             {
-                Name = nameTextBox.Text,
-                Initiative = initiativeIntegerUpDown.Value ?? 0
+                CombatantName = nameTextBox.Text,
+                Initiative = initiativeIntegerUpDown.Value ?? 1,
+                Hp = HpIntegerUpDown.Value ?? 1
             };
             (App.Current as App)!.Combatants.Add(combatant);
             UpdateTracker();
-        }
-
-        private void removeCombatantButton_Click(object sender, RoutedEventArgs e)
-        {
-            /*
-            var combatantToRemoveItem = (ListViewItem)combatantsListView.SelectedItem;
-            var combatantToRemove = combatantToRemoveItem?.Content as Combatant;
-            if (combatantToRemove != null)
-            {
-                (App.Current as App)!.Combatants.Remove(combatantToRemove);
-                if (CurrentTurnIndex >= (App.Current as App)!.Combatants.Count)
-                {
-                    CurrentTurnIndex = 0;
-                }
-                UpdateTracker();
-            }
-            */
         }
         
 
@@ -83,6 +67,20 @@ namespace RPGUtility.Pages
 
         public void UpdateTracker()
         {
+            initiativeTrackPanel.Children.Clear();
+            (App.Current as App)!.Combatants = (App.Current as App)!.Combatants.OrderByDescending(c => c.Initiative).ToList();
+
+            for (int i = 0; i < (App.Current as App)!.Combatants.Count; i++)
+            {
+                if (i == CurrentTurnIndex)
+                {
+                    (App.Current as App)!.Combatants[i].Background = new SolidColorBrush(Colors.LightGreen);
+                }
+                else (App.Current as App)!.Combatants[i].Background = new SolidColorBrush(Colors.LightGray);
+
+                initiativeTrackPanel.Children.Add((App.Current as App)!.Combatants[i]);
+            }
+
             /*
             combatantsListView.Items.Clear();
             (App.Current as App)!.Combatants = (App.Current as App)!.Combatants.OrderByDescending(c => c.Initiative).ToList();

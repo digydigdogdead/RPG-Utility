@@ -56,7 +56,8 @@ namespace RPGUtility.Controls
 
         private void removeCombatantButton_Click(object sender, RoutedEventArgs e)
         {
-
+            (App.Current as App)!.Combatants.Remove(this);
+            (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
         }
 
         private static PropertyChangedCallback OnInitiativeChanged()

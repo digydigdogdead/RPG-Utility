@@ -11,6 +11,28 @@
              BorderThickness="3"
              d:DesignHeight="66" d:DesignWidth="620">
     <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Quick Conditions">
+                    <MenuItem Header="Asleep"
+                              x:Name="asleepMenuItem"
+                              Click="ConditionMenuItem_Click" />
+                    <MenuItem Header="Blinded"
+                              x:Name="blindedMenuItem"
+                              Click="ConditionMenuItem_Click" />
+                    <MenuItem Header="Bloodied"
+                              x:Name="bloodiedMenuItem"
+                              Click="ConditionMenuItem_Click" />
+                    <MenuItem Header="Poisoned"
+                              x:Name="poisonedMenuItem"
+                              Click="ConditionMenuItem_Click" />
+                </MenuItem>
+                <MenuItem Header="Manage Conditions"
+                          Click="OpenConditionManager" />
+                <MenuItem Header="Remove"
+                          Click="removeCombatantButton_Click" />
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Name="NameColumn" Width="4*"/>
             <ColumnDefinition Name="InitiativeColumn" Width="1*"/>

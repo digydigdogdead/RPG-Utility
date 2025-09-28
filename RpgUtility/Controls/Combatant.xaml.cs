@@ -90,6 +90,8 @@ namespace RPGUtility.Controls
             return (d, e) =>
             {
                 Combatant combatant = (d as Combatant)!;
+                combatant.conditionsWrapPanel.Children.Clear(); // Clear previous children
+
                 foreach (var condition in combatant.Conditions)
                 {
                     TextBlock conditionText = new TextBlock()
@@ -108,6 +110,24 @@ namespace RPGUtility.Controls
         {
             Initiative = (int)initiativeIntegerUpDown.Value!;
             (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+        }
+
+        private void ConditionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender == asleepMenuItem) Conditions.Add("Asleep");
+            if (sender == blindedMenuItem) Conditions.Add("Blinded");
+            if (sender == bloodiedMenuItem) Conditions.Add("Bloodied");
+            if (sender == poisonedMenuItem) Conditions.Add("Poisoned");
+
+            // Force property changed callback
+            Conditions = new List<string>(Conditions);
+
+            (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+        }
+
+        private void OpenConditionManager(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

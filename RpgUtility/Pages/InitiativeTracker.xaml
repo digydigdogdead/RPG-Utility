@@ -18,20 +18,6 @@
             <RowDefinition Height="9*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <ListView x:Name="combatantsListView" 
-                  Grid.Column="1" Grid.Row="0" 
-                  Margin="5" Background="Transparent" 
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                  SelectionChanged="combatantsListView_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Turn Order" Width="155" DisplayMemberBinding="{Binding TurnOrder}" />
-                    <GridViewColumn Header="Name" Width="316" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Initiative" Width="155" DisplayMemberBinding="{Binding Initiative}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <StackPanel Grid.Column="0" Grid.RowSpan="2" Margin="5" VerticalAlignment="Center">
             <Button x:Name="addCombatantButton" 
                     Content="+" 
@@ -57,15 +43,20 @@
                                 FontSize="20"
                                 Margin="5"
                                 Value="1"/>
-
-            <Button x:Name="removeCombatantButton" 
-                    Content="-" 
-                    Click="removeCombatantButton_Click" 
-                    Margin="5"
-                    FontSize="20"
-                    Width="30"
-                    Background="OrangeRed"/>
+            <TextBlock Text="HP:"
+                       HorizontalAlignment="Center"
+                       FontSize="27"/>
+            <xctk:IntegerUpDown x:Name="HpIntegerUpDown"
+                                FontSize="20"
+                                Margin="5"
+                                Value="1"/>
         </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Column="1">
+            <StackPanel x:Name="initiativeTrackPanel"
+                        Orientation="Vertical">
+                
+            </StackPanel>
+        </ScrollViewer>
         <StackPanel Grid.Row="1" Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">

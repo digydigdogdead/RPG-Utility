@@ -29,7 +29,8 @@
                             FontSize="20"
                             VerticalAlignment="Center"
                             Margin="5"
-                            Value="15"/>
+                            Value="1"
+                            ValueChanged="initiativeIntegerUpDown_ValueChanged"/>
         <StackPanel Grid.Column="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
@@ -41,7 +42,7 @@
                                 FontSize="20"
                                 VerticalAlignment="Center"
                                 Margin="0,0,5,0"
-                                Value="10"/> 
+                                Value="1"/> 
         </StackPanel>
         <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <WrapPanel x:Name="conditionsWrapPanel"

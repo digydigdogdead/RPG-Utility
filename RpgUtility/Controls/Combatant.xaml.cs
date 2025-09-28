@@ -103,5 +103,11 @@ namespace RPGUtility.Controls
                 }
             };
         }
+
+        private void initiativeIntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            Initiative = (int)initiativeIntegerUpDown.Value!;
+            (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+        }
     }
 }

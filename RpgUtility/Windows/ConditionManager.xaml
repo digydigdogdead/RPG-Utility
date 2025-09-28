@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPGUtility.Windows"
         mc:Ignorable="d"
-        Title="Condition Manager" Height="350" Width="600">
+        Title="Condition Manager" Height="375" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="8*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,9 +18,10 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Combatant Title"
                    x:Name="titleTextBlock"
-                   FontSize="28"
+                   FontSize="26"
                    Grid.ColumnSpan="2"
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center">
             <TextBlock Text="Condition:"
@@ -45,8 +47,17 @@
                     FontSize="30"
                     VerticalContentAlignment="Center"/>
         </StackPanel>
+        <Button x:Name="closeButton" 
+                Content="Done" 
+                Click="closeButton_Click"
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                Width="100"
+                Margin="5"/>
         <ListView x:Name="conditionsListView"
                   Grid.Row="1"
-                  Grid.Column="1" />
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Margin="5"/>
     </Grid>
 </Window>

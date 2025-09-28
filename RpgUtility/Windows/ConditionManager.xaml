@@ -1,0 +1,52 @@
+﻿<Window x:Class="RPGUtility.Windows.ConditionManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGUtility.Windows"
+        mc:Ignorable="d"
+        Title="Condition Manager" Height="350" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Combatant Title"
+                   x:Name="titleTextBlock"
+                   FontSize="28"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Condition:"
+                       HorizontalAlignment="Center"
+                       FontSize="20"/>
+            <TextBox x:Name="conditionTextBox"
+                     FontSize="18"
+                     Margin="4"/>
+            <Button x:Name="addConditionButton" 
+                    Content="+" 
+                    Click="addConditionButton_Click"
+                    Margin="5"
+                    Background="LightGreen" 
+                    Height="50" Width="50"
+                    FontSize="30"
+                    VerticalContentAlignment="Center"/>
+            <Button x:Name="removeConditionButton" 
+                    Content="-" 
+                    Click="removeConditionButton_Click"
+                    Margin="5"
+                    Background="Red" 
+                    Height="50" Width="50"
+                    FontSize="30"
+                    VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <ListView x:Name="conditionsListView"
+                  Grid.Row="1"
+                  Grid.Column="1" />
+    </Grid>
+</Window>

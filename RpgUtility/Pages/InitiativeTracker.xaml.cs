@@ -38,6 +38,7 @@ namespace RPGUtility.Pages
             };
             (App.Current as App)!.Combatants.Add(combatant);
             UpdateTracker();
+            nameTextBox.Text = string.Empty;
         }
         
 

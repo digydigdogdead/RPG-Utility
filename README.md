@@ -28,8 +28,11 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 
 ## To Do:
 - **Rehaul Save/Load**: At the moment saving is quite intrusive and requires the user to click out of an alert window. I'd like to make it smoother, and make it more obvious to users if they have unsaved changes.
-- **Incoporate conditions to Initiative Tracker**: A request has been made to include player conditions in the Initiative tracker page
-- **Make Session Logs Searchable**: Make it possible to use search terms to filter session logs so you can find the detail you're looking for quicker 
+- **Incoporate conditions to Initiative Tracker** Done!: A request has been made to include player conditions in the Initiative tracker page, This has been completed and will be a feature in the next release
+- **Make Session Logs Searchable**: Make it possible to use search terms to filter session logs so you can find the detail you're looking for quicker
+
+## Possible Stretch Goals:
+- **In-Game Calendar**: A user has suggested a calendar tab to manage a timeline of in-game events.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data. The icon is a segment from official art for the podcast Dice So Nice I Said Dice Twice, illustrated by Kevin Ryan, used with permission.

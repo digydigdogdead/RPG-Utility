@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGUtility.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -127,7 +128,9 @@ namespace RPGUtility.Controls
 
         private void OpenConditionManager(object sender, RoutedEventArgs e)
         {
-
+            ConditionManager conditionManager = new ConditionManager();
+            conditionManager.Combatant = this;
+            conditionManager.Show();
         }
     }
 }

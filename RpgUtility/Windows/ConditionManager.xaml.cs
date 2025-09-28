@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGUtility.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,20 @@ namespace RPGUtility.Windows
     /// </summary>
     public partial class ConditionManager : Window
     {
+        private Combatant? _combatant;
+        public Combatant? Combatant
+        {
+            get { return _combatant; }
+            set
+            {
+                _combatant = value;
+                if (_combatant != null)
+                {
+                    titleTextBlock.Text = _combatant.CombatantName + " Conditions";
+                    UpdateList();
+                }
+            }
+        }
         public ConditionManager()
         {
             InitializeComponent();
@@ -30,6 +45,21 @@ namespace RPGUtility.Windows
         }
 
         private void removeConditionButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void UpdateList()
+        {
+            foreach (var condition in Combatant!.Conditions)
+            {
+                ListViewItem item = new();
+                item.Content = condition;
+                conditionsListView.Items.Add(item);
+            }
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -91,19 +91,7 @@ namespace RPGUtility.Controls
             return (d, e) =>
             {
                 Combatant combatant = (d as Combatant)!;
-                combatant.conditionsWrapPanel.Children.Clear(); // Clear previous children
-
-                foreach (var condition in combatant.Conditions)
-                {
-                    TextBlock conditionText = new TextBlock()
-                    {
-                        Text = condition,
-                        Padding = new Thickness(4),
-                        FontSize = 12,
-                        FontWeight = FontWeights.Bold
-                    };
-                    combatant.conditionsWrapPanel.Children.Add(conditionText);
-                }
+                combatant.UpdateConditionsText();
             };
         }
 
@@ -131,6 +119,22 @@ namespace RPGUtility.Controls
             ConditionManager conditionManager = new ConditionManager();
             conditionManager.Combatant = this;
             conditionManager.Show();
+        }
+
+        public void UpdateConditionsText()
+        {
+            conditionsWrapPanel.Children.Clear(); // Clear previous children
+            foreach (var condition in Conditions)
+            {
+                TextBlock conditionText = new TextBlock()
+                {
+                    Text = condition,
+                    Padding = new Thickness(4),
+                    FontSize = 12,
+                    FontWeight = FontWeights.Bold
+                };
+                conditionsWrapPanel.Children.Add(conditionText);
+            }
         }
     }
 }

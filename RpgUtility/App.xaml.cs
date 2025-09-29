@@ -13,12 +13,66 @@ namespace RPGUtility
     /// </summary>
     public partial class App : Application
     {
-        public Stack<string> RollHistory = new Stack<string>();
-        public List<Clock> Clocks = new List<Clock>();
-        public List<StatTrack> Stats = new List<StatTrack>();
-        public List<Memo> Memos = new List<Memo>();
-        public List<SessionLog> SessionLogs = new List<SessionLog>();
-        public List<Combatant> Combatants = new List<Combatant>();
+        private Stack<string> _rollHistory = new Stack<string>();
+        public Stack<string> RollHistory 
+        { 
+            get { return _rollHistory; }
+            set 
+            { 
+                _rollHistory = value;
+                ChangesMade();
+            } 
+        }
+        private List<Clock> _clocks = new List<Clock>();
+        public List<Clock> Clocks 
+        {
+            get { return _clocks; }
+            set 
+            { 
+                _clocks = value;
+                ChangesMade();
+            }
+        }
+        private List<StatTrack> _stats = new List<StatTrack>();
+        public List<StatTrack> Stats
+        {
+            get { return _stats; }
+            set
+            {
+                _stats = value;
+                ChangesMade();
+            }
+        }
+        private List<Memo> _memos = new List<Memo>();
+        public List<Memo> Memos
+        {
+            get { return _memos; }
+            set
+            {
+                _memos = value;
+                ChangesMade();
+            }
+        }
+        private List<SessionLog> _sessionLogs = new List<SessionLog>();
+        public List<SessionLog> SessionLogs 
+        {
+            get { return _sessionLogs; }
+            set
+            {
+                _sessionLogs = value;
+                ChangesMade();
+            }
+        }
+        private List<Combatant> _combatants = new List<Combatant>();
+        public List<Combatant> Combatants 
+        {
+            get { return _combatants; }
+            set
+            {
+                _combatants = value;
+                ChangesMade();
+            }
+        }
 
         public Memos? MemosPage { get; set; } = null;
         public StatTracker? StatTrackerPage { get; set; } = null;
@@ -30,6 +84,7 @@ namespace RPGUtility
 
         public void LoadData(SaveData sd)
         {
+            string potentialError = "";
             try
             {
                 // Clocks
@@ -45,6 +100,12 @@ namespace RPGUtility
                     Clocks.Add(clock);
                 }
                 ClocksPage?.UpdateClockStack();
+            } catch (Exception ex)
+            {
+                potentialError += $" Clocks failed, {ex.Message}";
+            }
+            try
+            {
                 // Stats
                 Stats.Clear();
                 foreach (var stat in sd.StatsData)
@@ -58,6 +119,12 @@ namespace RPGUtility
                     Stats.Add(statTrack);
                 }
                 StatTrackerPage?.PopulateWrapPanel();
+            } catch (Exception ex)
+            {
+                potentialError += $" Stats failed, {ex.Message}";
+            }
+            try
+            {
                 // Memos
                 Memos.Clear();
                 foreach (var memoDatum in sd.MemosData)
@@ -70,6 +137,12 @@ namespace RPGUtility
                     Memos.Add(memo);
                 }
                 MemosPage?.RefreshMemos();
+            } catch (Exception ex)
+            {
+                potentialError += $" Memos failed, {ex.Message}";
+            }
+            try
+            {
                 // Session Logs
                 SessionLogs.Clear();
                 foreach (var logDatum in sd.SessionLogsData)
@@ -83,16 +156,33 @@ namespace RPGUtility
                     SessionLogs.Add(sessionLog);
                 }
                 SessionLogsPage?.RefreshLogs();
-
+            } catch (Exception ex)
+            {
+                potentialError += $" Session Logs failed, {ex.Message}";
+            }
+            try
+            {
                 // Initiative Tracker
                 Combatants.Clear();
                 foreach (var combatant in sd.CombatantsData)
                 {
-                    Combatants.Add(combatant);
+                    Combatant newCombatant = new Combatant
+                    {
+                        Initiative = combatant.Initiative,
+                        Hp = combatant.Hp,
+                        Conditions = new List<string>(combatant.Conditions),
+                        CombatantName = combatant.Name
+                    };
+                    Combatants.Add(newCombatant);
                 }
                 InitiativeTrackerPage!.CurrentTurnIndex = sd.CurrentTurnIndex;
                 InitiativeTrackerPage!.UpdateTracker();
-
+            } catch (Exception ex)
+            {
+                potentialError += $" Initiative failed, {ex.Message}";
+            }
+            try
+            {
                 // Tabs
                 if (sd.TabsData["DiceRoller"])
                 {
@@ -164,11 +254,33 @@ namespace RPGUtility
                     ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
                     OptionsPage!.initiativeTrackerOption.IsChecked = false;
                 }
-            }
-            catch (Exception ex)
+            } catch (Exception ex)
             {
-                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                potentialError += $" Tabs failed, {ex.Message}";
             }
+
+            if (String.IsNullOrEmpty(potentialError))
+            {
+                OptionsPage!.saveStatusTextBlock.Text = "✔";
+                OptionsPage!.saveStatusTextBlock.ToolTip = "Data loaded.";
+                OptionsPage!.saveButton.IsEnabled = false;
+            }
+            else
+            {
+                MessageBox.Show($"Failed to load some or all data: {potentialError}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ChangesMade()
+        {
+            if (OptionsPage == null) return;
+            OptionsPage.saveStatusTextBlock.Text = "~";
+            OptionsPage.saveStatusTextBlock.ToolTip = "You have unsaved changes.";
+            if (!String.IsNullOrEmpty(LoadedFilePath))
+            {
+                OptionsPage!.saveButton.IsEnabled = true;
+            }
+            
         }
 
     }

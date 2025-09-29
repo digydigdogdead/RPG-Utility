@@ -29,7 +29,7 @@ namespace RPGUtility.Pages
 
         private void clearStatsButton_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.Stats.Clear();
+            (App.Current as App)!.Stats = [];
             PopulateWrapPanel();
         }
 
@@ -41,9 +41,11 @@ namespace RPGUtility.Pages
                 Value = (int)statValueIntegerUpDown.Value!
             };
             (App.Current as App)!.Stats.Add(newStat);
+            (App.Current as App)!.Stats = new List<StatTrack>((App.Current as App)!.Stats);
             PopulateWrapPanel();
             statNameTextBox.Text = string.Empty;
             statValueIntegerUpDown.Value = 1;
+            (App.Current as App)!.Stats = new((App.Current as App)!.Stats);
         }
 
         public void PopulateWrapPanel()

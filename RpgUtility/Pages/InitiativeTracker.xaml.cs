@@ -39,6 +39,7 @@ namespace RPGUtility.Pages
             (App.Current as App)!.Combatants.Add(combatant);
             UpdateTracker();
             nameTextBox.Text = string.Empty;
+            (App.Current as App)!.Combatants = new((App.Current as App)!.Combatants);
         }
         
 
@@ -81,49 +82,6 @@ namespace RPGUtility.Pages
 
                 initiativeTrackPanel.Children.Add((App.Current as App)!.Combatants[i]);
             }
-
-            /*
-            combatantsListView.Items.Clear();
-            (App.Current as App)!.Combatants = (App.Current as App)!.Combatants.OrderByDescending(c => c.Initiative).ToList();
-
-            for (int i = 0; i < (App.Current as App)!.Combatants.Count; i++)
-            {
-                (App.Current as App)!.Combatants[i].TurnOrder = i + 1;
-                ListViewItem item = new ListViewItem();
-                item.Content = (App.Current as App)!.Combatants[i];
-                item.BorderBrush = new SolidColorBrush(Colors.Black);
-                item.BorderThickness = new Thickness(0, 0, 1, 1);
-                item.FontSize = 16;
-                if (i == CurrentTurnIndex)
-                {
-                    item.Background = new SolidColorBrush(Colors.LightGreen);
-                } else
-                {
-                    item.Background = new SolidColorBrush(Colors.White);
-                }
-                combatantsListView.Items.Add(item);
-            } */
         }
-
-        /*
-        private void combatantsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            foreach (ListViewItem item in combatantsListView.Items)
-            {
-                if (item == combatantsListView.SelectedItem)
-                {
-                    item.Background = new SolidColorBrush(Colors.LightGray);
-                }
-                else if (item == combatantsListView.Items[CurrentTurnIndex])
-                {
-                    item.Background = new SolidColorBrush(Colors.LightGreen);
-                }
-                else 
-                {
-                    item.Background = new SolidColorBrush(Colors.White);
-                }
-            }
-        }
-        */
     }
 }

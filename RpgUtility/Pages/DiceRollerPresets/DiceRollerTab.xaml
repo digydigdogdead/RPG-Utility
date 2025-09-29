@@ -85,7 +85,6 @@
                                 Width="100"
                                 Height="137"
                                 Value="0"
-                                Minimum="0"
                                 FontSize="45"
                                 Background="Transparent"/>
         </Grid>

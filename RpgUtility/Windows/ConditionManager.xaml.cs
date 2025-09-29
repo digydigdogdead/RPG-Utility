@@ -71,6 +71,7 @@ namespace RPGUtility.Windows
             }
             Combatant.UpdateConditionsText();
             (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+            (App.Current as App)!.Combatants = new((App.Current as App)!.Combatants);
             this.Close();
         }
 

@@ -19,6 +19,7 @@ namespace RPGUtility.Pages
             (App.Current as App)!.Memos[Index].Title = memoTitleTextBox.Text;
             (App.Current as App)!.Memos[Index].MemoContent = memoContentTextBox.Text;
             (App.Current as App)!.MemosPage?.RefreshMemos();
+            (App.Current as App)!.Memos = new((App.Current as App)!.Memos);
             this.Close();
         }
 
@@ -26,6 +27,7 @@ namespace RPGUtility.Pages
         {
             (App.Current as App)!.Memos.RemoveAt(Index);
             (App.Current as App)!.MemosPage?.RefreshMemos();
+            (App.Current as App)!.Memos = new((App.Current as App)!.Memos);
             this.Close();
         }
 

@@ -64,7 +64,8 @@
                                 FontSize="20"
                                 VerticalAlignment="Center"
                                 Margin="0,0,5,0"
-                                Value="1"/> 
+                                Value="1"
+                                ValueChanged="hpIntegerUpDown_ValueChanged"/> 
         </StackPanel>
         <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <WrapPanel x:Name="conditionsWrapPanel"

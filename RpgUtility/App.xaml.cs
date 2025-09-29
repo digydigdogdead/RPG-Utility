@@ -170,7 +170,7 @@ namespace RPGUtility
                     {
                         Initiative = combatant.Initiative,
                         Hp = combatant.Hp,
-                        Conditions = new List<string>(combatant.Conditions),
+                        Conditions = new(combatant.Conditions),
                         CombatantName = combatant.Name
                     };
                     Combatants.Add(newCombatant);

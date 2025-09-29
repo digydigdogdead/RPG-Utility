@@ -16,16 +16,20 @@
                 <MenuItem Header="Quick Conditions">
                     <MenuItem Header="Asleep"
                               x:Name="asleepMenuItem"
-                              Click="ConditionMenuItem_Click" />
+                              Click="ConditionMenuItem_Click"
+                              Tag="Asleep" />
                     <MenuItem Header="Blinded"
                               x:Name="blindedMenuItem"
-                              Click="ConditionMenuItem_Click" />
+                              Click="ConditionMenuItem_Click"
+                              Tag="Blinded" />
                     <MenuItem Header="Bloodied"
                               x:Name="bloodiedMenuItem"
-                              Click="ConditionMenuItem_Click" />
+                              Click="ConditionMenuItem_Click"
+                              Tag="Bloodied" />
                     <MenuItem Header="Poisoned"
                               x:Name="poisonedMenuItem"
-                              Click="ConditionMenuItem_Click" />
+                              Click="ConditionMenuItem_Click"
+                              Tag="Poisoned" />
                 </MenuItem>
                 <MenuItem Header="Manage Conditions"
                           Click="OpenConditionManager" />

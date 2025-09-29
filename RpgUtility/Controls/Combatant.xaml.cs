@@ -1,6 +1,7 @@
 ﻿using RPGUtility.Windows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -44,15 +45,17 @@ namespace RPGUtility.Controls
             set { SetValue(HpProperty, value); }
         }
         public static readonly DependencyProperty ConditionsProperty = DependencyProperty.Register(
-            nameof(Conditions), typeof(List<string>), typeof(Combatant), new PropertyMetadata(new List<string>(), OnConditionsChanged()));
-        public List<string> Conditions
+            nameof(Conditions), typeof(ObservableCollection<string>), typeof(Combatant), new PropertyMetadata(null, OnConditionsChanged()));
+        public ObservableCollection<string> Conditions
         {
-            get { return (List<string>)GetValue(ConditionsProperty); }
+            get { return (ObservableCollection<string>)GetValue(ConditionsProperty); }
             set { SetValue(ConditionsProperty, value); }
         }
         public Combatant()
         {
             InitializeComponent();
+            Conditions = new ObservableCollection<string>();
+            Conditions.CollectionChanged += (s, e) => UpdateConditionsText();
         }
 
         private void removeCombatantButton_Click(object sender, RoutedEventArgs e)
@@ -109,16 +112,16 @@ namespace RPGUtility.Controls
 
         private void ConditionMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if (sender == asleepMenuItem) Conditions.Add("Asleep");
-            if (sender == blindedMenuItem) Conditions.Add("Blinded");
-            if (sender == bloodiedMenuItem) Conditions.Add("Bloodied");
-            if (sender == poisonedMenuItem) Conditions.Add("Poisoned");
+            if (sender is MenuItem menuItem && menuItem.Tag is string condition)
+            {
+                if (!Conditions.Contains(condition))
+                {
+                    Conditions.Add(condition);
+                }
 
-            // Force property changed callback
-            Conditions = new List<string>(Conditions);
-
-            (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
-            (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
+                (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+                (App.Current as App)!.Combatants = new((App.Current as App)!.Combatants);
+            }
         }
 
         private void OpenConditionManager(object sender, RoutedEventArgs e)

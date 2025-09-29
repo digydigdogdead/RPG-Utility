@@ -62,7 +62,6 @@ namespace RPGUtility.Pages
                         });
                     (App.Current as App)!.LoadedFilePath = fileDialog.FileName;
                     (App.Current as App)!.LoadData(loadedData);
-                    saveButton.IsEnabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -98,7 +97,7 @@ namespace RPGUtility.Pages
 
             foreach (var combatant in (App.Current as App)!.Combatants)
             {
-                saveData.CombatantsData.Add(combatant);
+                saveData.CombatantsData.Add((combatant.CombatantName, combatant.Initiative, combatant.Hp, new List<string>(combatant.Conditions)));
             }
             saveData.CurrentTurnIndex = (int)(App.Current as App)!.InitiativeTrackerPage?.CurrentTurnIndex!;
 
@@ -191,8 +190,8 @@ namespace RPGUtility.Pages
                 {
                     string json = JsonConvert.SerializeObject(sd, Formatting.Indented);
                     System.IO.File.WriteAllText((App.Current as App)!.LoadedFilePath!, json);
-                    MessageBox.Show("Data saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    saveButton.IsEnabled = true;
+                    saveStatusTextBlock.Text = "✔️";
+                    saveButton.IsEnabled = false;
                 }
                 catch (Exception ex)
                 {

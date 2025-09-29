@@ -65,6 +65,7 @@ namespace RPGUtility.Controls
                 {
                     statTrack.Background = new SolidColorBrush(statTrack.BackgroundColour);
                 }
+                (App.Current as App)!.Stats = new List<StatTrack>((App.Current as App)!.Stats);
             };
         }
 
@@ -77,6 +78,7 @@ namespace RPGUtility.Controls
                 {
                     statTrack.statNameTextBlock.Text = statTrack.Stat;
                 }
+                (App.Current as App)!.Stats = new List<StatTrack>((App.Current as App)!.Stats);
             };
         }
         private static PropertyChangedCallback OnValueChanged()
@@ -88,6 +90,7 @@ namespace RPGUtility.Controls
                 {
                     statTrack.statValueIntegerUpDown.Value = statTrack.Value;
                 }
+                (App.Current as App)!.Stats = new List<StatTrack>((App.Current as App)!.Stats);
             };
         }
 
@@ -121,11 +124,18 @@ namespace RPGUtility.Controls
             }
 
             ((App)Application.Current).StatTrackerPage?.PopulateWrapPanel();
+            (App.Current as App)!.Stats = new List<StatTrack>((App.Current as App)!.Stats);
         }
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             (App.Current as App)!.Stats.Remove(this);
             (App.Current as App)!.StatTrackerPage?.PopulateWrapPanel();
+            (App.Current as App)!.Stats = new List<StatTrack>((App.Current as App)!.Stats);
+        }
+
+        private void statValueIntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            Value = (int)(statValueIntegerUpDown.Value ?? 1);
         }
     }
 }

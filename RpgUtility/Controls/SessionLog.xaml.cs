@@ -53,6 +53,7 @@ namespace RPGUtility.Controls
                 {
                     log.numTextBlock.Text = newNumber.ToString();
                 }
+                (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
             };
         }
 
@@ -69,9 +70,9 @@ namespace RPGUtility.Controls
                     else
                     {
                         log.titleTextBlock.Text = newTitle.Substring(0, 35) + "...";
-                    }
-                    
+                    }  
                 }
+                (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
             };
         }
 
@@ -83,6 +84,7 @@ namespace RPGUtility.Controls
                 {
                     log.ToolTip = newDesc;
                 }
+                (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
             };
         }
 
@@ -90,6 +92,7 @@ namespace RPGUtility.Controls
         {
             (App.Current as App)!.SessionLogs?.Remove(this);
             (App.Current as App)!.SessionLogsPage?.RefreshLogs();
+            (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
         }
 
         private void OpenEditWindow(object sender, EventArgs e)

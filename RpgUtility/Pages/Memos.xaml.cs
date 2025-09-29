@@ -30,7 +30,7 @@ namespace RPGUtility.Pages
 
         private void clearMemosButton_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.Memos.Clear();
+            (App.Current as App)!.Memos = [];
             RefreshMemos();
         }
     }

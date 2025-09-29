@@ -95,6 +95,7 @@ namespace RPGUtility.Controls
             };
             clockStack.Children.Add(deleteButton);
             FillSegments();
+            (App.Current as App)!.Clocks = new List<Clock>((App.Current as App)!.Clocks);
         }
         private static PropertyChangedCallback OnSegmentsChanged()
         {
@@ -113,6 +114,7 @@ namespace RPGUtility.Controls
                 if (clock.clockName != null)
                 {
                     clock.clockName.Text = clock.ClockName;
+                    (App.Current as App)!.Clocks = new List<Clock>((App.Current as App)!.Clocks);
                 }
             };
         }
@@ -123,6 +125,7 @@ namespace RPGUtility.Controls
             {
                 Clock clock = (Clock)d;
                 clock.FillSegments();
+                (App.Current as App)!.Clocks = new List<Clock>((App.Current as App)!.Clocks);
             };
         }
 
@@ -137,6 +140,7 @@ namespace RPGUtility.Controls
                     {
                         rect.Fill = new SolidColorBrush(FilledColor);
                         FilledSegments++;
+                        (App.Current as App)!.Clocks = new List<Clock>((App.Current as App)!.Clocks);
                         break;
                     }
                 }
@@ -157,6 +161,7 @@ namespace RPGUtility.Controls
                             rect.Fill = new SolidColorBrush(DefaultColor);
                             e.Handled = true;  // Prevents the left-click event from firing
                             FilledSegments--;
+                            (App.Current as App)!.Clocks = new List<Clock>((App.Current as App)!.Clocks);
                             break;
                         }
                     }

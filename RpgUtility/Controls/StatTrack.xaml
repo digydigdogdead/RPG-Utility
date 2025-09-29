@@ -19,7 +19,8 @@
                                 Margin="0,10,0,10"
                                 Width="60"
                                 FontSize="20"
-                                HorizontalAlignment="Center" />
+                                HorizontalAlignment="Center"
+                                ValueChanged="statValueIntegerUpDown_ValueChanged"/>
         </StackPanel>
         <Grid.ContextMenu>
             <ContextMenu>

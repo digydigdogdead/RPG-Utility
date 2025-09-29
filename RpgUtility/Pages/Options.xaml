@@ -12,7 +12,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -36,7 +37,13 @@
                     FontSize="38"
                     Width="160"/>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+        <TextBlock Text=""
+                   Grid.Column="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   FontSize="20"
+                   x:Name="saveStatusTextBlock"/>
+        <StackPanel Orientation="Vertical" Grid.Column="2" VerticalAlignment="Center" Margin="5">
             <TextBlock Text="Tabs:" FontSize="38" Margin="0, 0, 0, 10"/>
             <WrapPanel>
                 <CheckBox Content="Dice Roller" 

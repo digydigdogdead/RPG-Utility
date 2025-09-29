@@ -20,6 +20,7 @@ namespace RPGUtility.Windows
             (App.Current as App)!.SessionLogs[LogIndex].SessionNumber = (int)sessionNumberUpDown.Value!;
             (App.Current as App)!.SessionLogs[LogIndex].LogTitle = sessionTitleTextBox.Text;
             (App.Current as App)!.SessionLogsPage!.RefreshLogs();
+            (App.Current as App)!.SessionLogs = new((App.Current as App)!.SessionLogs);
             this.Close();
         }
 
@@ -27,6 +28,7 @@ namespace RPGUtility.Windows
         {
             (App.Current as App)!.SessionLogs.RemoveAt(LogIndex);
             (App.Current as App)!.SessionLogsPage!.RefreshLogs();
+            (App.Current as App)!.SessionLogs = new((App.Current as App)!.SessionLogs);
             this.Close();
         }
 

@@ -59,6 +59,7 @@ namespace RPGUtility.Controls
         {
             (App.Current as App)!.Combatants.Remove(this);
             (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+            (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
         }
 
         private static PropertyChangedCallback OnInitiativeChanged()
@@ -67,6 +68,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.initiativeIntegerUpDown.Value = combatant.Initiative;
+                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
             };
         }
 
@@ -76,6 +78,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.nameTextBlock.Text = combatant.CombatantName;
+                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
             };
         }
         private static PropertyChangedCallback OnHpChanged()
@@ -84,6 +87,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.hpIntegerUpDown.Value = combatant.Hp;
+                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
             };
         }
         private static PropertyChangedCallback OnConditionsChanged()
@@ -92,6 +96,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.UpdateConditionsText();
+                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
             };
         }
 
@@ -99,6 +104,7 @@ namespace RPGUtility.Controls
         {
             Initiative = (int)initiativeIntegerUpDown.Value!;
             (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+            (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
         }
 
         private void ConditionMenuItem_Click(object sender, RoutedEventArgs e)
@@ -112,6 +118,7 @@ namespace RPGUtility.Controls
             Conditions = new List<string>(Conditions);
 
             (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
+            (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
         }
 
         private void OpenConditionManager(object sender, RoutedEventArgs e)
@@ -135,6 +142,11 @@ namespace RPGUtility.Controls
                 };
                 conditionsWrapPanel.Children.Add(conditionText);
             }
+        }
+
+        private void hpIntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            Hp = (int)hpIntegerUpDown.Value!;
         }
     }
 }

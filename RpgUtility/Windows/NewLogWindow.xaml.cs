@@ -24,6 +24,7 @@ namespace RPGUtility.Windows
             };
             ((App)Application.Current).SessionLogs.Add(newLog);
             ((App)Application.Current).SessionLogsPage?.RefreshLogs();
+            (App.Current as App)!.SessionLogs = new((App.Current as App)!.SessionLogs);
             this.Close();
         }
 

@@ -27,7 +27,7 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
   ![image](https://i.imgur.com/4DY1E71.png)
 
 ## To Do:
-- **Make Session Logs Searchable**: Make it possible to use search terms to filter session logs so you can find the detail you're looking for quicker
+- **Make Session Logs Searchable** Done!: Make it possible to use search terms to filter session logs so you can find the detail you're looking for quicker (This has been implemented in the master branch and will be included in the next release)
 
 ## Possible Stretch Goals:
 - **In-Game Calendar**: A user has suggested a calendar tab to manage a timeline of in-game events.

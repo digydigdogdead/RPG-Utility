@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RPGUtility.Pages"
       xmlns:usercontrols="clr-namespace:RPGUtility.Controls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="780"
       Title="SessionLogs"
       Background="LightGray">
     <Grid>

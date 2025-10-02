@@ -158,6 +158,14 @@ namespace RPGUtility.Pages
             {
                 saveData.TabsData["InitiativeTracker"] = false;
             }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["Calendar"] = true;
+            }
+            else
+            {
+                saveData.TabsData["Calendar"] = false;
+            }
 
             return saveData;
         }
@@ -234,6 +242,10 @@ namespace RPGUtility.Pages
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Visible;
             }
+            else if (sender == calendarOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Visible;
+            }
         }
 
         private void OptionUnchecked(object sender, RoutedEventArgs e)
@@ -265,6 +277,10 @@ namespace RPGUtility.Pages
             else if (sender == initiativeTrackerOption)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == calendarOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Collapsed;
             }
         }
     }

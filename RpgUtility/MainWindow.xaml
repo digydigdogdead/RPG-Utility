@@ -90,6 +90,11 @@
                        NavigationUIVisibility="Hidden" 
                        x:Name="nameGeneratorFrame"/>
             </TabItem>
+            <TabItem Header="Calendar" x:Name="calendarTab">
+                <Frame Source="Pages/CalendarPage.xaml" 
+                       NavigationUIVisibility="Hidden" 
+                       x:Name="calendarFrame"/>
+            </TabItem>
             <TabItem Header="Options" x:Name="saveLoadTab">
                 <Frame Source="Pages/Options.xaml" 
                        NavigationUIVisibility="Hidden" 

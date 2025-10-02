@@ -254,6 +254,16 @@ namespace RPGUtility
                     ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
                     OptionsPage!.initiativeTrackerOption.IsChecked = false;
                 }
+                if (sd.TabsData["Calendar"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Visible;
+                    OptionsPage!.calendarOption.IsChecked = true;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.calendarOption.IsChecked = false;
+                }
             } catch (Exception ex)
             {
                 potentialError += $" Tabs failed, {ex.Message}";

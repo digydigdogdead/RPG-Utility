@@ -93,7 +93,10 @@ namespace RPGUtility.Controls
 
         private void DoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            new Windows.EventsManager
+            {
+                Day = this
+            }.ShowDialog();
         }
     }
 }

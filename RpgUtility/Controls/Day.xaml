@@ -5,13 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RPGUtility.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
+             d:DesignHeight="90" d:DesignWidth="90"
+             MouseDoubleClick="DoubleClick">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="White" Padding="5" Margin="5">
             <StackPanel>
-                <TextBlock x:Name="DayNumberText" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Text="1"/>
+                <TextBlock x:Name="DayNumberText" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Text="1"/>
                 <StackPanel x:Name="EventsPanel"
-                            HorizontalAlignment="Left"/>
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical"/>
             </StackPanel>
         </Border>
     </Grid>

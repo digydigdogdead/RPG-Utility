@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -20,9 +22,78 @@ namespace RPGUtility.Controls
     /// </summary>
     public partial class Day : UserControl
     {
+        public static readonly DependencyProperty ConditionsProperty = DependencyProperty.Register(
+            nameof(Events), typeof(ObservableCollection<string>), typeof(Day), new PropertyMetadata(null, OnEventsChanged()));
+        public ObservableCollection<string> Events
+        {
+            get { return (ObservableCollection<string>)GetValue(ConditionsProperty); }
+            set { SetValue(ConditionsProperty, value); }
+        }
+
+        public static readonly DependencyProperty DayNumberProperty = DependencyProperty.Register(
+            nameof(DayNumber), typeof(int), typeof(Day), new PropertyMetadata(1, OnDayNumberChanged()));
+        public int DayNumber
+        {
+            get { return (int)GetValue(DayNumberProperty); }
+            set { SetValue(DayNumberProperty, value); }
+        }
+
+        public string Month { get; set; } = "Month";
+        public int Year { get; set; } = 1000;
         public Day()
         {
             InitializeComponent();
+            Events = new ObservableCollection<string>();
+            Events.CollectionChanged += (s, e) => UpdateEventsText();
+            UpdateEventsText();
+            DayNumberText.Text = DayNumber.ToString();
+        }
+
+        private static PropertyChangedCallback OnEventsChanged()
+        {
+            return (d, e) =>
+            {
+                if (d is Day day && day.Events != null)
+                {
+                    day.Events.CollectionChanged += (s, ev) => day.UpdateEventsText();
+                    day.UpdateEventsText();
+                }
+            };
+        }
+
+        private void UpdateEventsText()
+        {
+            EventsPanel.Children.Clear();
+            foreach (var evt in Events)
+            {
+                TextBlock textBlock = new TextBlock
+                {
+                    Text = evt,
+                    Margin = new Thickness(2),
+                    Padding = new Thickness(4),
+                    Background = new SolidColorBrush(Colors.LightGray),
+                    Foreground = new SolidColorBrush(Colors.Black),
+                    FontSize = 12,
+                    TextWrapping = TextWrapping.Wrap
+                };
+                EventsPanel.Children.Add(textBlock);
+            }
+        }
+
+        private static PropertyChangedCallback OnDayNumberChanged()
+        {
+            return (d, e) =>
+            {
+                if (d is Day day)
+                {
+                    day.DayNumberText.Text = day.DayNumber.ToString();
+                }
+            };
+        }
+
+        private void DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -10,9 +10,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
+            <RowDefinition />
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal"
+        <TextBlock Grid.Row="0"
+                   x:Name="YearText"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Text="YEAR"/>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
                     HorizontalAlignment="Center">
             <Button Content="◀️"
                     x:Name="PrevMonthButton"
@@ -20,7 +28,7 @@
                     VerticalAlignment="Center"
                     Height="25"
                     />
-            <TextBlock x:Name="MonthYearText"
+            <TextBlock x:Name="MonthText"
                        FontSize="20"
                        FontWeight="Bold"
                        VerticalAlignment="Center"
@@ -39,6 +47,7 @@
             <WrapPanel x:Name="DaysPanel"
                        Margin="10"
                        Orientation="Horizontal"
+                       VerticalAlignment="Top"    
                        />
         </ScrollViewer>
     </Grid>

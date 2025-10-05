@@ -64,6 +64,7 @@ namespace RPGUtility.Windows
             {
                 _day?.Events.Add(item.Content.ToString() ?? string.Empty);
             }
+            this.Close();
         }
     }
 }

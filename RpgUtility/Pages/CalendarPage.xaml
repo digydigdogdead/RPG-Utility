@@ -9,7 +9,7 @@
       d:DesignHeight="440" d:DesignWidth="780"
       Background="AntiqueWhite"
       Title="Calendar">
-    <Grid>
+    <Grid x:Name="CalendarPageGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="12*"/>

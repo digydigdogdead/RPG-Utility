@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPGUtility.Controls;
 
 namespace RPGUtility.Pages
 {
@@ -20,14 +21,16 @@ namespace RPGUtility.Pages
     /// </summary>
     public partial class CalendarPage : Page
     {
+        public Controls.Calendar currentCalendar { get; set; } = new Controls.Calendar();
         public CalendarPage()
         {
             InitializeComponent();
+            (App.Current as App)!.CalendarPage = this;
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

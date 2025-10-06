@@ -1,4 +1,4 @@
-﻿using RPGUtility;
+﻿using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -74,12 +74,24 @@ namespace RPGUtility
             }
         }
 
+        public ObservableCollection<Day> DaysInCalendar { get; set; } = new ObservableCollection<Day>();
+
+        public App()
+        {
+            DaysInCalendar.CollectionChanged += (s, e) =>
+            {
+                CalendarPage?.currentCalendar?.PopulateCalendar();
+                ChangesMade();
+            };
+        }
+
         public Memos? MemosPage { get; set; } = null;
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
         public Pages.Options? OptionsPage {get; set; } = null;
         public InitiativeTracker? InitiativeTrackerPage { get; set; } = null;
+        public CalendarPage? CalendarPage { get; set; } = null;
         public string? LoadedFilePath { get; set; } = null;
 
         public void LoadData(SaveData sd)

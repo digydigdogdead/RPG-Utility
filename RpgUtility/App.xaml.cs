@@ -75,6 +75,31 @@ namespace RPGUtility
         }
 
         public ObservableCollection<Day> DaysInCalendar { get; set; } = new ObservableCollection<Day>();
+        public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
+        private int _currentMonthIndex = 0;
+        public int CurrentMonthIndex 
+        {
+            get { return _currentMonthIndex; }
+            set 
+            {
+                _currentMonthIndex = value;
+                CalendarPage!.currentCalendar!.CurrentMonthIndex = value;
+                CalendarPage?.currentCalendar?.PopulateCalendar();
+                ChangesMade();
+            }
+        }
+        private int _currentYear = 1000;
+        public int CurrentYear 
+        {
+            get { return _currentYear; }
+            set 
+            {
+                _currentYear = value;
+                CalendarPage!.currentCalendar!.CurrentYear = value;
+                CalendarPage?.currentCalendar?.PopulateCalendar();
+                ChangesMade();
+            } 
+        }
 
         public App()
         {

@@ -22,5 +22,8 @@
                 Click="SettingsButton_Click"
                 x:Name="SettingsButton"
                 />
+        <mycontrols:Calendar x:Name="currentCalendar"
+                             Grid.Column="1"
+                             Margin="10"/>
     </Grid>
 </Page>

@@ -22,12 +22,12 @@ namespace RPGUtility.Controls
     /// </summary>
     public partial class Day : UserControl
     {
-        public static readonly DependencyProperty ConditionsProperty = DependencyProperty.Register(
+        public static readonly DependencyProperty EventsProperty = DependencyProperty.Register(
             nameof(Events), typeof(ObservableCollection<string>), typeof(Day), new PropertyMetadata(null, OnEventsChanged()));
         public ObservableCollection<string> Events
         {
-            get { return (ObservableCollection<string>)GetValue(ConditionsProperty); }
-            set { SetValue(ConditionsProperty, value); }
+            get { return (ObservableCollection<string>)GetValue(EventsProperty); }
+            set { SetValue(EventsProperty, value); }
         }
 
         public static readonly DependencyProperty DayNumberProperty = DependencyProperty.Register(

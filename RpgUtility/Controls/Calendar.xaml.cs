@@ -36,8 +36,6 @@ namespace RPGUtility.Controls
             set { SetValue(CurrentMonthIndexProperty, value); }
         }
 
-        public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
-
         public Calendar()
         {
             InitializeComponent();
@@ -47,22 +45,26 @@ namespace RPGUtility.Controls
         {
             if (CurrentMonthIndex == 0)
             {
-                CurrentYear--;
-                CurrentMonthIndex = MonthsToDays.Count - 1;
+                (App.Current as App)!.CurrentYear--;
+                (App.Current as App)!.CurrentMonthIndex = (App.Current as App)!.MonthsToDays.Count - 1;
+                PopulateCalendar();
                 return;
             }
-            CurrentMonthIndex--;
+            (App.Current as App)!.CurrentMonthIndex--;
+            PopulateCalendar();
         }
 
         private void NextMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentMonthIndex == MonthsToDays.Count - 1)
+            if (CurrentMonthIndex == (App.Current as App)!.MonthsToDays.Count - 1)
             {
-                CurrentYear++;
-                CurrentMonthIndex = 0;
+                (App.Current as App)!.CurrentYear++;
+                (App.Current as App)!.CurrentMonthIndex = 0;
+                PopulateCalendar();
                 return;
             }
-            CurrentMonthIndex++;
+            (App.Current as App)!.CurrentMonthIndex++;
+            PopulateCalendar();
         }
 
         private static PropertyChangedCallback OnYearChanged()
@@ -72,7 +74,6 @@ namespace RPGUtility.Controls
                 if (d is Calendar calendar)
                 {
                     calendar.YearText.Text = calendar.CurrentYear.ToString();
-                    calendar.PopulateCalendar();
                 }
             };
         }
@@ -83,8 +84,7 @@ namespace RPGUtility.Controls
             {
                 if (d is Calendar calendar)
                 {
-                    calendar.MonthText.Text = calendar.MonthsToDays.ElementAt(calendar.CurrentMonthIndex).Key;
-                    calendar.PopulateCalendar();
+                    calendar.MonthText.Text = (App.Current as App)!.MonthsToDays.ElementAt(calendar.CurrentMonthIndex).Key;
                 }
             };
         }
@@ -93,18 +93,25 @@ namespace RPGUtility.Controls
         {
             DaysPanel.Children.Clear();
            var daysInMonth = (from day in (App.Current as App)!.DaysInCalendar
-                             where day.Month == MonthsToDays.ElementAt(CurrentMonthIndex).Key
+                             where day.Month == (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key
                              && day.Year == CurrentYear
                              select day).ToList();
 
             if (daysInMonth.Count == 0)
             {
-                for (int i = 1; i <= MonthsToDays.ElementAt(CurrentMonthIndex).Value; i++)
+                for (int i = 1; i <= (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Value; i++)
                 {
-                    (App.Current as App)!.DaysInCalendar.Add(new Day() { DayNumber = i, Month = MonthsToDays.ElementAt(CurrentMonthIndex).Key, Year = CurrentYear });
+                    (App.Current as App)!.DaysInCalendar.Add(new Day() 
+                    { 
+                        DayNumber = i, 
+                        Month = (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key, 
+                        Year = CurrentYear 
+                    });
                 }
+                PopulateCalendar();
             }
 
+            YearText.Text = CurrentYear.ToString();
             foreach (var day in daysInMonth)
             {
                 DaysPanel.Children.Add(day);

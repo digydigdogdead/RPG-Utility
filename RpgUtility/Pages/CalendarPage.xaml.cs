@@ -21,7 +21,6 @@ namespace RPGUtility.Pages
     /// </summary>
     public partial class CalendarPage : Page
     {
-        public Controls.Calendar currentCalendar { get; set; } = new Controls.Calendar();
         public CalendarPage()
         {
             InitializeComponent();
@@ -30,7 +29,7 @@ namespace RPGUtility.Pages
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            new Windows.CalendarEditor().Show();
         }
     }
 }

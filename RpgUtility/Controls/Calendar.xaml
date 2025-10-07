@@ -39,7 +39,7 @@
                        FontWeight="Bold"
                        VerticalAlignment="Center"
                        Margin="10,0"
-                       Text="January"/>
+                       Text="Month"/>
             <Button Content="▶️"
                     x:Name="NextMonthButton"
                     Click="NextMonthButton_Click"

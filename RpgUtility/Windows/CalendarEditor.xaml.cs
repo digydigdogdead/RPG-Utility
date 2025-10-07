@@ -63,15 +63,19 @@ namespace RPGUtility.Windows
             var november = new { MonthName = "November", DaysInMonth = 30 };
             MonthsListView.Items.Add(november);
             var december = new { MonthName = "December", DaysInMonth = 31 };
+            MonthsListView.Items.Add(december);
         }
 
         private void SaveCalendarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (MonthsListView.Items.Count == 0) return;
+            (App.Current as App)!.MonthsToDays.Clear();
             foreach (var item in MonthsListView.Items)
             {
                 var month = (dynamic)item;
                 (App.Current as App)!.MonthsToDays[month.MonthName] = month.DaysInMonth;
             }
+            (App.Current as App)!.DaysInCalendar.Clear();
             (App.Current as App)!.CurrentYear = (int)CurrentYearIntegerUpDown.Value!;
             (App.Current as App)!.CurrentMonthIndex = 0;
             (App.Current as App)!.CalendarPage!.currentCalendar!.PopulateCalendar();

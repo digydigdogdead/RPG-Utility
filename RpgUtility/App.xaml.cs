@@ -84,8 +84,11 @@ namespace RPGUtility
             {
                 _currentMonthIndex = value;
                 CalendarPage!.currentCalendar!.CurrentMonthIndex = value;
-                CalendarPage?.currentCalendar?.PopulateCalendar();
-                ChangesMade();
+                if (!isLoading)
+                {
+                    CalendarPage?.currentCalendar?.PopulateCalendar();
+                    ChangesMade();
+                }
             }
         }
         private int _currentYear = 1000;
@@ -96,15 +99,21 @@ namespace RPGUtility
             {
                 _currentYear = value;
                 CalendarPage!.currentCalendar!.CurrentYear = value;
-                CalendarPage?.currentCalendar?.PopulateCalendar();
-                ChangesMade();
+                if (!isLoading)
+                {
+                    CalendarPage?.currentCalendar?.PopulateCalendar();
+                    ChangesMade();
+                }
             } 
         }
+
+        public bool isLoading { get; set; } = false;
 
         public App()
         {
             DaysInCalendar.CollectionChanged += (s, e) =>
             {
+                if (isLoading) return;
                 if (DaysInCalendar.Count > 0)
                 {
                     CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
@@ -126,6 +135,7 @@ namespace RPGUtility
 
         public void LoadData(SaveData sd)
         {
+            isLoading = true;
             string potentialError = "";
             try
             {
@@ -222,6 +232,29 @@ namespace RPGUtility
             } catch (Exception ex)
             {
                 potentialError += $" Initiative failed, {ex.Message}";
+            }
+            try 
+            {
+                // Calendar
+                DaysInCalendar.Clear();
+                MonthsToDays = new(sd.MonthsToDays);
+                CurrentMonthIndex = sd.CurrentMonthIndex;
+                CurrentYear = sd.CurrentYear;
+                foreach (var dayDatum in sd.DaysData)
+                {
+                    Day day = new Day
+                    {
+                        DayNumber = dayDatum.DayNumber,
+                        Month = dayDatum.MonthName,
+                        Year = dayDatum.Year,
+                        Events = new(dayDatum.Events)
+                    };
+                    DaysInCalendar.Add(day);
+                }
+                CalendarPage?.currentCalendar?.PopulateCalendar();
+            } catch (Exception ex)
+            {
+                potentialError += $" Calendar failed, {ex.Message}";
             }
             try
             {
@@ -321,6 +354,11 @@ namespace RPGUtility
             {
                 MessageBox.Show($"Failed to load some or all data: {potentialError}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            isLoading = false;
+            CalendarPage?.currentCalendar?.PopulateCalendar();
+            CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
+            CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
         }
 
         private void ChangesMade()

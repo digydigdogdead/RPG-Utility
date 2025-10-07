@@ -101,6 +101,15 @@ namespace RPGUtility.Pages
             }
             saveData.CurrentTurnIndex = (int)(App.Current as App)!.InitiativeTrackerPage?.CurrentTurnIndex!;
 
+            // Calendar
+            saveData.CurrentMonthIndex = (App.Current as App)!.CurrentMonthIndex!;
+            saveData.CurrentYear = (App.Current as App)!.CurrentYear!;
+            saveData.MonthsToDays = new Dictionary<string, int>((App.Current as App)!.MonthsToDays);
+            foreach (var day in (App.Current as App)!.DaysInCalendar)
+            {
+                saveData.DaysData.Add((day.DayNumber, day.Month, day.Year, new List<string>(day.Events)));
+            }
+
             // Tabs
             if (((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility == Visibility.Visible)
             {

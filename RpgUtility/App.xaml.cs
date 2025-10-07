@@ -105,6 +105,11 @@ namespace RPGUtility
         {
             DaysInCalendar.CollectionChanged += (s, e) =>
             {
+                if (DaysInCalendar.Count > 0)
+                {
+                    CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
+                    CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
+                }
                 CalendarPage?.currentCalendar?.PopulateCalendar();
                 ChangesMade();
             };

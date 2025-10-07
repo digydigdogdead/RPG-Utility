@@ -27,6 +27,7 @@
                     Click="PrevMonthButton_Click"
                     VerticalAlignment="Center"
                     Height="25"
+                    IsEnabled="False"
                     />
             <TextBlock x:Name="MonthText"
                        FontSize="20"
@@ -39,6 +40,7 @@
                     Click="NextMonthButton_Click"
                     VerticalAlignment="Center"
                     Height="25"
+                    IsEnabled="False"
                     />
         </StackPanel>
         <ScrollViewer Grid.Row="2"

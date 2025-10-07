@@ -98,5 +98,18 @@ namespace RPGUtility.Controls
                 Day = this
             }.ShowDialog();
         }
+
+        private void ManageEventsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            DoubleClick(sender, null!);
+        }
+
+        private void DeleteDayMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            new Windows.DeleteDayConfirm
+            {
+                DayToDelete = this
+            }.ShowDialog();
+        }
     }
 }

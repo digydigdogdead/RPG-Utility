@@ -9,6 +9,12 @@
              Height="90" Width="90"
              MouseDoubleClick="DoubleClick">
     <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Manage Events" x:Name="ManageEventsMenuItem" Click="ManageEventsMenuItem_Click"/>
+                <MenuItem Header="Delete day" x:Name="DeleteDayMenuItem" Click="DeleteDayMenuItem_Click"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="White" Padding="5" Margin="5">
             <StackPanel>
                 <TextBlock x:Name="DayNumberText" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Text="1"/>

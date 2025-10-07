@@ -26,6 +26,10 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
   
   ![image](https://i.imgur.com/4DY1E71.png)
 
+- ### Calendar
+    Manage a custom calendar for your fantasy worlds so you can track the passage of time accurately to the day!
+  ![image](https://i.imgur.com/QOCcKI3.png)
+
 ## To Do:
 - **Make Session Logs Searchable** Done!: Make it possible to use search terms to filter session logs so you can find the detail you're looking for quicker (This has been implemented in the master branch and will be included in the next release)
 - **Include info buttons/somewhere to see instructions**: As the scope of the project has grown, each page has evolved to have functions beyond what is obvious (e.g. within context menus) and a way to guide the user to those options should probably be implemented.

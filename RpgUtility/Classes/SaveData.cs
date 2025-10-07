@@ -17,5 +17,10 @@ namespace RPGUtility
         public Dictionary<string, bool> TabsData { get; set; } = new Dictionary<string, bool>();
         public List<(string Name, int Initiative, int Hp, List<string> Conditions)> CombatantsData { get; set; } = new();
         public int CurrentTurnIndex { get; set; } = 0;
+        public List<(int DayNumber, string MonthName, int Year, List<string> Events)> DaysData { get; set; } = new();
+        public int CurrentMonthIndex { get; set; } = 0;
+        public int CurrentYear { get; set; } = 1000;
+        public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
+
     }
 }

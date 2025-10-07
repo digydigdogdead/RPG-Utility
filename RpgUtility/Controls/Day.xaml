@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="RPGUtility.Controls.Day"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RPGUtility.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="90"
+             Height="90" Width="90"
+             MouseDoubleClick="DoubleClick">
+    <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Manage Events" x:Name="ManageEventsMenuItem" Click="ManageEventsMenuItem_Click"/>
+                <MenuItem Header="Delete day" x:Name="DeleteDayMenuItem" Click="DeleteDayMenuItem_Click"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="White" Padding="5" Margin="5">
+            <StackPanel>
+                <TextBlock x:Name="DayNumberText" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Text="1"/>
+                <StackPanel x:Name="EventsPanel"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -101,6 +101,15 @@ namespace RPGUtility.Pages
             }
             saveData.CurrentTurnIndex = (int)(App.Current as App)!.InitiativeTrackerPage?.CurrentTurnIndex!;
 
+            // Calendar
+            saveData.CurrentMonthIndex = (App.Current as App)!.CurrentMonthIndex!;
+            saveData.CurrentYear = (App.Current as App)!.CurrentYear!;
+            saveData.MonthsToDays = new Dictionary<string, int>((App.Current as App)!.MonthsToDays);
+            foreach (var day in (App.Current as App)!.DaysInCalendar)
+            {
+                saveData.DaysData.Add((day.DayNumber, day.Month, day.Year, new List<string>(day.Events)));
+            }
+
             // Tabs
             if (((MainWindow)System.Windows.Application.Current.MainWindow).diceRollerTab.Visibility == Visibility.Visible)
             {
@@ -157,6 +166,14 @@ namespace RPGUtility.Pages
             else
             {
                 saveData.TabsData["InitiativeTracker"] = false;
+            }
+            if (((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility == Visibility.Visible)
+            {
+                saveData.TabsData["Calendar"] = true;
+            }
+            else
+            {
+                saveData.TabsData["Calendar"] = false;
             }
 
             return saveData;
@@ -234,6 +251,10 @@ namespace RPGUtility.Pages
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Visible;
             }
+            else if (sender == calendarOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Visible;
+            }
         }
 
         private void OptionUnchecked(object sender, RoutedEventArgs e)
@@ -265,6 +286,10 @@ namespace RPGUtility.Pages
             else if (sender == initiativeTrackerOption)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
+            }
+            else if (sender == calendarOption)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Collapsed;
             }
         }
     }

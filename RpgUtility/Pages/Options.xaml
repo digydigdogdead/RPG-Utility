@@ -102,6 +102,14 @@
                           VerticalContentAlignment="Center"
                           Margin="5"
                           IsChecked="True"/>
+                <CheckBox Content="Calendar"
+                          FontSize="20"
+                          x:Name="calendarOption"
+                          Checked="OptionChecked"
+                          Unchecked="OptionUnchecked"
+                          VerticalContentAlignment="Center"
+                          Margin="5"
+                          IsChecked="True"/>
             </WrapPanel>
         </StackPanel>
     </Grid>

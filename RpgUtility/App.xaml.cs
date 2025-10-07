@@ -1,4 +1,4 @@
-﻿using RPGUtility;
+﻿using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -74,16 +74,68 @@ namespace RPGUtility
             }
         }
 
+        public ObservableCollection<Day> DaysInCalendar { get; set; } = new ObservableCollection<Day>();
+        public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
+        private int _currentMonthIndex = 0;
+        public int CurrentMonthIndex 
+        {
+            get { return _currentMonthIndex; }
+            set 
+            {
+                _currentMonthIndex = value;
+                CalendarPage!.currentCalendar!.CurrentMonthIndex = value;
+                if (!isLoading)
+                {
+                    CalendarPage?.currentCalendar?.PopulateCalendar();
+                    ChangesMade();
+                }
+            }
+        }
+        private int _currentYear = 1000;
+        public int CurrentYear 
+        {
+            get { return _currentYear; }
+            set 
+            {
+                _currentYear = value;
+                CalendarPage!.currentCalendar!.CurrentYear = value;
+                if (!isLoading)
+                {
+                    CalendarPage?.currentCalendar?.PopulateCalendar();
+                    ChangesMade();
+                }
+            } 
+        }
+
+        public bool isLoading { get; set; } = false;
+
+        public App()
+        {
+            DaysInCalendar.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                if (DaysInCalendar.Count > 0)
+                {
+                    CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
+                    CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
+                }
+                CalendarPage?.currentCalendar?.PopulateCalendar();
+                ChangesMade();
+            };
+        }
+
         public Memos? MemosPage { get; set; } = null;
         public StatTracker? StatTrackerPage { get; set; } = null;
         public SessionLogs? SessionLogsPage { get; set; } = null;
         public Clocks? ClocksPage { get; set; } = null;
         public Pages.Options? OptionsPage {get; set; } = null;
         public InitiativeTracker? InitiativeTrackerPage { get; set; } = null;
+        public CalendarPage? CalendarPage { get; set; } = null;
         public string? LoadedFilePath { get; set; } = null;
 
         public void LoadData(SaveData sd)
         {
+            isLoading = true;
             string potentialError = "";
             try
             {
@@ -181,6 +233,29 @@ namespace RPGUtility
             {
                 potentialError += $" Initiative failed, {ex.Message}";
             }
+            try 
+            {
+                // Calendar
+                DaysInCalendar.Clear();
+                MonthsToDays = new(sd.MonthsToDays);
+                CurrentMonthIndex = sd.CurrentMonthIndex;
+                CurrentYear = sd.CurrentYear;
+                foreach (var dayDatum in sd.DaysData)
+                {
+                    Day day = new Day
+                    {
+                        DayNumber = dayDatum.DayNumber,
+                        Month = dayDatum.MonthName,
+                        Year = dayDatum.Year,
+                        Events = new(dayDatum.Events)
+                    };
+                    DaysInCalendar.Add(day);
+                }
+                CalendarPage?.currentCalendar?.PopulateCalendar();
+            } catch (Exception ex)
+            {
+                potentialError += $" Calendar failed, {ex.Message}";
+            }
             try
             {
                 // Tabs
@@ -254,6 +329,16 @@ namespace RPGUtility
                     ((MainWindow)System.Windows.Application.Current.MainWindow).initiativeTrackerTab.Visibility = Visibility.Collapsed;
                     OptionsPage!.initiativeTrackerOption.IsChecked = false;
                 }
+                if (sd.TabsData["Calendar"])
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Visible;
+                    OptionsPage!.calendarOption.IsChecked = true;
+                }
+                else
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).calendarTab.Visibility = Visibility.Collapsed;
+                    OptionsPage!.calendarOption.IsChecked = false;
+                }
             } catch (Exception ex)
             {
                 potentialError += $" Tabs failed, {ex.Message}";
@@ -269,6 +354,11 @@ namespace RPGUtility
             {
                 MessageBox.Show($"Failed to load some or all data: {potentialError}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            isLoading = false;
+            CalendarPage?.currentCalendar?.PopulateCalendar();
+            CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
+            CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
         }
 
         private void ChangesMade()

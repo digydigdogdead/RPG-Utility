@@ -88,7 +88,6 @@
         </StackPanel>
         <ListView x:Name="MonthsListView"
                   Grid.Column="1"
-                  Grid.RowSpan="2"
                   Margin="5">
             <ListView.View>
                 <GridView>
@@ -97,5 +96,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   TextWrapping="Wrap"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+            Saving will overwrite the current calendar! You can add and remove days from the existing calendar by right clicking.
+        </TextBlock>
     </Grid>
 </Window>

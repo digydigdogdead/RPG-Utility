@@ -20,7 +20,16 @@ namespace RPGUtility.Windows
     /// </summary>
     public partial class DeleteDayConfirm : Window
     {
-        public Day? DayToDelete { get; set; } = null;
+        private Day? _dayToDelete = null;
+        public Day? DayToDelete 
+        { 
+            get { return _dayToDelete; }
+            set 
+            { 
+                _dayToDelete = value;  
+                MessageText.Text = $"Are you sure you want to delete {DayToDelete?.DayNumber} {DayToDelete?.Month}, {DayToDelete?.Year}?";
+            }
+        }
         public DeleteDayConfirm()
         {
             InitializeComponent();

@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPGUtility.Windows"
         mc:Ignorable="d"
-        Title="DeleteDayConfirm" Height="150" Width="475">
+        Title="DeleteDayConfirm" Height="175" Width="475">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Are you sure you want to delete this day?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+        <TextBlock x:Name="MessageText"
+                   Text="Are you sure you want to delete this day?" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="24" TextWrapping="Wrap"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Confirm" Width="100" Height="40" Margin="10" Click="Button_Click" x:Name="ConfirmButton"/>
             <Button Content="Cancel" Width="100" Height="40" Margin="10" Click="Button_Click"/>

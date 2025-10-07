@@ -31,8 +31,8 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
   ![image](https://i.imgur.com/QOCcKI3.png)
 
 ## To Do:
-- **Make Session Logs Searchable** Done!: Make it possible to use search terms to filter session logs so you can find the detail you're looking for quicker (This has been implemented in the master branch and will be included in the next release)
 - **Include info buttons/somewhere to see instructions**: As the scope of the project has grown, each page has evolved to have functions beyond what is obvious (e.g. within context menus) and a way to guide the user to those options should probably be implemented.
+- **Create link between Session Logs and Calendar page**: Would be convenient to be able to add to a calendar day directly from a Session Log
 
 ## Possible Stretch Goals:
 - **In-Game Calendar** Currently in progress and will be included in the next release.: A user has suggested a calendar tab to manage a timeline of in-game events.

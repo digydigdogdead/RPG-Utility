@@ -117,5 +117,25 @@ namespace RPGUtility.Controls
                 DaysPanel.Children.Add(day);
             }
         }
+
+        private void AddDayMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if ((App.Current as App)!.DaysInCalendar == null || (App.Current as App)!.DaysInCalendar.Count == 0) 
+            {
+                return;
+            }
+            var currentMonth = from days in (App.Current as App)!.DaysInCalendar
+                               where days.Month == (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key
+                               && days.Year == CurrentYear
+                               select days;
+            int nextDayNumber = currentMonth.Count() + 1;
+            (App.Current as App)!.DaysInCalendar.Add(new Day()
+            {
+                DayNumber = nextDayNumber,
+                Month = (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key,
+                Year = CurrentYear
+            });
+            PopulateCalendar();
+        }
     }
 }

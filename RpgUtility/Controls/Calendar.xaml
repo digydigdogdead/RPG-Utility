@@ -6,8 +6,13 @@
              xmlns:local="clr-namespace:RPGUtility.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="440" d:DesignWidth="720"
-             Background="LightGray" >
+             Background="LightGray">
     <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Add Day to Month" x:Name="AddDayMenuItem" Click="AddDayMenuItem_Click"/> 
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />

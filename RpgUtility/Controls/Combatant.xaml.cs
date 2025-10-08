@@ -62,7 +62,6 @@ namespace RPGUtility.Controls
         {
             (App.Current as App)!.Combatants.Remove(this);
             (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
-            (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
         }
 
         private static PropertyChangedCallback OnInitiativeChanged()
@@ -71,7 +70,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.initiativeIntegerUpDown.Value = combatant.Initiative;
-                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
@@ -81,7 +80,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.nameTextBlock.Text = combatant.CombatantName;
-                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
+                (App.Current as App)!.ChangesMade();
             };
         }
         private static PropertyChangedCallback OnHpChanged()
@@ -90,7 +89,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.hpIntegerUpDown.Value = combatant.Hp;
-                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
+                (App.Current as App)!.ChangesMade();
             };
         }
         private static PropertyChangedCallback OnConditionsChanged()
@@ -98,16 +97,14 @@ namespace RPGUtility.Controls
             return (d, e) =>
             {
                 Combatant combatant = (d as Combatant)!;
-                combatant.UpdateConditionsText();
-                (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
         private void initiativeIntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             Initiative = (int)initiativeIntegerUpDown.Value!;
-            (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
-            (App.Current as App)!.Combatants = new List<Combatant>((App.Current as App)!.Combatants);
+            (App.Current as App)!.ChangesMade();
         }
 
         private void ConditionMenuItem_Click(object sender, RoutedEventArgs e)
@@ -118,9 +115,8 @@ namespace RPGUtility.Controls
                 {
                     Conditions.Add(condition);
                 }
-
                 (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
-                (App.Current as App)!.Combatants = new((App.Current as App)!.Combatants);
+                (App.Current as App)!.ChangesMade();
             }
         }
 
@@ -150,6 +146,7 @@ namespace RPGUtility.Controls
         private void hpIntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             Hp = (int)hpIntegerUpDown.Value!;
+            (App.Current as App)!.ChangesMade();
         }
     }
 }

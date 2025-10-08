@@ -20,7 +20,6 @@ namespace RPGUtility.Pages
             memo.Title = memoTitleTextBox.Text;
             memo.MemoContent = memoContentTextBox.Text;
             ((App)Application.Current).Memos.Add(memo);
-            ((App)Application.Current).MemosPage?.RefreshMemos();
             this.Close();
         }
 

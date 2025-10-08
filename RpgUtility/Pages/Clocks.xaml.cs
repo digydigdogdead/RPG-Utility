@@ -25,15 +25,12 @@ namespace RPGUtility.Pages
             clockNameTextBox.Clear();
             segmentsIntegerUpDown.Value = 4; // Reset to default value
             UpdateClockStack();
-            (App.Current as App)!.Clocks = new((App.Current as App)!.Clocks);
-
         }
 
         private void clearClocksButton_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.Clocks = new();
-            UpdateClockStack();
-            
+            (App.Current as App)!.Clocks.Clear();
+            UpdateClockStack();       
         }
 
         public void UpdateClockStack()

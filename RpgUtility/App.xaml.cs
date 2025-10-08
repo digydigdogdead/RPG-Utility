@@ -23,57 +23,11 @@ namespace RPGUtility
                 ChangesMade();
             } 
         }
-        private List<Clock> _clocks = new List<Clock>();
-        public List<Clock> Clocks 
-        {
-            get { return _clocks; }
-            set 
-            { 
-                _clocks = value;
-                ChangesMade();
-            }
-        }
-        private List<StatTrack> _stats = new List<StatTrack>();
-        public List<StatTrack> Stats
-        {
-            get { return _stats; }
-            set
-            {
-                _stats = value;
-                ChangesMade();
-            }
-        }
-        private List<Memo> _memos = new List<Memo>();
-        public List<Memo> Memos
-        {
-            get { return _memos; }
-            set
-            {
-                _memos = value;
-                ChangesMade();
-            }
-        }
-        private List<SessionLog> _sessionLogs = new List<SessionLog>();
-        public List<SessionLog> SessionLogs 
-        {
-            get { return _sessionLogs; }
-            set
-            {
-                _sessionLogs = value;
-                ChangesMade();
-            }
-        }
-        private List<Combatant> _combatants = new List<Combatant>();
-        public List<Combatant> Combatants 
-        {
-            get { return _combatants; }
-            set
-            {
-                _combatants = value;
-                ChangesMade();
-            }
-        }
-
+        public ObservableCollection<Clock> Clocks { get; set; } = new ObservableCollection<Clock>();
+        public ObservableCollection<StatTrack> Stats { get; set; } = new();
+        public ObservableCollection<Memo> Memos { get; set; } = new();
+        public ObservableCollection<SessionLog> SessionLogs { get; set; } = new();
+        public ObservableCollection<Combatant> Combatants { get; set; } = new();
         public ObservableCollection<Day> DaysInCalendar { get; set; } = new ObservableCollection<Day>();
         public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
         private int _currentMonthIndex = 0;
@@ -120,6 +74,36 @@ namespace RPGUtility
                     CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
                 }
                 CalendarPage?.currentCalendar?.PopulateCalendar();
+                ChangesMade();
+            };
+            Clocks.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                ClocksPage?.UpdateClockStack();
+                ChangesMade();
+            };
+            Stats.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                StatTrackerPage?.PopulateWrapPanel();
+                ChangesMade();
+            };
+            Memos.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                MemosPage?.RefreshMemos();
+                ChangesMade();
+            };
+            SessionLogs.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                SessionLogsPage?.RefreshLogs();
+                ChangesMade();
+            };
+            Combatants.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                InitiativeTrackerPage?.UpdateTracker();
                 ChangesMade();
             };
         }
@@ -236,22 +220,28 @@ namespace RPGUtility
             try 
             {
                 // Calendar
-                DaysInCalendar.Clear();
-                MonthsToDays = new(sd.MonthsToDays);
-                CurrentMonthIndex = sd.CurrentMonthIndex;
-                CurrentYear = sd.CurrentYear;
-                foreach (var dayDatum in sd.DaysData)
+                if (sd.DaysData.Count > 0)
                 {
-                    Day day = new Day
+                    DaysInCalendar.Clear();
+                    MonthsToDays = new(sd.MonthsToDays);
+                    CurrentMonthIndex = sd.CurrentMonthIndex;
+                    CurrentYear = sd.CurrentYear;
+                
+                    foreach (var dayDatum in sd.DaysData)
                     {
-                        DayNumber = dayDatum.DayNumber,
-                        Month = dayDatum.MonthName,
-                        Year = dayDatum.Year,
-                        Events = new(dayDatum.Events)
-                    };
-                    DaysInCalendar.Add(day);
+                        Day day = new Day
+                        {
+                            DayNumber = dayDatum.DayNumber,
+                            Month = dayDatum.MonthName,
+                            Year = dayDatum.Year,
+                            Events = new(dayDatum.Events)
+                        };
+                        DaysInCalendar.Add(day);
+                    }
+                    CalendarPage?.currentCalendar?.PopulateCalendar();
+                    CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
+                    CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
                 }
-                CalendarPage?.currentCalendar?.PopulateCalendar();
             } catch (Exception ex)
             {
                 potentialError += $" Calendar failed, {ex.Message}";
@@ -356,12 +346,9 @@ namespace RPGUtility
             }
 
             isLoading = false;
-            CalendarPage?.currentCalendar?.PopulateCalendar();
-            CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
-            CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
         }
 
-        private void ChangesMade()
+        public void ChangesMade()
         {
             if (OptionsPage == null) return;
             OptionsPage.saveStatusTextBlock.Text = "~";

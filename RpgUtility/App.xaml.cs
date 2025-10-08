@@ -26,16 +26,7 @@ namespace RPGUtility
         public ObservableCollection<Clock> Clocks { get; set; } = new ObservableCollection<Clock>();
         public ObservableCollection<StatTrack> Stats { get; set; } = new();
         public ObservableCollection<Memo> Memos { get; set; } = new();
-        private List<SessionLog> _sessionLogs = new List<SessionLog>();
-        public List<SessionLog> SessionLogs 
-        {
-            get { return _sessionLogs; }
-            set
-            {
-                _sessionLogs = value;
-                ChangesMade();
-            }
-        }
+        public ObservableCollection<SessionLog> SessionLogs { get; set; } = new();
         private List<Combatant> _combatants = new List<Combatant>();
         public List<Combatant> Combatants 
         {
@@ -111,6 +102,12 @@ namespace RPGUtility
             {
                 if (isLoading) return;
                 MemosPage?.RefreshMemos();
+                ChangesMade();
+            };
+            SessionLogs.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                SessionLogsPage?.RefreshLogs();
                 ChangesMade();
             };
         }

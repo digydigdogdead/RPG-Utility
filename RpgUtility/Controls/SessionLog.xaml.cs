@@ -53,7 +53,7 @@ namespace RPGUtility.Controls
                 {
                     log.numTextBlock.Text = newNumber.ToString();
                 }
-                (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
@@ -72,7 +72,7 @@ namespace RPGUtility.Controls
                         log.titleTextBlock.Text = newTitle.Substring(0, 35) + "...";
                     }  
                 }
-                (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
@@ -84,15 +84,13 @@ namespace RPGUtility.Controls
                 {
                     log.ToolTip = newDesc;
                 }
-                (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             (App.Current as App)!.SessionLogs?.Remove(this);
-            (App.Current as App)!.SessionLogsPage?.RefreshLogs();
-            (App.Current as App)!.SessionLogs = new List<SessionLog>((App.Current as App)!.SessionLogs);
         }
 
         private void OpenEditWindow(object sender, EventArgs e)

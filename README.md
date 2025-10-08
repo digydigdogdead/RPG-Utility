@@ -20,7 +20,7 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 - ### Session Logs
     Keep record of your sessions, so you can always figure out which session it was that the players accidentally killed the NPC who had all the information they needed, and who was there to witness it. The session logs are compact, but you can double click any of them to see the full details and edit them.
   
-    ![image](https://i.imgur.com/fNVqAu1.png)
+    ![image](https://i.imgur.com/6GkKYaV.png)
 - ### Name Generator
     Randomly generate names for people, places, and monsters. You can add memos to the memo page straight from the name you generated.
   

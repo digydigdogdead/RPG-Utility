@@ -41,7 +41,7 @@ namespace RPGUtility.Controls
                 {
                     memo.titleTextBlock.Text = memo.Title;
                 }
-                (App.Current as App)!.Memos = new List<Memo>((App.Current as App)!.Memos);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
@@ -60,7 +60,7 @@ namespace RPGUtility.Controls
                     }
                     ToolTipService.SetToolTip(memo.contentTextBlock, memo.MemoContent);
                 }
-                (App.Current as App)!.Memos = new List<Memo>((App.Current as App)!.Memos);
+                (App.Current as App)!.ChangesMade();
             };
         }
 
@@ -72,8 +72,6 @@ namespace RPGUtility.Controls
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             (App.Current as App)!.Memos?.Remove(this);
-            (App.Current as App)!.MemosPage?.RefreshMemos();
-            (App.Current as App)!.Memos = new List<Memo>((App.Current as App)!.Memos);
         }
 
         private void OpenEditWindow()

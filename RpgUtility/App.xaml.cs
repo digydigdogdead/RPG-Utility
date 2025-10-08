@@ -25,16 +25,7 @@ namespace RPGUtility
         }
         public ObservableCollection<Clock> Clocks { get; set; } = new ObservableCollection<Clock>();
         public ObservableCollection<StatTrack> Stats { get; set; } = new();
-        private List<Memo> _memos = new List<Memo>();
-        public List<Memo> Memos
-        {
-            get { return _memos; }
-            set
-            {
-                _memos = value;
-                ChangesMade();
-            }
-        }
+        public ObservableCollection<Memo> Memos { get; set; } = new();
         private List<SessionLog> _sessionLogs = new List<SessionLog>();
         public List<SessionLog> SessionLogs 
         {
@@ -114,6 +105,12 @@ namespace RPGUtility
             {
                 if (isLoading) return;
                 StatTrackerPage?.PopulateWrapPanel();
+                ChangesMade();
+            };
+            Memos.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                MemosPage?.RefreshMemos();
                 ChangesMade();
             };
         }

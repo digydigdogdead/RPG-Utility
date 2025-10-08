@@ -97,7 +97,6 @@ namespace RPGUtility.Controls
             return (d, e) =>
             {
                 Combatant combatant = (d as Combatant)!;
-                combatant.UpdateConditionsText();
                 (App.Current as App)!.ChangesMade();
             };
         }

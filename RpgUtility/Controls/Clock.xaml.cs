@@ -123,6 +123,7 @@ namespace RPGUtility.Controls
             {
                 Clock clock = (Clock)d;
                 clock.FillSegments();
+                (App.Current as App)!.ChangesMade();
             };
         }
 

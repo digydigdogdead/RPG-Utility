@@ -24,16 +24,7 @@ namespace RPGUtility
             } 
         }
         public ObservableCollection<Clock> Clocks { get; set; } = new ObservableCollection<Clock>();
-        private List<StatTrack> _stats = new List<StatTrack>();
-        public List<StatTrack> Stats
-        {
-            get { return _stats; }
-            set
-            {
-                _stats = value;
-                ChangesMade();
-            }
-        }
+        public ObservableCollection<StatTrack> Stats { get; set; } = new();
         private List<Memo> _memos = new List<Memo>();
         public List<Memo> Memos
         {
@@ -117,6 +108,12 @@ namespace RPGUtility
             {
                 if (isLoading) return;
                 ClocksPage?.UpdateClockStack();
+                ChangesMade();
+            };
+            Stats.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                StatTrackerPage?.PopulateWrapPanel();
                 ChangesMade();
             };
         }
@@ -252,6 +249,8 @@ namespace RPGUtility
                         DaysInCalendar.Add(day);
                     }
                     CalendarPage?.currentCalendar?.PopulateCalendar();
+                    CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
+                    CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
                 }
             } catch (Exception ex)
             {
@@ -357,12 +356,9 @@ namespace RPGUtility
             }
 
             isLoading = false;
-            CalendarPage?.currentCalendar?.PopulateCalendar();
-            CalendarPage!.currentCalendar!.PrevMonthButton.IsEnabled = true;
-            CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
         }
 
-        private void ChangesMade()
+        public void ChangesMade()
         {
             if (OptionsPage == null) return;
             OptionsPage.saveStatusTextBlock.Text = "~";

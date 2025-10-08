@@ -50,6 +50,7 @@ namespace RPGUtility.Windows
                 Content = eventTextBox.Text
             };
             eventsListView.Items.Add(eventItem);
+            eventTextBox.Clear();
         }
 
         private void removeEventButton_Click(object sender, RoutedEventArgs e)

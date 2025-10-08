@@ -23,16 +23,7 @@ namespace RPGUtility
                 ChangesMade();
             } 
         }
-        private List<Clock> _clocks = new List<Clock>();
-        public List<Clock> Clocks 
-        {
-            get { return _clocks; }
-            set 
-            { 
-                _clocks = value;
-                ChangesMade();
-            }
-        }
+        public ObservableCollection<Clock> Clocks { get; set; } = new ObservableCollection<Clock>();
         private List<StatTrack> _stats = new List<StatTrack>();
         public List<StatTrack> Stats
         {
@@ -120,6 +111,12 @@ namespace RPGUtility
                     CalendarPage!.currentCalendar!.NextMonthButton.IsEnabled = true;
                 }
                 CalendarPage?.currentCalendar?.PopulateCalendar();
+                ChangesMade();
+            };
+            Clocks.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                ClocksPage?.UpdateClockStack();
                 ChangesMade();
             };
         }
@@ -236,22 +233,26 @@ namespace RPGUtility
             try 
             {
                 // Calendar
-                DaysInCalendar.Clear();
-                MonthsToDays = new(sd.MonthsToDays);
-                CurrentMonthIndex = sd.CurrentMonthIndex;
-                CurrentYear = sd.CurrentYear;
-                foreach (var dayDatum in sd.DaysData)
+                if (sd.DaysData.Count > 0)
                 {
-                    Day day = new Day
+                    DaysInCalendar.Clear();
+                    MonthsToDays = new(sd.MonthsToDays);
+                    CurrentMonthIndex = sd.CurrentMonthIndex;
+                    CurrentYear = sd.CurrentYear;
+                
+                    foreach (var dayDatum in sd.DaysData)
                     {
-                        DayNumber = dayDatum.DayNumber,
-                        Month = dayDatum.MonthName,
-                        Year = dayDatum.Year,
-                        Events = new(dayDatum.Events)
-                    };
-                    DaysInCalendar.Add(day);
+                        Day day = new Day
+                        {
+                            DayNumber = dayDatum.DayNumber,
+                            Month = dayDatum.MonthName,
+                            Year = dayDatum.Year,
+                            Events = new(dayDatum.Events)
+                        };
+                        DaysInCalendar.Add(day);
+                    }
+                    CalendarPage?.currentCalendar?.PopulateCalendar();
                 }
-                CalendarPage?.currentCalendar?.PopulateCalendar();
             } catch (Exception ex)
             {
                 potentialError += $" Calendar failed, {ex.Message}";

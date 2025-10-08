@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,9 +38,8 @@ namespace RPGUtility.Pages
                 Hp = HpIntegerUpDown.Value ?? 1
             };
             (App.Current as App)!.Combatants.Add(combatant);
-            UpdateTracker();
             nameTextBox.Text = string.Empty;
-            (App.Current as App)!.Combatants = new((App.Current as App)!.Combatants);
+            UpdateTracker();
         }
         
 
@@ -70,17 +70,17 @@ namespace RPGUtility.Pages
         public void UpdateTracker()
         {
             initiativeTrackPanel.Children.Clear();
-            (App.Current as App)!.Combatants = (App.Current as App)!.Combatants.OrderByDescending(c => c.Initiative).ToList();
+            var initiativeList = ((App.Current as App)!.Combatants.OrderByDescending(c => c.Initiative)).ToList();
 
-            for (int i = 0; i < (App.Current as App)!.Combatants.Count; i++)
+            for (int i = 0; i < initiativeList.Count(); i++)
             {
                 if (i == CurrentTurnIndex)
                 {
-                    (App.Current as App)!.Combatants[i].Background = new SolidColorBrush(Colors.LightGreen);
+                    initiativeList[i].Background = new SolidColorBrush(Colors.LightGreen);
                 }
-                else (App.Current as App)!.Combatants[i].Background = new SolidColorBrush(Colors.LightGray);
+                else initiativeList[i].Background = new SolidColorBrush(Colors.LightGray);
 
-                initiativeTrackPanel.Children.Add((App.Current as App)!.Combatants[i]);
+                initiativeTrackPanel.Children.Add(initiativeList[i]);
             }
         }
     }

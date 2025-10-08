@@ -27,17 +27,7 @@ namespace RPGUtility
         public ObservableCollection<StatTrack> Stats { get; set; } = new();
         public ObservableCollection<Memo> Memos { get; set; } = new();
         public ObservableCollection<SessionLog> SessionLogs { get; set; } = new();
-        private List<Combatant> _combatants = new List<Combatant>();
-        public List<Combatant> Combatants 
-        {
-            get { return _combatants; }
-            set
-            {
-                _combatants = value;
-                ChangesMade();
-            }
-        }
-
+        public ObservableCollection<Combatant> Combatants { get; set; } = new();
         public ObservableCollection<Day> DaysInCalendar { get; set; } = new ObservableCollection<Day>();
         public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
         private int _currentMonthIndex = 0;
@@ -108,6 +98,12 @@ namespace RPGUtility
             {
                 if (isLoading) return;
                 SessionLogsPage?.RefreshLogs();
+                ChangesMade();
+            };
+            Combatants.CollectionChanged += (s, e) =>
+            {
+                if (isLoading) return;
+                InitiativeTrackerPage?.UpdateTracker();
                 ChangesMade();
             };
         }

@@ -24,12 +24,12 @@ namespace RPGUtility.Pages
         public StatTracker()
         {
             InitializeComponent();
-            ((App)Application.Current).StatTrackerPage = this;
+            (App.Current as App)!.StatTrackerPage = this;
         }
 
         private void clearStatsButton_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.Stats = [];
+            (App.Current as App)!.Stats.Clear();
         }
 
         private void addStatButton_Click(object sender, RoutedEventArgs e)

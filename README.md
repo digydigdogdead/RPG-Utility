@@ -33,9 +33,10 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 ## To Do:
 - **Include info buttons/somewhere to see instructions**: As the scope of the project has grown, each page has evolved to have functions beyond what is obvious (e.g. within context menus) and a way to guide the user to those options should probably be implemented.
 - **Create link between Session Logs and Calendar page**: Would be convenient to be able to add to a calendar day directly from a Session Log
+- **Add custom user saved rolls to Dicerollers**: If there is one roll you need to make quickly, well wouldn't it be nice to save it as a setting so you can quickly hit it?
 
-## Possible Stretch Goals:
-- **In-Game Calendar** Currently in progress and will be included in the next release.: A user has suggested a calendar tab to manage a timeline of in-game events.
+## Known Issues:
+- The "Clear" button on the Stat Tracker page breaks the page. The cause has been figured out and a fix will be implemented in the next release.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data. The icon is a segment from official art for the podcast Dice So Nice I Said Dice Twice, illustrated by Kevin Ryan, used with permission.

@@ -40,5 +40,10 @@ namespace RPGUtility.Pages
             (App.Current as App)!.RollHistory.Push(rollResult);
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
         }
+
+        private void OverwritePresetButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

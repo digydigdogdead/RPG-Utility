@@ -3,8 +3,8 @@
 This WPF application is a one-stop-shop for all the little things GMs might be using multiple applications to do. The functions this has include:
 
 - ### Dice Roller
-    The dice roller has a default preset which would work for any game, but also presets for the games Wilderfeast and Household (and more can be added on request).
-  ![image](https://i.imgur.com/8NslkJY.png)
+    The dice roller has a default preset which would work for any game, but also presets for the games Wilderfeast and Household (and more can be added on request). The default diceroller has 3 modifiable user presets!
+  ![image](https://i.imgur.com/ItAaYSh.png)
 - ### Initiative Tracker
     A page where you can add all the fighters in a given scene with their initiative, HP, and any conditions they may have, and the application will track the turn order for you.
     ![image](https://i.imgur.com/Hl9WCRR.png)
@@ -33,10 +33,7 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 ## To Do:
 - **Include info buttons/somewhere to see instructions**: As the scope of the project has grown, each page has evolved to have functions beyond what is obvious (e.g. within context menus) and a way to guide the user to those options should probably be implemented.
 - **Create link between Session Logs and Calendar page**: Would be convenient to be able to add to a calendar day directly from a Session Log
-- **Add custom user saved rolls to Dicerollers**: If there is one roll you need to make quickly, well wouldn't it be nice to save it as a setting so you can quickly hit it?
-
-## Known Issues:
-- The "Clear" button on the Stat Tracker page breaks the page. The cause has been figured out and a fix will be implemented in the next release.
+- **Allow users to edit the pool of random names**: Currently the random names are built in code, but if they were built from a file users could edit, then users could have some fun with names for their specific contexts.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data. The icon is a segment from official art for the podcast Dice So Nice I Said Dice Twice, illustrated by Kevin Ryan, used with permission.

@@ -15,6 +15,10 @@
             <ColumnDefinition Width="4*" x:Name="diceDetailsColumn" />
             <ColumnDefinition Width="1*" x:Name="rollButtonColumn" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.75*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid Name="rollingGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -89,11 +93,58 @@
                                 Background="Transparent"/>
         </Grid>
         <Button x:Name="rollButton" 
-                    Grid.Column="1" 
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
                     Content="Roll Dice" 
                     Margin="10,0,10,0" 
                     VerticalAlignment="Center"
                     Height="80"
                     Click="rollButton_Click"/>
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <StackPanel Name="Preset1Panel">
+                <Button x:Name="Preset1Button" 
+                        Content="Preset 1" 
+                        Margin="5"
+                        Height="40"
+                        Width="120"
+                        Click="rollButton_Click"/>
+                <Button x:Name="OverwritePreset1Button"
+                        Content="+"
+                        Margin="5"
+                        Click="OverwritePresetButton_Click"
+                        />
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Name="Preset2Panel">
+                <Button x:Name="Preset2Button" 
+                        Content="Preset 2" 
+                        Margin="5"
+                        Height="40"
+                        Width="120"
+                        Click="rollButton_Click"/>
+                <Button x:Name="OverwritePreset2Button"
+                        Content="+"
+                        Margin="5"
+                        Click="OverwritePresetButton_Click"
+                        />
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Name="Preset3Panel">
+                <Button x:Name="Preset3Button" 
+                        Content="Preset 3" 
+                        Margin="5"
+                        Height="40"
+                        Width="120"
+                        Click="rollButton_Click"/>
+                <Button x:Name="OverwritePreset3Button"
+                        Content="+"
+                        Margin="5"
+                        Click="OverwritePresetButton_Click"
+                        />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

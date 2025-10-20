@@ -10,12 +10,69 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Random Names\fantasy_epithets.txt" />
+    <None Remove="Random Names\fantasy_place_names.txt" />
+    <None Remove="Random Names\female_fantasy_first_names.txt" />
+    <None Remove="Random Names\female_modern_first_names.txt" />
+    <None Remove="Random Names\male_fantasy_first_names.txt" />
+    <None Remove="Random Names\male_modern_first_names.txt" />
+    <None Remove="Random Names\modern_place_names.txt" />
+    <None Remove="Random Names\modern_surnames.txt" />
+    <None Remove="Random Names\monster_names.txt" />
+    <None Remove="Random Names\neutral_fantasy_first_names.txt" />
+    <None Remove="Random Names\neutral_modern_first_names.txt" />
+    <None Remove="Random Names\scifi_place_names.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Random Names\modern_place_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Random Names\fantasy_epithets.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\fantasy_place_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\female_fantasy_first_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\female_modern_first_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\male_fantasy_first_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\male_modern_first_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\modern_surnames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\monster_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\neutral_fantasy_first_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\neutral_modern_first_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Random Names\scifi_place_names.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -58,7 +58,7 @@ namespace RPGUtility.Pages
                     var allNames = maleFirstFantasyNames.Concat(femaleFirstFantasyNames).Concat(neutralFirstFantasyNames).ToList();
                     firstName = allNames[rand.Next(allNames.Count)];
                 }
-                nameTextBox.Text = $"{firstName} {epithet}";
+                nameTextBox.Text = $"{firstName} the {epithet}";
             }
             else if (typeComboBox.SelectedItem == modernPersonCbi)
             {

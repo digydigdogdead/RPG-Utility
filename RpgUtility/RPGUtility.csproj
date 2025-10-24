@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- keep Remove entries only if you previously relied on them to avoid default None includes -->
     <None Remove="Random Names\fantasy_epithets.txt" />
     <None Remove="Random Names\fantasy_place_names.txt" />
     <None Remove="Random Names\female_fantasy_first_names.txt" />
@@ -29,50 +30,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Random Names\modern_place_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
+  <!-- single wildcard Content entry handles all files under "Random Names" -->
   <ItemGroup>
-    <Resource Include="Random Names\fantasy_epithets.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\fantasy_place_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\female_fantasy_first_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\female_modern_first_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\male_fantasy_first_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\male_modern_first_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\modern_surnames.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\monster_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\neutral_fantasy_first_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\neutral_modern_first_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Random Names\scifi_place_names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="Random Names\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

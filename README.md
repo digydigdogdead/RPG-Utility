@@ -32,7 +32,7 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 
 ## To Do:
 - **Include info buttons/somewhere to see instructions**: As the scope of the project has grown, each page has evolved to have functions beyond what is obvious (e.g. within context menus) and a way to guide the user to those options should probably be implemented.
-- **Create link between Session Logs and Calendar page**: Would be convenient to be able to add to a calendar day directly from a Session Log
+- **Create link between Session Logs and Calendar page** Done and will be included in the next release: It will possible in a future release when adding a session log to add a corresponding event to the calendar at the same time.
 - **Allow users to edit the pool of random names** Done and will be included in the next release: Currently the random names are built in code, but if they were built from a file users could edit, then users could have some fun with names for their specific contexts.
 
 ### Acknowledgements:

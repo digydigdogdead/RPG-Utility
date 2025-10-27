@@ -12,6 +12,10 @@ namespace RPGUtility.Windows
         public NewLogWindow()
         {
             InitializeComponent();
+            if ((App.Current as App)!.MonthsToDays.Count == 0)
+            {
+                calendarButton.IsEnabled = false;
+            }
         }
 
         private void saveLogButton_Click(object sender, RoutedEventArgs e)

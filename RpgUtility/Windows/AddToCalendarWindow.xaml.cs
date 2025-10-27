@@ -23,13 +23,13 @@ namespace RPGUtility.Windows
         public AddToCalendarWindow()
         {
             InitializeComponent();
-            if ((App.Current as App)!.MonthsToDays.Count > 0)
+
+            foreach (var month in (App.Current as App)!.MonthsToDays)
             {
-                foreach (var month in (App.Current as App)!.MonthsToDays)
-                {
-                    monthComboBox.Items.Add(month.Key);
-                }
+                monthComboBox.Items.Add(month.Key);
             }
+            monthComboBox.SelectedIndex = 0;
+
         }
 
         private void addToCalendarButton_Click(object sender, RoutedEventArgs e)

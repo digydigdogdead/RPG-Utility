@@ -37,5 +37,22 @@ namespace RPGUtility.Windows
         {
             if (e.Key == Key.LeftShift) sessionDescriptionTextBox.AcceptsReturn = false;
         }
+
+        private void calendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            SessionLog newLog = new SessionLog()
+            {
+                LogTitle = sessionTitleTextBox.Text,
+                SessionDescription = sessionDescriptionTextBox.Text,
+                SessionNumber = (int)sessionNumberUpDown.Value!
+            };
+            ((App)Application.Current).SessionLogs.Add(newLog);
+
+            AddToCalendarWindow addToCalendarWindow = new AddToCalendarWindow();
+            addToCalendarWindow.eventTitleTextBox.Text = sessionTitleTextBox.Text;
+            addToCalendarWindow.yearUpDown.Value = ((App)Application.Current).CurrentYear;
+            addToCalendarWindow.ShowDialog();
+            this.Close();
+        }
     }
 }

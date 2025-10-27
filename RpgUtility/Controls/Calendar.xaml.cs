@@ -90,26 +90,31 @@ namespace RPGUtility.Controls
         }
 
         public void PopulateCalendar()
-        {
-            DaysPanel.Children.Clear();
+        { 
            var daysInMonth = (from day in (App.Current as App)!.DaysInCalendar
                              where day.Month == (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key
                              && day.Year == CurrentYear
                              select day).ToList();
 
-            if (daysInMonth.Count == 0)
+            if (daysInMonth.Count < (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Value)
             {
-                for (int i = 1; i <= (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Value; i++)
+                for (int i = daysInMonth.Count + 1; i <= (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Value; i++)
                 {
-                    (App.Current as App)!.DaysInCalendar.Add(new Day() 
-                    { 
-                        DayNumber = i, 
-                        Month = (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key, 
-                        Year = CurrentYear 
-                    });
+                    if (!(App.Current as App)!.DaysInCalendar.Any(d => d.DayNumber == i
+                                                            && d.Month == (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key
+                                                            && d.Year == CurrentYear))
+                    {
+                        (App.Current as App)!.DaysInCalendar.Add(new Day()
+                        {
+                            DayNumber = i,
+                            Month = (App.Current as App)!.MonthsToDays.ElementAt(CurrentMonthIndex).Key,
+                            Year = CurrentYear
+                        });
+                    }
                 }
-                PopulateCalendar();
             }
+
+            DaysPanel.Children.Clear();
 
             YearText.Text = CurrentYear.ToString();
             foreach (var day in daysInMonth)

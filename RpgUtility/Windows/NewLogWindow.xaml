@@ -49,5 +49,14 @@
                 FontSize="16"
                 Width="50"
                 Click="saveLogButton_Click"/>
+        <Button x:Name="calendarButton"
+                Content="Save and Add to Calendar"
+                Grid.Row="2" Grid.Column="0"
+                Margin="10"
+                HorizontalAlignment="Left"
+                FontSize="16"
+                Padding="5"
+                Click="calendarButton_Click"
+                />
     </Grid>
 </Window>

@@ -33,7 +33,7 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
 ## To Do:
 - **Include info buttons/somewhere to see instructions**: As the scope of the project has grown, each page has evolved to have functions beyond what is obvious (e.g. within context menus) and a way to guide the user to those options should probably be implemented.
 - **Create link between Session Logs and Calendar page**: Would be convenient to be able to add to a calendar day directly from a Session Log
-- **Allow users to edit the pool of random names**: Currently the random names are built in code, but if they were built from a file users could edit, then users could have some fun with names for their specific contexts.
+- **Allow users to edit the pool of random names** Done and will be included in the next release: Currently the random names are built in code, but if they were built from a file users could edit, then users could have some fun with names for their specific contexts.
 
 ### Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data. The icon is a segment from official art for the podcast Dice So Nice I Said Dice Twice, illustrated by Kevin Ryan, used with permission.

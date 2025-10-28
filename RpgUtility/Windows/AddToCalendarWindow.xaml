@@ -27,9 +27,9 @@
                 <TextBlock FontSize="25" 
                            Text="Year:"
                            VerticalAlignment="Center"/>
-                <xctk:IntegerUpDown Value="1" 
+                <xctk:IntegerUpDown Value="1000" 
                                     x:Name="yearUpDown"
-                                    Width="50"
+                                    Width="100"
                                     Margin="10"
                                     FontSize="25"/>
             </StackPanel>

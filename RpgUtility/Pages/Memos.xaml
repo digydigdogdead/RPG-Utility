@@ -34,7 +34,6 @@
                         Content="Clear"
                         />
         <ScrollViewer Grid.Column="1"
-                      Grid.RowSpan="2"
                       VerticalScrollBarVisibility="Auto"
                       >
             <StackPanel x:Name="memosStackPanel"
@@ -43,5 +42,15 @@
                         HorizontalAlignment="Stretch"
                         />
         </ScrollViewer>
+        <Button x:Name="helpButton"
+                Click="helpButton_Click"
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Content="?"
+                Margin="10"
+                Padding="5"
+            />
     </Grid>
 </Page>

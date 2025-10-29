@@ -30,7 +30,20 @@ namespace RPGUtility.Pages
 
         private void clearMemosButton_Click(object sender, RoutedEventArgs e)
         {
-            (App.Current as App)!.Memos = [];
+            (App.Current as App)!.Memos.Clear();
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("""
+                
+                This page allows you to create and manage memos for your RPG campaigns. 
+                
+                Click the "Add Memo" button to create a new memo. You can use memos to jot down important information, reminders, or notes related to your game sessions.
+                
+                You can edit or delete existing memos by right-clicking or double-clicking on them.
+                
+                """, "Memos Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -31,5 +31,17 @@ namespace RPGUtility.Pages
         {
             new Windows.CalendarEditor().Show();
         }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("""
+                
+                This page allows you to manage your custom calendar for RPG campaigns. Click the settings wheel to open the calendar editor, where you can define months, days, and set the starting year.
+                To use any calendar functions, a calendar must be defined first.
+                Right-click on any day in the calendar view to add events or notes for that specific day.
+                
+                """, "Calendar Help", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+        }
     }
 }

@@ -221,5 +221,22 @@ namespace RPGUtility.Pages
 
             throw new FileNotFoundException($"Data file not found: '{relativePath}'. Searched {candidates.Length} locations.");
         }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("""
+                
+                This page allows you to generate random names for characters, places, and monsters for your RPG campaigns.
+                
+                Select the type of name you want to generate from the dropdown menu. For character names, you can also select a gender preference.
+
+                Click the "Generate Name" button to create a random name based on your selections. The generated name will appear in the text box where you can edit it.
+
+                If you want to save the generated name for future reference, click the "Add Memo" button. This will open a new memo window with the generated name pre-filled in the title.
+
+                The pool of random names is sourced from text files located in the "Random Names" folder within the application's directory. You can customize these files to add your own names.
+                
+                """, "Name Generator Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

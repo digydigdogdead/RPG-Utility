@@ -74,5 +74,14 @@
                 HorizontalAlignment="Right"
                 Width="70"
                 Click="addMemoButton_Click"/>
+        <Button Grid.Row="1"
+                HorizontalAlignment="Center"
+                Content="?"
+                x:Name="helpButton"
+                Click="helpButton_Click"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Padding="5"
+            />
     </Grid>
 </Page>

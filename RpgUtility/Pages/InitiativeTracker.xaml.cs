@@ -83,5 +83,19 @@ namespace RPGUtility.Pages
                 initiativeTrackPanel.Children.Add(initiativeList[i]);
             }
         }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("""
+                
+                This page allows you to track combatants' initiatives during RPG encounters.
+                To add a combatant, enter their name, initiative score, and hit points, then click "+".
+                The program will automatically sort them in descending order based on initiative.
+                Use the "Previous Turn" and "Next Turn" buttons in the bottom-right corner to navigate through the combatants' turns.
+                The current turn is highlighted in green.
+                You can edit a combatant's HP directly in the tracker by clicking on their HP value, and remove them by clicking the "X" button next to their name.
+                
+                """, "Initiative Tracker Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

@@ -48,5 +48,22 @@ namespace RPGUtility.Pages
             searchTextBox.Text = string.Empty;
             RefreshLogs();
         }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("""
+                
+                This page allows you to create and manage session logs for your RPG campaigns.
+                
+                Click the "+" button to create a new log entry. You can use session logs to document important events, character actions, and plot developments that occur during your game sessions.
+                
+                You can edit or delete existing session logs by right-clicking or double-clicking on them.
+                
+                Use the search box to quickly find specific logs by title or description.
+
+                If you have initialised a calendar, you can add your session logs to the calendar at the same time as making them.
+                
+                """, "Session Logs Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

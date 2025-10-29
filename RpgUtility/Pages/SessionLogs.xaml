@@ -52,5 +52,14 @@
                     Click="clearSearchButton_Click"
                     Background="Transparent"/>
         </StackPanel>
+        <Button Grid.Row="1"
+                x:Name="helpButton"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Content="?"
+                Margin="10"
+                Padding="5"
+                Click="helpButton_Click"
+            />
     </Grid>
 </Page>

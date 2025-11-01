@@ -38,7 +38,7 @@ namespace RPGUtility.Pages
             {
                 Random rand = new Random();
                 string firstName = "";
-                string epithet = fantasyEpithets![rand.Next(fantasyEpithets.Count)];
+                    string epithet = fantasyEpithets![rand.Next(fantasyEpithets.Count)];
                 if (genderComboBox.SelectedItem == maleCbi)
                 {
                     var joinedNames = maleFirstFantasyNames!.Concat(neutralFirstFantasyNames!).ToList();
@@ -89,22 +89,22 @@ namespace RPGUtility.Pages
             else if (typeComboBox.SelectedItem == fantasyPlaceCbi)
             {
                 Random rand = new Random();
-                nameTextBox.Text = fantasyPlaceNames[rand.Next(fantasyPlaceNames.Count)];
+                nameTextBox.Text = fantasyPlaceNames?[rand.Next(fantasyPlaceNames.Count)];
             }
             else if (typeComboBox.SelectedItem == scifiPlaceCbi)
             {
                 Random rand = new Random();
-                nameTextBox.Text = scifiPlaceNames[rand.Next(scifiPlaceNames.Count)];
+                nameTextBox.Text = scifiPlaceNames?[rand.Next(scifiPlaceNames.Count)];
             }
             else if (typeComboBox.SelectedItem == modernPlaceCbi)
             {
                 Random rand = new Random();
-                nameTextBox.Text = modernPlaceNames[rand.Next(modernPlaceNames.Count)];
+                nameTextBox.Text = modernPlaceNames?[rand.Next(modernPlaceNames.Count)];
             }
             else if (typeComboBox.SelectedItem == monsterCbi)
             {
                 Random rand = new Random();
-                nameTextBox.Text = monsterNames[rand.Next(monsterNames.Count)];
+                nameTextBox.Text = monsterNames?[rand.Next(monsterNames.Count)];
             }
 
         }
@@ -149,73 +149,55 @@ namespace RPGUtility.Pages
         public void LoadNames()
         {
             List<string> errors = new List<string>();
+            string[] files =
+            {
+                "fantasy_epithets.txt",
+                "fantasy_place_names.txt",
+                "female_fantasy_first_names.txt",
+                "female_modern_first_names.txt",
+                "male_fantasy_first_names.txt",
+                "male_modern_first_names.txt",
+                "modern_place_names.txt",
+                "modern_surnames.txt",
+                "monster_names.txt",
+                "neutral_fantasy_first_names.txt",
+                "neutral_modern_first_names.txt",
+                "scifi_place_names.txt"
+            };
 
-            try
+            for (int i = 0; i < files.Length; i++)
             {
-                fantasyEpithets = ReadNameFile("fantasy_epithets.txt");
+                try
+                {
+                    var loadedNames = ReadNameFile(files[i]);
+                    if (loadedNames != null && loadedNames.Count > 0)
+                    {
+                        switch (i)
+                        {
+                            case 0: fantasyEpithets = loadedNames; break;
+                            case 1: fantasyPlaceNames = loadedNames; break;
+                            case 2: femaleFirstFantasyNames = loadedNames; break;
+                            case 3: femaleFirstModernNames = loadedNames; break;
+                            case 4: maleFirstFantasyNames = loadedNames; break;
+                            case 5: maleFirstModernNames = loadedNames; break;
+                            case 6: modernPlaceNames = loadedNames; break;
+                            case 7: modernSurnames = loadedNames; break;
+                            case 8: monsterNames = loadedNames; break;
+                            case 9: neutralFirstFantasyNames = loadedNames; break;
+                            case 10: neutralFirstModernNames = loadedNames; break;
+                            case 11: scifiPlaceNames = loadedNames; break;
+                        }
+                    }
+                    else
+                    {
+                        errors.Add(files[i]);
+                    }
+                }
+                catch
+                {
+                    errors.Add(files[i]);
+                }
             }
-            catch
-            { errors.Add("fantasy_epithets.txt"); }
-            try             
-            {
-                fantasyPlaceNames = ReadNameFile("fantasy_place_names.txt");
-            }
-            catch { errors.Add("fantasy_place_names.txt"); }
-            try
-            {
-                femaleFirstFantasyNames = ReadNameFile("female_fantasy_first_names.txt");
-            }
-            catch
-            { errors.Add("female_fantasy_first_names.txt"); }
-            try
-            {
-                femaleFirstModernNames = ReadNameFile("female_modern_first_names.txt");
-            }
-            catch { errors.Add("female_modern_first_names.txt"); }
-            try
-            {
-                maleFirstFantasyNames = ReadNameFile("male_fantasy_first_names.txt");
-            }
-            catch { errors.Add("male_first_fantasy_names.txt"); }
-            try
-            {
-                maleFirstModernNames = ReadNameFile("male_modern_first_names.txt");
-            }
-            catch
-            {
-                errors.Add("male_modern_first_names.txt");
-            }
-            try             
-            {
-                modernPlaceNames = ReadNameFile("modern_place_names.txt");
-            }
-            catch { errors.Add("modern_place_names.txt"); }
-            try             
-            {
-                modernSurnames = ReadNameFile("modern_surnames.txt");
-            }
-            catch { errors.Add("modern_surnames.txt"); }
-            try             
-            {
-                monsterNames = ReadNameFile("monster_names.txt");
-            }
-            catch { errors.Add("monster_names.txt"); }
-            try
-            {
-                neutralFirstFantasyNames = ReadNameFile("neutral_fantasy_first_names.txt");
-            }
-            catch
-            { errors.Add("neutral_fantasy_first_names.txt"); }
-            try             
-            {
-                neutralFirstModernNames = ReadNameFile("neutral_modern_first_names.txt");
-            }
-            catch { errors.Add("neutral_modern_first_names.txt"); }
-            try             
-            {
-                scifiPlaceNames = ReadNameFile("scifi_place_names.txt");
-            }
-            catch { errors.Add("scifi_place_names.txt"); }
 
             if (errors.Count > 0)
             {

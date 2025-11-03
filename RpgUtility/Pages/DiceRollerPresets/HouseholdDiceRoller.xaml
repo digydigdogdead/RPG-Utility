@@ -20,7 +20,8 @@
                        HorizontalAlignment="Center"
                        FontSize="40"/>
             <xctk:IntegerUpDown Value="2"
-                                Minimum="2" 
+                                Minimum="2"
+                                Maximum="9"
                                 Margin="20"
                                 FontSize="40"
                                 Width="100"

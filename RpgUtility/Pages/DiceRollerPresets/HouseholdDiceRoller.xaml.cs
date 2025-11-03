@@ -20,6 +20,8 @@ namespace RPGUtility.Pages.DiceRollerPresets
     /// </summary>
     public partial class HouseholdDiceRoller : Page
     {
+        public List<string> HouseHoldFaces = new List<string>() 
+        { "♥️", "♦️", "♣️", "♠️", "H", "🏠" };
         public Dictionary<int, int> RollCounts = new Dictionary<int, int>()
         {
             {1, 0},
@@ -71,7 +73,7 @@ namespace RPGUtility.Pages.DiceRollerPresets
                 if (count.Value == 3) successes["Critical"]++;
                 if (count.Value == 4) successes["Extreme"]++;
                 if (count.Value == 5) successes["Impossible"]++;
-                if (count.Value == 6) successes["Jackpot"]++;
+                if (count.Value >= 6) successes["Jackpot"]++;
             }
 
             if (successes.All(kvp => kvp.Value == 0))
@@ -96,7 +98,7 @@ namespace RPGUtility.Pages.DiceRollerPresets
             {
                 for (var i = 0; i < count.Value; i++)
                 {
-                    rollMessage += $"{count.Key}, ";
+                    rollMessage += $"{HouseHoldFaces[count.Key - 1]}, ";
                 }
             }
 
@@ -105,6 +107,7 @@ namespace RPGUtility.Pages.DiceRollerPresets
 
             (App.Current as App)!.RollHistory.Push(successMessage + rollMessage);
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
+
         }
     }
 }

@@ -46,7 +46,7 @@
                                            HorizontalAlignment="Center"
                                            FontSize="35"
                                            />
-                                <ListView Grid.Row="1" x:Name="logListView" Margin="0"/>
+                                <ListView Grid.Row="1" x:Name="logListView" Margin="0" FontSize="16"/>
                             </Grid>
                         </Grid>
                     </Grid>

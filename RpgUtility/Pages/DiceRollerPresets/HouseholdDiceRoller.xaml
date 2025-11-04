@@ -27,14 +27,26 @@
                                 Width="100"
                                 x:Name="diceIntegerUpDown"/>
         </StackPanel>
-        <Button Grid.Column="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+        <Button
                 Content="Roll"
                 FontSize="50"
                 x:Name="rollButton"
                 Click="rollButton_Click"
                 Width="150"
-                Height="90"/>
+                Height="90"
+                Margin="5"/>
+            <Button x:Name="rerollButton"
+                    Content="Reroll?"
+                    Margin="5"
+                    Click="rerollButton_Click"
+                    HorizontalAlignment="Center"
+                    Padding="10"
+                    FontSize="25"
+                    IsEnabled="False"
+                    />
+        </StackPanel>
     </Grid>
 </Page>

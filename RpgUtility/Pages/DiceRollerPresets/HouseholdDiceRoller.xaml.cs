@@ -51,6 +51,15 @@ namespace RPGUtility.Pages.DiceRollerPresets
                 RollCounts[i] = rolls.Where(num => num == i).Count();
             }
 
+            if (RollCounts.Any(count => count.Value == 1))             
+            {
+                rerollButton.IsEnabled = true;
+            }
+            else
+            {
+                rerollButton.IsEnabled = false;
+            }
+
             DetermineAndPushSuccesses();
         }
 
@@ -108,6 +117,44 @@ namespace RPGUtility.Pages.DiceRollerPresets
             (App.Current as App)!.RollHistory.Push(successMessage + rollMessage);
             ((MainWindow)System.Windows.Application.Current.MainWindow).updateListView();
 
+            if (RollCounts.Any(count => count.Value == 1) && successes.Any(s => s.Value > 0))
+            {
+                rerollButton.IsEnabled = true;
+            }
+            else
+            {
+                rerollButton.IsEnabled = false;
+            }
+
+        }
+
+        private void rerollButton_Click(object sender, RoutedEventArgs e)
+        {
+            int diceToReroll = 0;
+
+            for (int i = 1; i < 7; i++)
+            {
+                if (RollCounts[i] == 1)
+                {
+                    diceToReroll++;
+                    RollCounts[i] = 0;
+                }
+            }
+
+            Random rand = new Random();
+            int[] rolls = new int[diceToReroll];
+
+            for (int i = 0; i < diceToReroll; i++)
+            {
+                rolls[i] = rand.Next(1, 7);
+            }
+
+            for (int i = 1; i < 7; i++)
+            {
+                RollCounts[i] += rolls.Where(num => num == i).Count();
+            }
+
+            DetermineAndPushSuccesses();
         }
     }
 }

@@ -51,15 +51,6 @@ namespace RPGUtility.Pages.DiceRollerPresets
                 RollCounts[i] = rolls.Where(num => num == i).Count();
             }
 
-            if (RollCounts.Any(count => count.Value == 1))             
-            {
-                rerollButton.IsEnabled = true;
-            }
-            else
-            {
-                rerollButton.IsEnabled = false;
-            }
-
             DetermineAndPushSuccesses();
         }
 

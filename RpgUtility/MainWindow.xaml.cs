@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using RPGUtility.Windows;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -44,6 +45,15 @@ namespace RPGUtility
             else if (presetComboBox.SelectedItem == householdCbi)
             {
                 rollerPresetFrame.Source = new Uri("Pages/DiceRollerPresets/HouseholdDiceRoller.xaml", UriKind.Relative);
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if ((App.Current as App)!.OptionsPage!.saveStatusTextBlock.Text == "~")
+            {
+                e.Cancel = true;
+                new UnsavedChangesWindow().Show();
             }
         }
     }

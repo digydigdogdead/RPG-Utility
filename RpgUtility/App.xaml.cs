@@ -30,10 +30,10 @@ namespace RPGUtility
         public ObservableCollection<Combatant> Combatants { get; set; } = new();
         public ObservableCollection<Day> DaysInCalendar { get; set; } = new ObservableCollection<Day>();
         public Dictionary<string, int> MonthsToDays { get; set; } = new Dictionary<string, int>();
-        public int CurrentMonthIndex 
+        public int CurrentMonthIndex
         {
             get;
-            set 
+            set
             {
                 field = value;
                 CalendarPage!.currentCalendar!.CurrentMonthIndex = value;
@@ -43,11 +43,11 @@ namespace RPGUtility
                     ChangesMade();
                 }
             }
-        }
+        } = 0;
         public int CurrentYear
         {
             get;
-            set 
+            set
             {
                 field = value;
                 CalendarPage!.currentCalendar!.CurrentYear = value;
@@ -58,7 +58,7 @@ namespace RPGUtility
                 }
             }
 
-        }
+        } = 1000;
 
         public bool isLoading { get; set; } = false;
 

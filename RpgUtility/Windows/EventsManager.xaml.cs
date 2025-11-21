@@ -20,14 +20,14 @@ namespace RPGUtility.Windows
     /// </summary>
     public partial class EventsManager : Window
     {
-        public Day? Day 
-        { 
-            get { return _day; }
-            set 
+        public Day? Day
+        {
+            get;
+            set
             {
-                _day = value;
-                titleTextBlock.Text = $"{_day?.DayNumber} of {_day?.Month}, {_day?.Year}";
-                foreach (var evt in _day?.Events ?? Enumerable.Empty<string>())
+                field = value;
+                titleTextBlock.Text = $"{field?.DayNumber} of {field?.Month}, {field?.Year}";
+                foreach (var evt in field?.Events ?? Enumerable.Empty<string>())
                 {
                     var eventItem = new ListViewItem()
                     {
@@ -36,8 +36,7 @@ namespace RPGUtility.Windows
                     eventsListView.Items.Add(eventItem);
                 }
             }
-        }
-        private Day? _day = null;
+        } = null;
         public EventsManager()
         {
             InitializeComponent();
@@ -60,10 +59,10 @@ namespace RPGUtility.Windows
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
-            _day?.Events.Clear();
+            Day?.Events.Clear();
             foreach (ListViewItem item in eventsListView.Items)
             {
-                _day?.Events.Add(item.Content.ToString() ?? string.Empty);
+                Day?.Events.Add(item.Content.ToString() ?? string.Empty);
             }
             this.Close();
         }

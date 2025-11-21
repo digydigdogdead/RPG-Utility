@@ -20,16 +20,15 @@ namespace RPGUtility.Windows
     /// </summary>
     public partial class ConditionManager : Window
     {
-        private Combatant? _combatant;
         public Combatant? Combatant
         {
-            get { return _combatant; }
+            get;
             set
             {
-                _combatant = value;
-                if (_combatant != null)
+                field = value;
+                if (field != null)
                 {
-                    titleTextBlock.Text = _combatant.CombatantName + " Conditions";
+                    titleTextBlock.Text = field.CombatantName + " Conditions";
                     UpdateList();
                 }
             }

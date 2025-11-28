@@ -70,6 +70,7 @@ namespace RPGUtility.Controls
             {
                 Combatant combatant = (d as Combatant)!;
                 combatant.initiativeIntegerUpDown.Value = combatant.Initiative;
+                (App.Current as App)!.InitiativeTrackerPage?.UpdateTracker();
                 (App.Current as App)!.ChangesMade();
             };
         }

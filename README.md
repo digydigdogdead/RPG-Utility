@@ -30,5 +30,13 @@ This WPF application is a one-stop-shop for all the little things GMs might be u
     Manage a custom calendar for your fantasy worlds so you can track the passage of time accurately to the day!
   ![image](https://i.imgur.com/QOCcKI3.png)
 
-### Acknowledgements:
+## To-Do:
+- Add an Autosave option
+- Make it possible to edit Stat titles in the stat tracker
+- Make it possible to reorder Stats in the stat tracker
+
+## Known Issues:
+Occasionally the app can crash when changing values on the Initative Tracker screen. The cause is being investigated.
+
+## Acknowledgements:
 This project makes frequent use of [Xceed's WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), specifically the Integer Up Down control, and NewtonSoft.Json for saving and loading data. The icon is a segment from official art for the podcast Dice So Nice I Said Dice Twice, illustrated by Kevin Ryan, used with permission.
